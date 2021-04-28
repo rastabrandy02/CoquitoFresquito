@@ -14,7 +14,8 @@
 ModulePlayer::ModulePlayer()
 {
 	// idle animation - just one sprite
-	idleAnim.PushBack({ 66, 1, 32, 14 });
+	
+	idleAnim.PushBack({ 175, 190, 35, 25 });
 
 	// move upwards
 	upAnim.PushBack({ 100, 1, 32, 14 });
@@ -27,6 +28,16 @@ ModulePlayer::ModulePlayer()
 	downAnim.PushBack({ 0, 1, 32, 14 });
 	downAnim.loop = false;
 	downAnim.speed = 0.1f;
+
+	leftAnim.PushBack({ 135, 190, 35, 25 });
+	leftAnim.PushBack({ 95, 190, 35, 25 });
+	leftAnim.loop = false;
+	leftAnim.speed = 0.1f;
+
+	rightAnim.PushBack({ 220, 190, 35, 25 });
+	rightAnim.PushBack({ 265, 190, 35, 25 });
+	rightAnim.loop = false;
+	rightAnim.speed = 0.1f;
 }
 
 ModulePlayer::~ModulePlayer()
@@ -40,7 +51,8 @@ bool ModulePlayer::Start()
 
 	bool ret = true;
 
-	texture = App->textures->Load("Assets/ship.png");
+	//texture = App->textures->Load("Assets/ship.png");
+	texture = App->textures->Load("Wiki_Resources/Art/SuperAce/yellow_plane.png");
 	currentAnimation = &idleAnim;
 
 	laserFx = App->audio->LoadFx("Assets/basic_shot.wav");
@@ -63,6 +75,11 @@ update_status ModulePlayer::Update()
 		if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
 		{
 			position.x -= speed;
+			if (currentAnimation != &leftAnim)
+			{
+				leftAnim.Reset();
+				currentAnimation = &leftAnim;
+			}
 		}
 	}
 	if (position.x <= 235)
@@ -70,17 +87,18 @@ update_status ModulePlayer::Update()
 		if (App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
 		{
 			position.x += speed;
+			if (currentAnimation != &rightAnim)
+			{
+				rightAnim.Reset();
+				currentAnimation = &rightAnim;
+			}
 		}
 	}
 		if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
 		{
 		
 			position.y += speed;
-			if (currentAnimation != &downAnim)
-			{
-				downAnim.Reset();
-				currentAnimation = &downAnim;
-			}
+			
 		}
 
 	if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
@@ -89,11 +107,7 @@ update_status ModulePlayer::Update()
 		
 		position.y -= speed;
 		
-			if (currentAnimation != &upAnim)
-			{
-				upAnim.Reset();
-				currentAnimation = &upAnim;
-			}
+			
 	}
 
 
@@ -105,8 +119,8 @@ update_status ModulePlayer::Update()
 	}
 
 	// If no up/down movement detected, set the current animation back to idle
-	if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
-		&& App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE)
+	if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE
+		&& App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE)
 		currentAnimation = &idleAnim;
 
 	collider->SetPos(position.x, position.y);
