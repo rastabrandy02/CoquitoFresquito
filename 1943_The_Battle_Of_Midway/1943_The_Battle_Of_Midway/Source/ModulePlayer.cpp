@@ -17,18 +17,6 @@ ModulePlayer::ModulePlayer()
 	
 	idleAnim.PushBack({ 175, 190, 35, 25 });
 
-	// move upwards
-	upAnim.PushBack({ 100, 1, 32, 14 });
-	upAnim.PushBack({ 132, 0, 32, 14 });
-	upAnim.loop = false;
-	upAnim.speed = 0.1f;
-
-	// Move down
-	downAnim.PushBack({ 33, 1, 32, 14 });
-	downAnim.PushBack({ 0, 1, 32, 14 });
-	downAnim.loop = false;
-	downAnim.speed = 0.1f;
-
 	leftAnim.PushBack({ 135, 190, 35, 25 });
 	leftAnim.PushBack({ 95, 190, 35, 25 });
 	leftAnim.loop = false;
@@ -51,12 +39,13 @@ bool ModulePlayer::Start()
 
 	bool ret = true;
 
-	//texture = App->textures->Load("Assets/ship.png");
-	texture = App->textures->Load("Wiki_Resources/Art/SuperAce/yellow_plane.png");
+	
+	texture = App->textures->Load("Assets/Art/SuperAce/yellow_plane.png");
 	currentAnimation = &idleAnim;
 
-	laserFx = App->audio->LoadFx("Assets/basic_shot.wav");
-	explosionFx = App->audio->LoadFx("Assets/explosion.wav");
+	
+	deathPlayerFx = App->audio->LoadFx("Assets/FX/death_player.wav");
+	basicShotFx = App->audio->LoadFx("Assets/FX/basic_shot.wav");
 
 	position.x = 150;
 	position.y = 120;
@@ -82,7 +71,7 @@ update_status ModulePlayer::Update()
 			}
 		}
 	}
-	if (position.x <= 235)
+	if (position.x <= 205)
 	{
 		if (App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
 		{
@@ -113,9 +102,9 @@ update_status ModulePlayer::Update()
 
 	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
 	{
-		App->particles->AddParticle(App->particles->laser, position.x - 10, position.y - 20, Collider::Type::PLAYER_SHOT);
-		App->particles->AddParticle(App->particles->laser, position.x + 10, position.y - 20, Collider::Type::PLAYER_SHOT);
-		App->audio->PlayFx(laserFx);
+		App->particles->AddParticle(App->particles->basicShot, position.x + 10, position.y - 10, Collider::Type::PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->basicShot, position.x + 20, position.y - 10, Collider::Type::PLAYER_SHOT);
+		App->audio->PlayFx(basicShotFx);
 	}
 
 	// If no up/down movement detected, set the current animation back to idle
@@ -152,13 +141,13 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
 	if (c1 == collider && destroyed == false)
 	{
-		App->particles->AddParticle(App->particles->explosion, position.x, position.y, Collider::Type::NONE, 9);
-		App->particles->AddParticle(App->particles->explosion, position.x + 8, position.y + 11, Collider::Type::NONE, 14);
-		App->particles->AddParticle(App->particles->explosion, position.x - 7, position.y + 12, Collider::Type::NONE, 40);
-		App->particles->AddParticle(App->particles->explosion, position.x + 5, position.y - 5, Collider::Type::NONE, 28);
-		App->particles->AddParticle(App->particles->explosion, position.x - 4, position.y - 4, Collider::Type::NONE, 21);
+		App->particles->AddParticle(App->particles->playerDeath, position.x, position.y, Collider::Type::NONE, 9);
+		/*App->particles->AddParticle(App->particles->playerDeath, position.x + 8, position.y + 11, Collider::Type::NONE, 14);
+		App->particles->AddParticle(App->particles->playerDeath, position.x - 7, position.y + 12, Collider::Type::NONE, 40);
+		App->particles->AddParticle(App->particles->playerDeath, position.x + 5, position.y - 5, Collider::Type::NONE, 28);
+		App->particles->AddParticle(App->particles->playerDeath, position.x - 4, position.y - 4, Collider::Type::NONE, 21);*/
 
-		App->audio->PlayFx(explosionFx);
+		App->audio->PlayFx(deathPlayerFx);
 
 		destroyed = true;
 	}

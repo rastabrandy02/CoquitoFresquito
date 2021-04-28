@@ -65,7 +65,8 @@ public:
 
 	// Sound effects indices
 	uint laserFx = 0;
-	uint explosionFx = 0;
+	uint deathPlayerFx = 0;
+	uint basicShotFx = 0;
 
 };
 

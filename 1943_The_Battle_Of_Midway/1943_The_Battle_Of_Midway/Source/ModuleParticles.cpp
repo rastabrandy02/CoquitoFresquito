@@ -22,23 +22,60 @@ ModuleParticles::~ModuleParticles()
 bool ModuleParticles::Start()
 {
 	LOG("Loading particles");
-	texture = App->textures->Load("Assets/particles.png");
 
+	
+
+
+	basicShotTex = App->textures->Load("Assets/Art/VFX/shot.png");
+
+	basicShot.anim.PushBack({ 165,195, 10, 10 });
+	basicShot.anim.PushBack({ 224,195, 10, 10 });
+	basicShot.speed.y = -5;
+	basicShot.lifetime = 180;
+	basicShot.anim.speed = 0.3f;
+
+	playerDeathTex = App->textures->Load("Assets/Art/VFX/explosion.png");
+
+	playerDeath.anim.PushBack({ 120, 85, 30, 25 });
+	playerDeath.anim.PushBack({ 150, 90, 40, 25 });
+	playerDeath.anim.PushBack({ 190, 90, 35, 25 });
+	playerDeath.anim.PushBack({ 225, 90, 25, 25 });
+
+	playerDeath.anim.PushBack({ 115, 140, 35, 30 });
+	playerDeath.anim.PushBack({ 155, 138, 35, 30 });
+	playerDeath.anim.PushBack({ 190, 135, 30, 30 });
+	playerDeath.anim.PushBack({ 230, 135, 35, 35 });
+
+	playerDeath.anim.PushBack({ 120, 190, 30, 40 });
+	playerDeath.anim.PushBack({ 155, 190, 30, 40 });
+	playerDeath.anim.PushBack({ 190, 190, 33, 35 });
+	playerDeath.anim.PushBack({ 225, 190, 33, 36 });
+
+	playerDeath.anim.PushBack({ 115, 250, 37, 35 });
+	playerDeath.anim.PushBack({ 153, 250, 38, 30 });
+	playerDeath.anim.PushBack({ 190, 255, 40, 35 });
+	playerDeath.anim.PushBack({ 230, 260, 35, 25 });
+
+	playerDeath.anim.loop = false;
+	playerDeath.anim.speed = 0.3f;
+	
 	// Explosion particle
-	explosion.anim.PushBack({274, 296, 33, 30});
+	/*explosion.anim.PushBack({274, 296, 33, 30});
 	explosion.anim.PushBack({313, 296, 33, 30});
 	explosion.anim.PushBack({346, 296, 33, 30});
 	explosion.anim.PushBack({382, 296, 33, 30});
 	explosion.anim.PushBack({419, 296, 33, 30});
 	explosion.anim.PushBack({457, 296, 33, 30});
 	explosion.anim.loop = false;
-	explosion.anim.speed = 0.3f;
+	explosion.anim.speed = 0.3f;*/
 
-	laser.anim.PushBack({ 232, 103, 16, 12 });
+	/*laser.anim.PushBack({ 232, 103, 16, 12 });
 	laser.anim.PushBack({ 249, 103, 16, 12 });
 	laser.speed.y = -5;
 	laser.lifetime = 180;
-	laser.anim.speed = 0.2f;
+	laser.anim.speed = 0.2f;*/
+
+	
 
 	return true;
 }
@@ -102,7 +139,7 @@ update_status ModuleParticles::PostUpdate()
 
 		if (particle != nullptr && particle->isAlive)
 		{
-			App->render->Blit(texture, particle->position.x, particle->position.y, &(particle->anim.GetCurrentFrame()));
+			App->render->Blit(basicShotTex, particle->position.x, particle->position.y, &(particle->anim.GetCurrentFrame()));
 		}
 	}
 

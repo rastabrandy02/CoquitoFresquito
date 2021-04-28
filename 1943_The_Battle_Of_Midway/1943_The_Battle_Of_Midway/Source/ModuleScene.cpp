@@ -32,7 +32,7 @@ bool ModuleScene::Start()
 	
 
 	// Enemies ---
-	App->enemies->AddEnemy(ENEMY_TYPE::REDPLANE, 200, -500);
+	App->enemies->AddEnemy(ENEMY_TYPE::REDPLANE, 200, -170);
 
 
 	return ret;
