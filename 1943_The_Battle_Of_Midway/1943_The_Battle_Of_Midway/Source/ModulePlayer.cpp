@@ -7,11 +7,14 @@
 #include "ModuleParticles.h"
 #include "ModuleAudio.h"
 #include "ModuleCollisions.h"
+#include "ModuleFadeToBlack.h"
+#include "ModuleFonts.h"
 
 #include "SDL/include/SDL_scancode.h"
+#include <stdio.h>
 
 
-ModulePlayer::ModulePlayer()
+ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 {
 	// idle animation - just one sprite
 	
@@ -51,6 +54,9 @@ bool ModulePlayer::Start()
 	position.y = 120;
 
 	collider = App->collisions->AddCollider({ position.x, position.y, 32, 16 }, Collider::Type::PLAYER, this);
+
+	char lookupTable[] = { "! @,_./0123456789$;< ?abcdefghijklmnopqrstuvwxyz" };
+	scoreFont = App->fonts->Load("Assets/Fonts/rtype_font3.png", lookupTable, 2);
 
 	return ret;
 }
@@ -134,6 +140,14 @@ update_status ModulePlayer::PostUpdate()
 		App->render->Blit(texture, position.x, position.y, &rect);
 	}
 
+	// Draw UI (score) --------------------------------------
+	sprintf_s(scoreText, 10, "%7d", score);
+
+	// TODO 3: Blit the text of the score in at the bottom of the screen
+	App->fonts->BlitText(58, 248, scoreFont, scoreText);
+
+	App->fonts->BlitText(150, 248, scoreFont, "this is just a font test");
+
 	return update_status::UPDATE_CONTINUE;
 }
 
@@ -150,5 +164,10 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		App->audio->PlayFx(deathPlayerFx);
 
 		destroyed = true;
+	}
+
+	if (c1->type == Collider::Type::PLAYER_SHOT && c2->type == Collider::Type::ENEMY)
+	{
+		score += 23;
 	}
 }

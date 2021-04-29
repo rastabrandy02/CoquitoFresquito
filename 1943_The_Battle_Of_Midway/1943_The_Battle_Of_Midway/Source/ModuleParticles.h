@@ -17,7 +17,7 @@ class ModuleParticles : public Module
 public:
 	// Constructor
 	// Initializes all the particles in the array to nullptr
-	ModuleParticles();
+	ModuleParticles(bool startEnabled);
 
 	//Destructor
 	~ModuleParticles();
@@ -25,6 +25,10 @@ public:
 	// Called when the module is activated
 	// Loads the necessary textures for the particles
 	bool Start() override;
+
+	// Called at the beginning of the application loop
+	// Removes all particles pending to delete
+	//update_status PreUpdate() override;
 
 	// Called at the middle of the application loop
 	// Iterates all the particles and calls its Update()

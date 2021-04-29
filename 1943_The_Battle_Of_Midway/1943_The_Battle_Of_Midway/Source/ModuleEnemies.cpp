@@ -13,7 +13,7 @@
 #define SPAWN_MARGIN 50
 
 
-ModuleEnemies::ModuleEnemies()
+ModuleEnemies::ModuleEnemies(bool startEnabled) : Module(startEnabled)
 {
 	for(uint i = 0; i < MAX_ENEMIES; ++i)
 		enemies[i] = nullptr;
@@ -30,6 +30,21 @@ bool ModuleEnemies::Start()
 	enemyDestroyedFx = App->audio->LoadFx("Assets/explosion.wav");
 
 	return true;
+}
+
+update_status ModuleEnemies::PreUpdate()
+{
+	// Remove all enemies scheduled for deletion
+	for (uint i = 0; i < MAX_ENEMIES; ++i)
+	{
+		if (enemies[i] != nullptr && enemies[i]->pendingToDelete)
+		{
+			delete enemies[i];
+			enemies[i] = nullptr;
+		}
+	}
+
+	return update_status::UPDATE_CONTINUE;
 }
 
 update_status ModuleEnemies::Update()
@@ -125,8 +140,7 @@ void ModuleEnemies::HandleEnemiesDespawn()
 			{
 				LOG("DeSpawning enemy at %d", enemies[i]->position.x * SCREEN_SIZE);
 
-				delete enemies[i];
-				enemies[i] = nullptr;
+				enemies[i]->SetToDelete();
 			}
 		}
 	}
@@ -161,8 +175,8 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 		{
 			enemies[i]->OnCollision(c2); //Notify the enemy of a collision
 
-			delete enemies[i];
-			enemies[i] = nullptr;
+			/*delete enemies[i];
+			enemies[i] = nullptr;*/
 			break;
 		}
 	}

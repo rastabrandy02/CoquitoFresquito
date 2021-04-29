@@ -6,10 +6,13 @@
 #include "ModuleTextures.h"
 #include "ModuleAudio.h"
 #include "ModulePlayer.h"
-#include "ModuleScene.h"
+#include "SceneIntro.h"
+#include "SceneLevel1.h"
 #include "ModuleParticles.h"
 #include "ModuleEnemies.h"
 #include "ModuleCollisions.h"
+#include "ModuleFadeToBlack.h"
+#include "ModuleFonts.h"
 #include "ModuleRender.h"
 
 Application::Application()
@@ -17,19 +20,24 @@ Application::Application()
 	// The order in which the modules are added is very important.
 	// It will define the order in which Pre/Update/Post will be called
 	// Render should always be last, as our last action should be updating the screen
-	modules[0] = window = new ModuleWindow();
-	modules[1] = input = new ModuleInput();
-	modules[2] = textures = new ModuleTextures();
-	modules[3] = audio = new ModuleAudio();
+	modules[0] = window = new ModuleWindow(true);
+	modules[1] = input = new ModuleInput(true);
+	modules[2] = textures = new ModuleTextures(true);
+	modules[3] = audio = new ModuleAudio(true);
 
-	modules[4] = scene = new ModuleScene();
-	modules[5] = player = new ModulePlayer();
-	modules[6] = particles = new ModuleParticles();
-	modules[7] = enemies = new ModuleEnemies();
+	//modules[4] = scene = new ModuleScene();
+	modules[4] = sceneIntro = new SceneIntro(true);
+	modules[5] = sceneLevel_1 = new SceneLevel1(true);
+	modules[6] = player = new ModulePlayer(true);
+	modules[7] = particles = new ModuleParticles(true);
+	modules[8] = enemies = new ModuleEnemies(true);
 
-	modules[8] = collisions = new ModuleCollisions();
+	modules[9] = collisions = new ModuleCollisions(true);
 
-	modules[9] = render = new ModuleRender();
+	modules[10] = render = new ModuleRender(true);
+
+	modules[11] = fade = new ModuleFadeToBlack(true);
+	modules[12] = fonts = new ModuleFonts(true);
 }
 
 Application::~Application()

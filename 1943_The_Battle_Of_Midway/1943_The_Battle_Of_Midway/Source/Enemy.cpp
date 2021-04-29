@@ -42,3 +42,10 @@ void Enemy::OnCollision(Collider* collider)
 	App->particles->AddParticle(App->particles->playerDeath, position.x, position.y);
 	App->audio->PlayFx(destroyedFx);
 }
+
+void Enemy::SetToDelete()
+{
+	pendingToDelete = true;
+	if (collider != nullptr)
+		collider->pendingToDelete = true;
+}
