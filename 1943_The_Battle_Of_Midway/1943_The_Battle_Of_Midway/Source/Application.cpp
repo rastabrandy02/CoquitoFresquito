@@ -27,10 +27,10 @@ Application::Application()
 
 	//modules[4] = scene = new ModuleScene();
 	modules[4] = sceneIntro = new SceneIntro(true);
-	modules[5] = sceneLevel_1 = new SceneLevel1(true);
-	modules[6] = player = new ModulePlayer(true);
+	modules[5] = sceneLevel_1 = new SceneLevel1(false);
+	modules[6] = player = new ModulePlayer(false);
 	modules[7] = particles = new ModuleParticles(true);
-	modules[8] = enemies = new ModuleEnemies(true);
+	modules[8] = enemies = new ModuleEnemies(false);
 
 	modules[9] = collisions = new ModuleCollisions(true);
 

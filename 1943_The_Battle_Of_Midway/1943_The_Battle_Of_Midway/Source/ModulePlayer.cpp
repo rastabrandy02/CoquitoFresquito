@@ -122,11 +122,15 @@ update_status ModulePlayer::Update()
 
 	currentAnimation->Update();
 
-	if (destroyed)
+	if (destroyed && godMode == false)
 	{
 		destroyedCountdown--;
 		if (destroyedCountdown <= 0)
 			return update_status::UPDATE_STOP;
+	}
+	if (App->input->keys[SDL_SCANCODE_F1] == KEY_STATE::KEY_DOWN)
+	{
+		godMode = !godMode;
 	}
 
 	return update_status::UPDATE_CONTINUE;
@@ -162,6 +166,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		App->particles->AddParticle(App->particles->playerDeath, position.x - 4, position.y - 4, Collider::Type::NONE, 21);*/
 
 		App->audio->PlayFx(deathPlayerFx);
+		App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneIntro, 60);
 
 		destroyed = true;
 	}
