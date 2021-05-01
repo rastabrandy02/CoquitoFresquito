@@ -57,7 +57,7 @@ bool ModulePlayer::Start()
 
 	char lookupTable1[] = { "E0001234567890" };
 	char lookupTable2[] = { "01234567890ABCDEFGHIJKMNOPQRSTUVWXYZ" };
-	scoreFont = App->fonts->Load("Assets/Art/UI/socore_font.png", lookupTable1, 1);
+	scoreFont = App->fonts->Load("Assets/socore_font.png", lookupTable1, 1);
 	
 
 	return ret;
@@ -111,7 +111,7 @@ update_status ModulePlayer::Update()
 	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
 	{
 		App->particles->AddParticle(App->particles->basicShot, position.x + 10, position.y - 10, Collider::Type::PLAYER_SHOT);
-		App->particles->AddParticle(App->particles->basicShot, position.x + 20, position.y - 10, Collider::Type::PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->basicShot, position.x + 25, position.y - 10, Collider::Type::PLAYER_SHOT);
 		App->audio->PlayFx(basicShotFx);
 	}
 

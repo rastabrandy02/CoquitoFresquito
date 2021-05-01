@@ -49,7 +49,7 @@ bool SceneLevel1::Start()
 
 update_status SceneLevel1::Update()
 {
-	App->render->camera.y -= 3;
+	App->render->camera.y -= 2;
 
 	return update_status::UPDATE_CONTINUE;
 }

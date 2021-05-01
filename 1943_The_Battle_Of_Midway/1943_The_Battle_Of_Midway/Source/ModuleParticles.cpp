@@ -26,13 +26,11 @@ bool ModuleParticles::Start()
 	
 
 
-	basicShotTex = App->textures->Load("Assets/Art/VFX/shot.png");
+	basicShotTex = App->textures->Load("Assets/Art/SuperAce/shot_beam.png");
 
-	basicShot.anim.PushBack({ 165,195, 10, 10 });
-	basicShot.anim.PushBack({ 224,195, 10, 10 });
+	basicShot.anim.PushBack({ 158, 184, 6, 24 });
 	basicShot.speed.y = -5;
 	basicShot.lifetime = 180;
-	basicShot.anim.speed = 0.3f;
 
 	playerDeathTex = App->textures->Load("Assets/Art/VFX/explosion.png");
 
