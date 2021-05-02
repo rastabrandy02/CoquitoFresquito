@@ -24,14 +24,26 @@ bool SceneLevel1::Start()
 	LOG("Loading background assets");
 
 	bool ret = true;
+	bool music;
 
+<<<<<<< HEAD
 	bgTexture = App->textures->Load("Assets/SeaMap.png");
 	cloudTexture = App->textures->Load("Assets/CloudsMap.png");
 	App->audio->PlayMusic("Assets/stage1.ogg", 1.0f);
+=======
+	
+	music = App->audio->PlayMusic("Assets/Music/stage1.ogg", 1.0f);
+	
+>>>>>>> 15cb3c20e05cb07b4659846166ceaa499b2f6871
 
 
 	// Enemies ---
+<<<<<<< HEAD
 	App->enemies->AddEnemy(ENEMY_TYPE::REDPLANE, 300, 80);
+=======
+	App->enemies->AddEnemy(ENEMY_TYPE::REDPLANE, 200, 280);
+	bgTexture = App->textures->Load("Assets/background.png");
+>>>>>>> 15cb3c20e05cb07b4659846166ceaa499b2f6871
 
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
