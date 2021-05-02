@@ -25,18 +25,13 @@ bool SceneLevel1::Start()
 
 	bool ret = true;
 
-	bgTexture = App->textures->Load("Assets/Sprites/background.png");
-	App->audio->PlayMusic("Assets/Music/stage1.ogg", 1.0f);
+	bgTexture = App->textures->Load("Assets/SeaMap.png");
+	cloudTexture = App->textures->Load("Assets/CloudsMap.png");
+	App->audio->PlayMusic("Assets/stage1.ogg", 1.0f);
 
-	//Bottomside collider
-	App->collisions->AddCollider({ 0, 224, 3930, 16 }, Collider::Type::WALL);
-
-	//First two columns colliders
-	App->collisions->AddCollider({ 1375, 0, 111, 96 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 1375, 145, 111, 96 }, Collider::Type::WALL);
 
 	// Enemies ---
-	App->enemies->AddEnemy(ENEMY_TYPE::REDPLANE, 600, 80);
+	App->enemies->AddEnemy(ENEMY_TYPE::REDPLANE, 300, 80);
 
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
@@ -58,7 +53,8 @@ update_status SceneLevel1::Update()
 update_status SceneLevel1::PostUpdate()
 {
 	// Draw everything --------------------------------------
-	App->render->Blit(bgTexture, 0, 0, NULL);
+	App->render->Blit(cloudTexture, 0, -5600, NULL);
+	App->render->Blit(bgTexture, 0, -5600, NULL);
 
 	return update_status::UPDATE_CONTINUE;
 }
