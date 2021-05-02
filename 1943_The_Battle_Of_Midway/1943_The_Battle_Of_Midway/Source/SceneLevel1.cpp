@@ -24,9 +24,11 @@ bool SceneLevel1::Start()
 	LOG("Loading background assets");
 
 	bool ret = true;
+	bool music;
 
-	bgTexture = App->textures->Load("Assets/Sprites/background.png");
-	App->audio->PlayMusic("Assets/Music/stage1.ogg", 1.0f);
+	
+	music = App->audio->PlayMusic("Assets/Music/stage1.ogg", 1.0f);
+	
 
 	//Bottomside collider
 	App->collisions->AddCollider({ 0, 224, 3930, 16 }, Collider::Type::WALL);
@@ -36,7 +38,8 @@ bool SceneLevel1::Start()
 	App->collisions->AddCollider({ 1375, 145, 111, 96 }, Collider::Type::WALL);
 
 	// Enemies ---
-	App->enemies->AddEnemy(ENEMY_TYPE::REDPLANE, 600, 80);
+	App->enemies->AddEnemy(ENEMY_TYPE::REDPLANE, 200, 280);
+	bgTexture = App->textures->Load("Assets/background.png");
 
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;

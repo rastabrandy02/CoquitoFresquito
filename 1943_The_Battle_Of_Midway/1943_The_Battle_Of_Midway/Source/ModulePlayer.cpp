@@ -79,7 +79,7 @@ update_status ModulePlayer::Update()
 			}
 		}
 	}
-	if (position.x <= 205)
+	if (position.x <= 360)
 	{
 		if (App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
 		{
