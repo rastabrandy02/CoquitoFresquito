@@ -27,7 +27,7 @@ bool SceneLevel1::Start()
 
 	cloudTexture = App->textures->Load("Assets/CloudsMap.png");
 	bgTexture = App->textures->Load("Assets/SeaMap.png");
-	App->audio->PlayMusic("Assets/stage1.ogg", 1.0f);
+	App->audio->PlayMusic("Assets/Audio/stage1.ogg", 1.0f);
 
 
 	// Enemies ---
