@@ -5,20 +5,14 @@
 
 Enemy_RedPlane::Enemy_RedPlane(int x, int y) : Enemy(x, y)
 {
-	flyAnim.PushBack({5,6,24,24});
-	flyAnim.PushBack({38, 6, 24, 24});
-	flyAnim.PushBack({71, 6, 24, 24});
-	flyAnim.PushBack({104, 6, 24, 24});
-	flyAnim.PushBack({137, 6, 24, 24});
-	flyAnim.PushBack({170, 6, 24, 24});
-	flyAnim.PushBack({203, 6, 24, 24});
-	flyAnim.PushBack({236, 6, 24, 24});
-	flyAnim.speed = 0.2f;
+	flyAnim.PushBack({529,598,28,24});
+	
+
 
 	currentAnim = &flyAnim;
 
 	path.PushBack({ 0.0f, 1.0f }, 180, &flyAnim);
-	path.PushBack({ 0.0f, -1.0f }, 300, &flyAnim);
+	path.PushBack({ 0.0f, -2.0f }, 300, &flyAnim);
 	path.loop = true;
 
 	collider = App->collisions->AddCollider({0, 0, 24, 24}, Collider::Type::ENEMY, (Module*)App->enemies);

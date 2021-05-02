@@ -30,7 +30,7 @@ bool SceneInit::Start()
 	bool audio = true;
 
 
-	bgTexture = App->textures->Load("Assets/cover.png");
+	bgTexture = App->textures->Load("Assets/Intro_screen.png");
 
 
 	App->render->camera.x = 0;

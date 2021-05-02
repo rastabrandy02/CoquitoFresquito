@@ -57,7 +57,8 @@ bool ModulePlayer::Start()
 
 	char lookupTable1[] = { "E0001234567890" };
 	char lookupTable2[] = { "01234567890ABCDEFGHIJKMNOPQRSTUVWXYZ" };
-	scoreFont = App->fonts->Load("Assets/socore_font.png", lookupTable1, 1);
+	scoreFont = App->fonts->Load("Assets/score_font.png", lookupTable1, 1);
+	destroyed = false;
 	
 
 	return ret;
@@ -126,13 +127,8 @@ update_status ModulePlayer::Update()
 
 	currentAnimation->Update();
 
-	if (destroyed && godMode == false)
-	{
-		destroyedCountdown--;
-		if (destroyedCountdown <= 0)
-			return update_status::UPDATE_STOP;
-	}
-	if (App->input->keys[SDL_SCANCODE_F1] == KEY_STATE::KEY_DOWN)
+	
+	if (App->input->keys[SDL_SCANCODE_F3] == KEY_STATE::KEY_DOWN)
 	{
 		godMode = !godMode;
 	}

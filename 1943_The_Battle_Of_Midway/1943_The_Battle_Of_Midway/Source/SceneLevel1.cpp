@@ -53,8 +53,8 @@ update_status SceneLevel1::Update()
 update_status SceneLevel1::PostUpdate()
 {
 	// Draw everything --------------------------------------
-	App->render->Blit(cloudTexture, 0, -5600, NULL);
 	App->render->Blit(bgTexture, 0, -5600, NULL);
+	App->render->Blit(cloudTexture, 0, -5600, NULL, 0.75f);
 
 	return update_status::UPDATE_CONTINUE;
 }
