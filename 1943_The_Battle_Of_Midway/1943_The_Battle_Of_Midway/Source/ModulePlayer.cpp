@@ -50,8 +50,8 @@ bool ModulePlayer::Start()
 	deathPlayerFx = App->audio->LoadFx("Assets/FX/death_player.wav");
 	basicShotFx = App->audio->LoadFx("Assets/FX/basic_shot.wav");
 
-	position.x = 150;
-	position.y = 120;
+	position.x = 195;
+	position.y = 480;
 
 	collider = App->collisions->AddCollider({ position.x, position.y, 32, 16 }, Collider::Type::PLAYER, this);
 
@@ -79,7 +79,9 @@ update_status ModulePlayer::Update()
 			}
 		}
 	}
-	if (position.x <= 360)
+
+	if (position.x <= 390)
+
 	{
 		if (App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
 		{
