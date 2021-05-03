@@ -77,6 +77,13 @@ public:
 	int textFont = 0;
 	char scoreText[10] = { 0 };
 	uint life = 9;
+
+
+
+
+	bool powerUpAuto = false;
+	int autoCoolDown = 0;
+	int autoTimer = 0;
 };
 
 #endif //!__MODULE_PLAYER_H__

@@ -71,6 +71,10 @@ update_status ModulePlayer::Update()
 {
 	// Moving the player with the camera scroll
 	App->player->position.y -= 1;
+
+	autoCoolDown++;
+	autoTimer++;
+
 	if (position.x >= 0)
 	{
 		if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
@@ -113,12 +117,24 @@ update_status ModulePlayer::Update()
 			
 	}
 
-
+	if (autoTimer >= 240) powerUpAuto = false;
 	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
 	{
 		App->particles->AddParticle(App->particles->basicShot, position.x + 10, position.y - 10, Collider::Type::PLAYER_SHOT);
 		App->particles->AddParticle(App->particles->basicShot, position.x + 25, position.y - 10, Collider::Type::PLAYER_SHOT);
 		App->audio->PlayFx(basicShotFx);
+	}
+	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_REPEAT && powerUpAuto)
+	{
+		
+		if (autoCoolDown >= 7)
+		{
+			App->particles->AddParticle(App->particles->basicShot, position.x + 10, position.y - 10, Collider::Type::PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->basicShot, position.x + 25, position.y - 10, Collider::Type::PLAYER_SHOT);
+			App->audio->PlayFx(basicShotFx);
+			autoCoolDown = 0;
+		}
+		
 	}
 
 	// If no up/down movement detected, set the current animation back to idle
@@ -167,7 +183,7 @@ update_status ModulePlayer::PostUpdate()
 
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
-	if (c1 == collider && destroyed == false)
+	if (c1 == collider && destroyed == false && (c2->type == Collider::Type::ENEMY || c2->type == Collider::Type::ENEMY_SHOT))
 	{
 		life--;
 		App->particles->AddParticle(App->particles->enemyExplosion, position.x, position.y, Collider::Type::NONE, 0);
@@ -176,6 +192,11 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	if (c1->type == Collider::Type::PLAYER_SHOT && c2->type == Collider::Type::ENEMY)
 	{
 		score += 23;
+	}
+	if (c1 == collider && c2->type == Collider::Type::PU_AUTO)
+	{
+		powerUpAuto = true;
+		autoTimer = 0;
 	}
 }
 
