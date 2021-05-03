@@ -53,12 +53,13 @@ bool ModulePlayer::Start()
 	position.x = 195;
 	position.y = 480;
 
+	destroyed = false;
+
 	collider = App->collisions->AddCollider({ position.x, position.y, 32, 16 }, Collider::Type::PLAYER, this);
 
 	char lookupTable1[] = { "E000   1234567890" };
 	char lookupTable2[] = { "01234567890ABCDEFGHIJKMNOPQRSTUVWXYZ" };
 	scoreFont = App->fonts->Load("Assets/score_font.png", lookupTable1, 1);
-	destroyed = false;
 	
 
 	return ret;
