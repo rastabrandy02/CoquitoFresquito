@@ -78,6 +78,21 @@ bool ModuleParticles::Start()
 	return true;
 }
 
+update_status ModuleParticles::PreUpdate()
+{
+	// Remove all particles scheduled for deletion
+	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
+	{
+		if (particles[i] != nullptr && particles[i]->pendingToDelete)
+		{
+			delete particles[i];
+			particles[i] = nullptr;
+		}
+	}
+
+	return update_status::UPDATE_CONTINUE;
+}
+
 bool ModuleParticles::CleanUp()
 {
 	LOG("Unloading particles");
