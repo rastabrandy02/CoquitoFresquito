@@ -63,6 +63,8 @@ bool SceneLevel1::CleanUp()
 {
 	App->player->Disable();
 	App->enemies->Disable();
+	App->textures->Unload(bgTexture);
+	App->textures->Unload(cloudTexture);
 
 	return true;
 }
