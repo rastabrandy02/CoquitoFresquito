@@ -30,6 +30,8 @@ private:
 
 	// The enemy animation
 	Animation flyAnim;
+	Animation turnAnim;
+	Animation backwardAnim;
 
 	Path path;
 };
