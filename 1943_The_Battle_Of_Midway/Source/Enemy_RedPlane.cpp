@@ -12,11 +12,21 @@ Enemy_RedPlane::Enemy_RedPlane(int x, int y) : Enemy(x, y)
 
 	backwardAnim.PushBack({525, 551, 27, 24});
 	backwardAnim.PushBack({526, 527, 27, 24});
+	backwardAnim.speed = 0.1f;
+	backwardAnim.loop = true;
+
+	turnAnim.PushBack({ 699, 653, 27, 24 });
+	turnAnim.PushBack({ 727, 654, 26, 19 });
+	turnAnim.PushBack({ 562, 697, 27, 22 });
+	turnAnim.PushBack({ 590, 696, 27, 24 });
+	turnAnim.loop = false;
+	turnAnim.speed = 0.1f;
 
 
 	currentAnim = &flyAnim;
 
 	path.PushBack({ 0.0f, 1.0f }, 180, &flyAnim);
+	path.PushBack({ -0.1f, -1.0f }, 30, &turnAnim);
 	path.PushBack({ 0.0f, -2.0f }, 300, &backwardAnim);
 	path.loop = true;
 
