@@ -40,6 +40,7 @@ void Enemy::Draw()
 void Enemy::OnCollision(Collider* collider)
 {
 	App->particles->AddParticle(App->particles->enemyExplosion, position.x, position.y);
+	App->particles->AddParticle(App->particles->powerUp, position.x, position.y);
 	App->audio->PlayFx(destroyedFx);
 
 	SetToDelete();

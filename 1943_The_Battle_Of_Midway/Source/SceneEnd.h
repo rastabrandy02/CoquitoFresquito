@@ -3,6 +3,8 @@
 
 #include "Module.h"
 #include "Animation.h"
+#include "Path.h"
+#include "p2Point.h"
 
 struct SDL_Texture;
 
@@ -29,10 +31,14 @@ public:
 
 	bool CleanUp() override;
 
-public:
+private:
 	// The scene sprite sheet loaded into an SDL_Texture
 	SDL_Texture* winTexture = nullptr;
-	SDL_Texture* loseTexture = nullptr;
+	SDL_Texture* planeTex = nullptr;
+	Animation planeAnim;
+	Animation* currentAnim = nullptr;
+	Path path;
+	iPoint position;
 };
 
 #endif
