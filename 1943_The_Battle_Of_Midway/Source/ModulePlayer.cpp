@@ -57,11 +57,12 @@ bool ModulePlayer::Start()
 
 	collider = App->collisions->AddCollider({ position.x, position.y, 35, 25 }, Collider::Type::PLAYER, this);
 
-	char lookupTable1[] = { "1234567890" };
+	char lookupTable1[] = { "01234567890" };
 	char lookupTable2[] = { "01234567890ABCDEFGHIJKMNOPQRSTUVWXYZ" };
+	char lookupTable3[] = { "! @,_./0123456789$;< ?abcdefghijklmnopqrstuvwxyz" };
 	scoreFont = App->fonts->Load("Assets/score_font.png", lookupTable1, 1);
-	textFont = App->fonts->Load("Assets/text_font.png", lookupTable2, 4);
-	score = 000;
+	textFont = App->fonts->Load("Assets/rtype_font.png", lookupTable3, 1);
+	
 	
 
 	return ret;
@@ -152,10 +153,10 @@ update_status ModulePlayer::PostUpdate()
 		App->audio->PlayFx(deathPlayerFx);
 		App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneEnd, 60);
 	}
-
+	score++;
 	// Draw UI (score) --------------------------------------
 	sprintf(scoreText, "%5d", score);
-
+	
 	// TODO 3: Blit the text of the score in at the bottom of the screen
 	App->fonts->BlitText(25, 25, scoreFont, scoreText);
 	LOG("%s", scoreText);
