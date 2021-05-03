@@ -8,6 +8,7 @@
 #include "ModulePlayer.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleInput.h"
+#include "Path.h"
 
 #include "SDL/include/SDL_scancode.h"
 
@@ -51,8 +52,23 @@ bool SceneEnd::Start()
 
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
-	
+	position.x = 100;
+	position.y = 100;
 
+	path.PushBack({ 0.2f, 0.0f }, 1,&planeAnim);
+	path.PushBack({ 0.2f, 0.0f }, 1, &planeAnim);
+	path.PushBack({ 0.2f, 0.2f }, 1, &planeAnim);
+	path.PushBack({ 0.2f, 0.2f }, 1, &planeAnim);
+	path.PushBack({ 0.2f, 0.2f }, 1, &planeAnim);
+	path.PushBack({ -0.2f, 0.0f }, 1, &planeAnim);
+	path.PushBack({ -0.2f, 0.0f }, 1, &planeAnim);
+	path.PushBack({ 0.0f, 0.0f }, 3000, &planeAnim);
+	path.PushBack({ 0.0f, 0.0f }, 3000, &planeAnim);
+	path.PushBack({ 0.0f, 0.0f }, 3000, &planeAnim);
+	path.PushBack({ 0.0f, 0.0f }, 3000, &planeAnim);
+
+	
+	path.loop = false;
 
 	
 
@@ -61,14 +77,14 @@ bool SceneEnd::Start()
 
 update_status SceneEnd::Update()
 {
+	position += path.GetRelativePosition();
 	
-	App->render->camera.x = 0;
-	App->render->camera.y = 0;
 	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->sceneIntro, 90);
 	}
 	planeAnim.Update();
+	path.Update();
 	return update_status::UPDATE_CONTINUE;
 }
 
@@ -77,7 +93,7 @@ update_status SceneEnd::PostUpdate()
 {
 	// Draw everything --------------------------------------
 	App->render->Blit(winTexture, 0, 0, NULL);
-	App->render->Blit(planeTex, 200, 200, &planeAnim.GetCurrentFrame(), 0.0f, false);
+	App->render->Blit(planeTex, position.x, position.y, &planeAnim.GetCurrentFrame(), 0.0f, false);
 	return update_status::UPDATE_CONTINUE;
 }
 
@@ -85,5 +101,6 @@ bool SceneEnd::CleanUp()
 {
 	planeAnim.Reset();
 	App->textures->Unload(winTexture);
+	App->textures->Unload(planeTex);
 	return true;
 }
