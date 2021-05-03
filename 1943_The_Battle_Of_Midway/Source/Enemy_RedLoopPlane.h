@@ -16,8 +16,17 @@ public:
 
 private:
 	// The position (as ratio) in the wave at a specific moment
-	float Radius = 10.0f;
-	float Angle = 0.0f;
+		// The position (as ratio) in the wave at a specific moment
+	float waveRatio = 0.0f;
+
+	// The speed at which the wave ratio is increased
+	float waveRatioSpeed = 0.05f;
+	int timer = 0;
+	// The original spawning position. The wave will be calculated from that
+	int spawn_y = 0;
+
+	// The total height of the wave
+	int waveHeight = 100;
 
 	// The enemy animation
 	Animation flyAnim;
