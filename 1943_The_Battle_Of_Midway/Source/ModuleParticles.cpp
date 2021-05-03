@@ -34,35 +34,36 @@ bool ModuleParticles::Start()
 
 
 
-	playerDeath.anim.PushBack({ 120, 85, 30, 25 });
-	playerDeath.anim.PushBack({ 150, 90, 40, 25 });
-	playerDeath.anim.PushBack({ 190, 90, 35, 25 });
-	playerDeath.anim.PushBack({ 225, 90, 25, 25 });
+	playerDeath.anim.PushBack({ 14, 21, 30, 25 });
+	playerDeath.anim.PushBack({ 46, 21, 37, 27 });
+	playerDeath.anim.PushBack({ 83, 23, 37, 27 });
+	playerDeath.anim.PushBack({ 120, 22, 39, 30 });
 
-	playerDeath.anim.PushBack({ 115, 140, 35, 30 });
-	playerDeath.anim.PushBack({ 155, 138, 35, 30 });
-	playerDeath.anim.PushBack({ 190, 135, 30, 30 });
-	playerDeath.anim.PushBack({ 230, 135, 35, 35 });
+	playerDeath.anim.PushBack({ 7, 73, 36, 32 });
+	playerDeath.anim.PushBack({ 42, 71, 39, 32 });
+	playerDeath.anim.PushBack({ 82, 70, 38, 34 });
+	playerDeath.anim.PushBack({ 121, 67, 39, 37 });
 
-	playerDeath.anim.PushBack({ 120, 190, 30, 40 });
-	playerDeath.anim.PushBack({ 155, 190, 30, 40 });
-	playerDeath.anim.PushBack({ 190, 190, 33, 35 });
-	playerDeath.anim.PushBack({ 225, 190, 33, 36 });
+	playerDeath.anim.PushBack({ 8, 124, 37, 37 });
+	playerDeath.anim.PushBack({ 47, 126, 36, 38 });
+	playerDeath.anim.PushBack({ 82, 124, 37, 40 });
+	playerDeath.anim.PushBack({ 118, 124, 41, 39 });
 
-	playerDeath.anim.PushBack({ 115, 250, 37, 35 });
-	playerDeath.anim.PushBack({ 153, 250, 38, 30 });
-	playerDeath.anim.PushBack({ 190, 255, 40, 35 });
-	playerDeath.anim.PushBack({ 230, 260, 35, 25 });
+	playerDeath.anim.PushBack({ 9, 183, 40, 36 });
+	playerDeath.anim.PushBack({ 48, 185, 38, 32 });
+	playerDeath.anim.PushBack({ 85, 188, 37, 31 });
+	playerDeath.anim.PushBack({ 123, 192, 39, 28 });
 
 	playerDeath.anim.loop = false;
 	playerDeath.anim.speed = 0.3f;
 	
-	enemyExplosion.anim.PushBack({ 148, 102, 22, 19 });
-	enemyExplosion.anim.PushBack({ 181, 103, 26, 20 });
-	enemyExplosion.anim.PushBack({ 213, 101, 25, 24 });
-	enemyExplosion.anim.PushBack({ 147, 149, 29, 28 });
-	enemyExplosion.anim.PushBack({ 169, 207, 33, 30 });
-	enemyExplosion.anim.PushBack({ 203, 206, 32, 28 });
+	enemyExplosion.anim.PushBack({ 181, 20, 27, 25 });
+	enemyExplosion.anim.PushBack({ 215, 22, 30, 27 });
+	enemyExplosion.anim.PushBack({ 248, 21, 33, 28 });
+	enemyExplosion.anim.PushBack({ 181, 70, 33, 29 });
+	enemyExplosion.anim.PushBack({ 215, 68, 36, 30 });
+	enemyExplosion.anim.PushBack({ 250, 67, 34, 32 });
+	enemyExplosion.anim.PushBack({ 238, 124, 38, 34 });
 	enemyExplosion.anim.speed = 0.1f;
 	enemyExplosion.anim.loop = false;
 

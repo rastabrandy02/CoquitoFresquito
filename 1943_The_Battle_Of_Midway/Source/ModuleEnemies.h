@@ -11,6 +11,7 @@ enum class ENEMY_TYPE
 {
 	NO_TYPE,
 	REDPLANE,
+	REDLOOPPLANE,
 	
 };
 

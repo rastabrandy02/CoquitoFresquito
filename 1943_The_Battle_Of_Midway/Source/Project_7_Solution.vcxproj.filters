@@ -103,6 +103,9 @@
     <ClInclude Include="SceneInit.h">
       <Filter>Source Files\Modules\Gameplay</Filter>
     </ClInclude>
+    <ClInclude Include="Enemy_RedLoopPlane.h">
+      <Filter>Source Files\Entities\Enemies</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Module.cpp">
@@ -173,6 +176,9 @@
     </ClCompile>
     <ClCompile Include="SceneInit.cpp">
       <Filter>Source Files\Modules\Gameplay</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_RedLoopPlane.cpp">
+      <Filter>Source Files\Entities\Enemies</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
