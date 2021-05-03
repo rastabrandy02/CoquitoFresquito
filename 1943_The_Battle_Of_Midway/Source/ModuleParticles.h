@@ -57,6 +57,7 @@ private:
 	SDL_Texture* basicShotTex = nullptr;
 	SDL_Texture* playerDeathTex = nullptr;
 	SDL_Texture* enemyExplosionTex = nullptr;
+	SDL_Texture* powerUpAutoTex = nullptr;
 
 	// An array to store and handle all the particles
 	Particle* particles[MAX_ACTIVE_PARTICLES] = { nullptr };
@@ -66,6 +67,8 @@ public:
 	Particle playerDeath;
 	Particle basicShot;
 	Particle enemyExplosion;
+	Particle powerUp;
+	
 };
 
 #endif // !__MODULEPARTICLES_H__
