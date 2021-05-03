@@ -26,13 +26,13 @@ bool ModuleParticles::Start()
 	
 
 
-	basicShotTex = App->textures->Load("Assets/Art/SuperAce/shot_beam.png");
+	basicShotTex = App->textures->Load("Assets/particles.png");
 
-	basicShot.anim.PushBack({ 158, 184, 6, 24 });
+	basicShot.anim.PushBack({ 722, 95, 6, 24 });
 	basicShot.speed.y = -5;
 	basicShot.lifetime = 180;
 
-	playerDeathTex = App->textures->Load("Assets/Art/VFX/explosion.png");
+
 
 	playerDeath.anim.PushBack({ 120, 85, 30, 25 });
 	playerDeath.anim.PushBack({ 150, 90, 40, 25 });
@@ -57,8 +57,6 @@ bool ModuleParticles::Start()
 	playerDeath.anim.loop = false;
 	playerDeath.anim.speed = 0.3f;
 	
-	// Explosion particle
-	enemyExplosionTex = App->textures->Load("Assets/Art/VFX/explosion_enemies.png");
 	enemyExplosion.anim.PushBack({ 148, 102, 22, 19 });
 	enemyExplosion.anim.PushBack({ 181, 103, 26, 20 });
 	enemyExplosion.anim.PushBack({ 213, 101, 25, 24 });
