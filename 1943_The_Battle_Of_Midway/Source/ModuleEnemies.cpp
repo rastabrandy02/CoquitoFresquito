@@ -86,6 +86,7 @@ bool ModuleEnemies::CleanUp()
 			enemies[i] = nullptr;
 		}
 	}
+	App->textures->Unload(texture);
 
 	return true;
 }

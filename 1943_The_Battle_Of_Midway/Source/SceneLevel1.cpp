@@ -38,6 +38,7 @@ bool SceneLevel1::Start()
 
 	App->player->Enable();
 	App->enemies->Enable();
+	
 
 	return ret;
 }
@@ -63,6 +64,7 @@ bool SceneLevel1::CleanUp()
 {
 	App->player->Disable();
 	App->enemies->Disable();
+	
 	App->textures->Unload(bgTexture);
 	App->textures->Unload(cloudTexture);
 

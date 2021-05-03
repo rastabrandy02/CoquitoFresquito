@@ -36,7 +36,7 @@ bool SceneInit::Start()
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
 
-	App->player->Disable();
+	
 	return ret;
 }
 
@@ -63,6 +63,7 @@ update_status SceneInit::PostUpdate()
 
 bool SceneInit::CleanUp()
 {
+	
 	App->textures->Unload(bgTexture);
 	return true;
 }
