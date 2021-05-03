@@ -19,14 +19,16 @@ Enemy_RedPlane::Enemy_RedPlane(int x, int y) : Enemy(x, y)
 	turnAnim.PushBack({ 727, 654, 26, 19 });
 	turnAnim.PushBack({ 562, 697, 27, 22 });
 	turnAnim.PushBack({ 590, 696, 27, 24 });
-	turnAnim.loop = false;
+	turnAnim.PushBack({ 591, 651, 18, 27 });
+	turnAnim.PushBack({ 617, 653, 22, 23 });
+	turnAnim.loop = true;
 	turnAnim.speed = 0.1f;
 
 
 	currentAnim = &flyAnim;
 
 	path.PushBack({ 0.0f, 1.0f }, 180, &flyAnim);
-	path.PushBack({ -0.1f, -1.0f }, 30, &turnAnim);
+	path.PushBack({ -0.1f, -1.0f }, 60, &turnAnim);
 	path.PushBack({ 0.0f, -2.0f }, 300, &backwardAnim);
 	path.loop = true;
 

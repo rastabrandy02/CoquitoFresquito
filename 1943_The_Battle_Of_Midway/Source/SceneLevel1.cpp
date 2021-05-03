@@ -31,7 +31,7 @@ bool SceneLevel1::Start()
 
 
 	// Enemies ---
-	App->enemies->AddEnemy(ENEMY_TYPE::REDPLANE, 300, 80);
+	App->enemies->AddEnemy(ENEMY_TYPE::REDPLANE, 300, 0);
 
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
