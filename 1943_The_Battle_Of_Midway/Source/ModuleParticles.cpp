@@ -26,7 +26,7 @@ bool ModuleParticles::Start()
 	
 
 
-	basicShotTex = App->textures->Load("Assets/particles.png");
+	basicShotTex = App->textures->Load("Assets/particles_auto.png");
 
 	basicShot.anim.PushBack({ 722, 95, 6, 24 });
 	basicShot.speed.y = -5;
@@ -68,6 +68,14 @@ bool ModuleParticles::Start()
 	enemyExplosion.anim.loop = false;
 
 	
+
+	powerUp.anim.PushBack({ 610, 237, 20, 23 });
+	powerUp.anim.PushBack({ 630, 237, 20,23 });
+	powerUp.anim.PushBack({ 650, 237, 20,23 });
+	powerUp.anim.PushBack({ 670, 237, 20,23 });
+	powerUp.anim.loop = true;
+	powerUp.anim.speed = 0.3f;
+
 
 	
 
