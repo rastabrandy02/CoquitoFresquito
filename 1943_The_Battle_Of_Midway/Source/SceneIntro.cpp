@@ -29,14 +29,14 @@ bool SceneIntro::Start()
 	bool ret = true;
 	bool audio = true;
 
-
 	bgTexture = App->textures->Load("Assets/title_screen.png");
 	audio = App->audio->PlayMusic("Assets/Audio/16-Credits.ogg", 1.0f);
+
+
 
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
 
-	
 	return ret;
 }
 

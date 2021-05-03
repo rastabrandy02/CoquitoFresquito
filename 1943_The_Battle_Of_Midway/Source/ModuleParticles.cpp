@@ -26,13 +26,13 @@ bool ModuleParticles::Start()
 	
 
 
-	basicShotTex = App->textures->Load("Assets/Art/SuperAce/shot_beam.png");
+	basicShotTex = App->textures->Load("Assets/particles.png");
 
-	basicShot.anim.PushBack({ 158, 184, 6, 24 });
+	basicShot.anim.PushBack({ 722, 95, 6, 24 });
 	basicShot.speed.y = -5;
 	basicShot.lifetime = 180;
 
-	playerDeathTex = App->textures->Load("Assets/Art/VFX/explosion.png");
+
 
 	playerDeath.anim.PushBack({ 120, 85, 30, 25 });
 	playerDeath.anim.PushBack({ 150, 90, 40, 25 });
@@ -57,21 +57,16 @@ bool ModuleParticles::Start()
 	playerDeath.anim.loop = false;
 	playerDeath.anim.speed = 0.3f;
 	
-	// Explosion particle
-	/*explosion.anim.PushBack({274, 296, 33, 30});
-	explosion.anim.PushBack({313, 296, 33, 30});
-	explosion.anim.PushBack({346, 296, 33, 30});
-	explosion.anim.PushBack({382, 296, 33, 30});
-	explosion.anim.PushBack({419, 296, 33, 30});
-	explosion.anim.PushBack({457, 296, 33, 30});
-	explosion.anim.loop = false;
-	explosion.anim.speed = 0.3f;*/
+	enemyExplosion.anim.PushBack({ 148, 102, 22, 19 });
+	enemyExplosion.anim.PushBack({ 181, 103, 26, 20 });
+	enemyExplosion.anim.PushBack({ 213, 101, 25, 24 });
+	enemyExplosion.anim.PushBack({ 147, 149, 29, 28 });
+	enemyExplosion.anim.PushBack({ 169, 207, 33, 30 });
+	enemyExplosion.anim.PushBack({ 203, 206, 32, 28 });
+	enemyExplosion.anim.speed = 0.1f;
+	enemyExplosion.anim.loop = false;
 
-	/*laser.anim.PushBack({ 232, 103, 16, 12 });
-	laser.anim.PushBack({ 249, 103, 16, 12 });
-	laser.speed.y = -5;
-	laser.lifetime = 180;
-	laser.anim.speed = 0.2f;*/
+	
 
 	
 
