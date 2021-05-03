@@ -28,7 +28,7 @@ public:
 
 	// Called at the beginning of the application loop
 	// Removes all particles pending to delete
-	//update_status PreUpdate() override;
+	update_status PreUpdate() override;
 
 	// Called at the middle of the application loop
 	// Iterates all the particles and calls its Update()

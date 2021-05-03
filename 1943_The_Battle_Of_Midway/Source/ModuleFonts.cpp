@@ -51,8 +51,6 @@ int ModuleFonts::Load(const char* texture_path, const char* characters, uint row
 	font.texture = tex;
 	font.rows = rows;
 
-	// TODO 1: Finish storing font data
-
 	// totalLength ---	length of the lookup table
 	// table ---------  All characters displayed in the same order as the texture
 	// columns -------  Amount of chars per row of the texture

@@ -55,7 +55,7 @@ bool ModulePlayer::Start()
 
 	collider = App->collisions->AddCollider({ position.x, position.y, 32, 16 }, Collider::Type::PLAYER, this);
 
-	char lookupTable1[] = { "E0001234567890" };
+	char lookupTable1[] = { "E000   1234567890" };
 	char lookupTable2[] = { "01234567890ABCDEFGHIJKMNOPQRSTUVWXYZ" };
 	scoreFont = App->fonts->Load("Assets/score_font.png", lookupTable1, 1);
 	destroyed = false;
@@ -148,9 +148,9 @@ update_status ModulePlayer::PostUpdate()
 	sprintf_s(scoreText, 10, "%7d", score);
 
 	// TODO 3: Blit the text of the score in at the bottom of the screen
-	App->fonts->BlitText(58, 248, scoreFont, scoreText);
+	App->fonts->BlitText(25, 248, scoreFont, scoreText);
 
-	App->fonts->BlitText(150, 248, scoreFont, "this is just a font test");
+	App->fonts->BlitText(58, 248, scoreFont, "this is just a font test");
 
 	return update_status::UPDATE_CONTINUE;
 }
