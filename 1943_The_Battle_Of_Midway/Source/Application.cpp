@@ -15,6 +15,7 @@
 #include "ModuleFonts.h"
 #include "ModuleRender.h"
 #include "SceneInit.h"
+#include "SceneEnd.h"
 
 Application::Application()
 {
@@ -29,16 +30,17 @@ Application::Application()
 	modules[4] = sceneInit = new SceneInit(true);
 	modules[5] = sceneIntro = new SceneIntro(false);
 	modules[6] = sceneLevel_1 = new SceneLevel1(false);
-	modules[7] = player = new ModulePlayer(false);
-	modules[8] = particles = new ModuleParticles(true);
-	modules[9] = enemies = new ModuleEnemies(false);
+	modules[7] = sceneEnd = new SceneEnd(false);
+	modules[8] = player = new ModulePlayer(false);
+	modules[9] = particles = new ModuleParticles(true);
+	modules[10] = enemies = new ModuleEnemies(false);
 
-	modules[10] = collisions = new ModuleCollisions(true);
+	modules[11] = collisions = new ModuleCollisions(true);
 
 
-	modules[11] = fade = new ModuleFadeToBlack(true);
-	modules[12] = fonts = new ModuleFonts(true);
-	modules[13] = render = new ModuleRender(true);
+	modules[12] = fade = new ModuleFadeToBlack(true);
+	modules[13] = fonts = new ModuleFonts(true);
+	modules[14] = render = new ModuleRender(true);
 }
 
 Application::~Application()
