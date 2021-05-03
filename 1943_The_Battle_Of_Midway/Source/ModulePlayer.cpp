@@ -133,7 +133,7 @@ update_status ModulePlayer::Update()
 	{
 		godMode = !godMode;
 	}
-
+	
 	return update_status::UPDATE_CONTINUE;
 }
 
@@ -167,6 +167,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	if (c1 == collider && destroyed == false)
 	{
 		life--;
+		App->particles->AddParticle(App->particles->enemyExplosion, position.x, position.y, Collider::Type::NONE, 0);
 	}
 
 	if (c1->type == Collider::Type::PLAYER_SHOT && c2->type == Collider::Type::ENEMY)

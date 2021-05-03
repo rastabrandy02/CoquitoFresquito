@@ -7,7 +7,11 @@
 #include "ModuleCollisions.h"
 #include "ModuleEnemies.h"
 #include "ModulePlayer.h"
+#include "ModuleFadeToBlack.h"
+#include "ModuleInput.h"
 
+#include "SDL/include/SDL_scancode.h"
+#include <stdio.h> 
 SceneLevel1::SceneLevel1(bool startEnabled) : Module(startEnabled)
 {
 
@@ -32,6 +36,12 @@ bool SceneLevel1::Start()
 
 	// Enemies ---
 	App->enemies->AddEnemy(ENEMY_TYPE::REDPLANE, 300, 0);
+	App->enemies->AddEnemy(ENEMY_TYPE::REDPLANE, 320, -20);
+	App->enemies->AddEnemy(ENEMY_TYPE::REDPLANE, 340, -40);
+	App->enemies->AddEnemy(ENEMY_TYPE::REDPLANE, 100, 0);
+	App->enemies->AddEnemy(ENEMY_TYPE::REDPLANE, 80, -20);
+	App->enemies->AddEnemy(ENEMY_TYPE::REDPLANE, 60, -40);
+
 
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
@@ -46,7 +56,10 @@ bool SceneLevel1::Start()
 update_status SceneLevel1::Update()
 {
 	App->render->camera.y -= 2;
-
+	if (App->input->keys[SDL_SCANCODE_F2] == KEY_STATE::KEY_DOWN)
+	{
+		App->fade->FadeToBlack(this, (Module*)App->sceneEnd, 60);
+	}
 	return update_status::UPDATE_CONTINUE;
 }
 
@@ -56,6 +69,7 @@ update_status SceneLevel1::PostUpdate()
 	// Draw everything --------------------------------------
 	App->render->Blit(bgTexture, 0, -5600, NULL);
 	App->render->Blit(cloudTexture, 0, -5600, NULL, 0.75f);
+
 
 	return update_status::UPDATE_CONTINUE;
 }
