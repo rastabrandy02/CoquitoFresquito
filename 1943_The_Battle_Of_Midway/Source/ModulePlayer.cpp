@@ -58,7 +58,7 @@ bool ModulePlayer::Start()
 	collider = App->collisions->AddCollider({ position.x, position.y, 35, 25 }, Collider::Type::PLAYER, this);
 
 	char lookupTable1[] = { "01234567890" };
-	char lookupTable2[] = { "01234567890ABCDEFGHIJKMNOPQRSTUVWXYZ" };
+	char lookupTable2[] = { "0123456789ABCDEFGHIJKMNOPQRSTUVWXYZ" };
 	char lookupTable3[] = { "! @,_./0123456789$;< ?abcdefghijklmnopqrstuvwxyz" };
 	scoreFont = App->fonts->Load("Assets/score_font.png", lookupTable1, 1);
 	textFont = App->fonts->Load("Assets/rtype_font.png", lookupTable3, 1);
@@ -127,6 +127,7 @@ update_status ModulePlayer::Update()
 	}
 	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_REPEAT && powerUpAuto)
 	{
+		score++;
 		
 		if (autoCoolDown >= 7)
 		{
@@ -169,12 +170,12 @@ update_status ModulePlayer::PostUpdate()
 		App->audio->PlayFx(deathPlayerFx);
 		App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneEnd, 60);
 	}
-	score++;
+	
 	// Draw UI (score) --------------------------------------
 	sprintf(scoreText, "%5d", score);
 	
 	// TODO 3: Blit the text of the score in at the bottom of the screen
-	App->fonts->BlitText(25, 25, scoreFont, scoreText);
+	App->fonts->BlitText(25, 25, textFont, scoreText);
 	LOG("%s", scoreText);
 
 	
