@@ -27,16 +27,20 @@ bool SceneIntro::Start()
 	LOG("Loading background assets");
 
 	bool ret = true;
-	bool audio = true;
-
 
 	bgTexture = App->textures->Load("Assets/title_screen.png");
+<<<<<<< Updated upstream
 	audio = App->audio->PlayMusic("Assets/Audio/16-Credits.ogg", 1.0f);
+=======
+<<<<<<< HEAD
+=======
+	audio = App->audio->PlayMusic("Assets/Audio/16-Credits.ogg", 1.0f);
+>>>>>>> 9e1f0ce01ebde60a24e950a5d1e378cd3fc22593
+>>>>>>> Stashed changes
 
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
 
-	
 	return ret;
 }
 

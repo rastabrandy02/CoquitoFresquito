@@ -57,7 +57,7 @@ bool ModulePlayer::Start()
 
 	char lookupTable1[] = { "E000   1234567890" };
 	char lookupTable2[] = { "01234567890ABCDEFGHIJKMNOPQRSTUVWXYZ" };
-	scoreFont = App->fonts->Load("Assets/score_font.png", lookupTable1, 1);
+	scoreFont = App->fonts->Load("Assets/text_font.png", lookupTable2, 1);
 	destroyed = false;
 	
 
@@ -157,7 +157,7 @@ update_status ModulePlayer::PostUpdate()
 
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
-	if (c1 == collider && destroyed == false)
+	if (c1 == collider && destroyed == false && godMode == false)
 	{
 		App->particles->AddParticle(App->particles->playerDeath, position.x, position.y, Collider::Type::NONE, 9);
 		/*App->particles->AddParticle(App->particles->playerDeath, position.x + 8, position.y + 11, Collider::Type::NONE, 14);
