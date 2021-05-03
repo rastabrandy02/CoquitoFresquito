@@ -31,7 +31,7 @@ bool SceneIntro::Start()
 
 
 	bgTexture = App->textures->Load("Assets/title_screen.png");
-	audio = App->audio->PlayMusic("Assets/Music/stage1.ogg", 1.0f);
+	audio = App->audio->PlayMusic("Assets/Audio/16-Credits.ogg", 1.0f);
 
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
