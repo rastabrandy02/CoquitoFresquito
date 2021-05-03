@@ -1,3 +1,5 @@
+
+
 #include "Application.h"
 
 #include "ModuleTextures.h"
@@ -13,7 +15,7 @@ ModuleFonts::ModuleFonts(bool isEnabled) : Module(isEnabled)
 
 ModuleFonts::~ModuleFonts()
 {
-	
+
 }
 
 // Load new texture from file path
@@ -50,6 +52,8 @@ int ModuleFonts::Load(const char* texture_path, const char* characters, uint row
 
 	font.texture = tex;
 	font.rows = rows;
+
+	// TODO 1: Finish storing font data
 
 	// totalLength ---	length of the lookup table
 	// table ---------  All characters displayed in the same order as the texture

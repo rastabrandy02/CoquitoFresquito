@@ -55,11 +55,13 @@ bool ModulePlayer::Start()
 
 	destroyed = false;
 
-	collider = App->collisions->AddCollider({ position.x, position.y, 32, 16 }, Collider::Type::PLAYER, this);
+	collider = App->collisions->AddCollider({ position.x, position.y, 35, 25 }, Collider::Type::PLAYER, this);
 
-	char lookupTable1[] = { "E000   1234567890" };
+	char lookupTable1[] = { "1234567890" };
 	char lookupTable2[] = { "01234567890ABCDEFGHIJKMNOPQRSTUVWXYZ" };
 	scoreFont = App->fonts->Load("Assets/score_font.png", lookupTable1, 1);
+	textFont = App->fonts->Load("Assets/text_font.png", lookupTable2, 4);
+	score = 000;
 	
 
 	return ret;
@@ -133,7 +135,7 @@ update_status ModulePlayer::Update()
 	{
 		godMode = !godMode;
 	}
-
+	
 	return update_status::UPDATE_CONTINUE;
 }
 
@@ -152,12 +154,13 @@ update_status ModulePlayer::PostUpdate()
 	}
 
 	// Draw UI (score) --------------------------------------
-	sprintf_s(scoreText, 10, "%7d", score);
+	sprintf(scoreText, "%5d", score);
 
 	// TODO 3: Blit the text of the score in at the bottom of the screen
-	App->fonts->BlitText(25, 248, scoreFont, scoreText);
+	App->fonts->BlitText(25, 25, scoreFont, scoreText);
+	LOG("%s", scoreText);
 
-	App->fonts->BlitText(58, 248, scoreFont, "this is just a font test");
+	
 
 	return update_status::UPDATE_CONTINUE;
 }
@@ -167,6 +170,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	if (c1 == collider && destroyed == false)
 	{
 		life--;
+		App->particles->AddParticle(App->particles->enemyExplosion, position.x, position.y, Collider::Type::NONE, 0);
 	}
 
 	if (c1->type == Collider::Type::PLAYER_SHOT && c2->type == Collider::Type::ENEMY)

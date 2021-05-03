@@ -15,7 +15,7 @@ enum class ENEMY_TYPE
 	
 };
 
-struct EnemySpawnpoint
+typedef struct EnemySpawnpoint
 {
 	ENEMY_TYPE type = ENEMY_TYPE::NO_TYPE;
 	int x, y;

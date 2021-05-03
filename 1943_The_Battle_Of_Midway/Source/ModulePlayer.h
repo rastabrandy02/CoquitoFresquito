@@ -74,7 +74,8 @@ public:
 	// Font score index
 	uint score = 000;
 	int scoreFont = -1;
-	char scoreText[10] = { "\0" };
+	int textFont = 0;
+	char scoreText[10] = { 0 };
 	uint life = 9;
 };
 
