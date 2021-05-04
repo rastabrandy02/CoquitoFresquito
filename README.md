@@ -7,6 +7,9 @@ Videogame Development - Project 1 - Our first amazing game
 ## Controls
 WASD-> Move       
 SPACEBAR-> Shoot
+F1 -> Show Colliders
+F2 -> God Mode
+F3 -> Direct Win
 
 ## Credits
 Jose Antonio Atencia https://github.com/JedTyde
