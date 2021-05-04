@@ -10,6 +10,11 @@ Enemy_RedLoopPlane::Enemy_RedLoopPlane(int x, int y): Enemy(x, y)
 	flyAnim.speed = 0.2f;
 	flyAnim.loop = true;
 
+	backwardAnim.PushBack({ 525, 551, 27, 24 });
+	backwardAnim.PushBack({ 526, 527, 27, 24 });
+	backwardAnim.speed = 0.1f;
+	backwardAnim.loop = true;
+
 	turnAnim.PushBack({ 1273, 1243, 27, 26 });
 	turnAnim.PushBack({ 1243, 1243, 30, 25 });
 	turnAnim.PushBack({ 1215, 1244, 29, 23 });
