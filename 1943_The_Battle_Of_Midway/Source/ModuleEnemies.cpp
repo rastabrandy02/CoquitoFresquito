@@ -180,7 +180,10 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 		if(enemies[i] != nullptr && enemies[i]->GetCollider() == c1)
 		{
 			enemies[i]->OnCollision(c2); //Notify the enemy of a collision
-
+			/*if (c1->type == Collider::Type::PLAYER_SHOT && c2->type == Collider::Type::ENEMY)
+			{
+				App->player->score += 100;
+			}*/
 			/*delete enemies[i];
 			enemies[i] = nullptr;*/
 			break;

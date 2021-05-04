@@ -5,6 +5,7 @@
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
 #include "ModuleCollisions.h"
+#include "ModulePlayer.h"
 
 #include "SDL/include/SDL_timer.h"
 
@@ -124,6 +125,11 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 		{
 			delete particles[i];
 			particles[i] = nullptr;
+			if (c1->type == Collider::Type::PLAYER_SHOT && c2->type == Collider::Type::ENEMY)
+			{
+				
+				App->player->AddScore();
+			}
 			break;
 		}
 	}

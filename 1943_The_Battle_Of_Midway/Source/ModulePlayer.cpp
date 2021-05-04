@@ -202,13 +202,18 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
 	if (c1 == collider && destroyed == false && (c2->type == Collider::Type::ENEMY || c2->type == Collider::Type::ENEMY_SHOT))
 	{
-		life--;
+		
 		App->particles->AddParticle(App->particles->enemyExplosion, position.x, position.y, Collider::Type::NONE, 0);
+		if (godMode == false) life--;
 	}
 
-	if (c1->type == Collider::Type::ENEMY && c2->type == Collider::Type::PLAYER_SHOT)
+	/*if (c1->type == Collider::Type::ENEMY && c2->type == Collider::Type::PLAYER_SHOT)
 	{
 		score += 100;
+	}*/
+	if (c1 == collider && c2->type == Collider::Type::ENEMY)
+	{
+		AddScore();
 	}
 	if (c1 == collider && c2->type == Collider::Type::PU_AUTO)
 	{
@@ -229,4 +234,9 @@ bool ModulePlayer::CleanUp()
 	App->textures->Unload(texture);
 
 	return true;
+}
+
+void ModulePlayer::AddScore()
+{
+	score += 100;
 }

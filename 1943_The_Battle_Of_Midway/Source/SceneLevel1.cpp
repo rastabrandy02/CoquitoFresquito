@@ -65,13 +65,21 @@ bool SceneLevel1::Start()
 	
 	App->collisions->AddCollider({ 0, -5400, 400, 200 }, Collider::Type::WIN);
 
-	App->enemies->AddEnemy(ENEMY_TYPE::REDLOOPPLANE, 150, -100);
+	App->enemies->AddEnemy(ENEMY_TYPE::REDLOOPPLANE, 150, -110);
+	App->enemies->AddEnemy(ENEMY_TYPE::REDLOOPPLANE, 150, -80);
+	App->enemies->AddEnemy(ENEMY_TYPE::REDLOOPPLANE, 150, -50);
+
+	App->enemies->AddEnemy(ENEMY_TYPE::REDLOOPPLANE, 250, -110);
+	App->enemies->AddEnemy(ENEMY_TYPE::REDLOOPPLANE, 250, -80);
+	App->enemies->AddEnemy(ENEMY_TYPE::REDLOOPPLANE, 250, -50);
 
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
 
 	App->player->Enable();
 	App->enemies->Enable();
+
+	
 
 
 
