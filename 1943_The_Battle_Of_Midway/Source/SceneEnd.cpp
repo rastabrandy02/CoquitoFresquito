@@ -59,13 +59,11 @@ bool SceneEnd::Start()
 	path.PushBack({ 0.2f, 0.0f }, 1, &planeAnim);
 	path.PushBack({ 0.2f, 0.2f }, 1, &planeAnim);
 	path.PushBack({ 0.2f, 0.2f }, 1, &planeAnim);
-	path.PushBack({ 0.2f, 0.2f }, 1, &planeAnim);
-	path.PushBack({ -0.2f, 0.0f }, 1, &planeAnim);
-	path.PushBack({ -0.2f, 0.0f }, 1, &planeAnim);
+	path.PushBack({ -0.2f, 0.2f }, 2, &planeAnim);
+	path.PushBack({ -0.2f, -0.2f }, 1, &planeAnim);
+	path.PushBack({ -0.2f, -0.2f }, 1, &planeAnim);
 	path.PushBack({ 0.0f, 0.0f }, 3000, &planeAnim);
-	path.PushBack({ 0.0f, 0.0f }, 3000, &planeAnim);
-	path.PushBack({ 0.0f, 0.0f }, 3000, &planeAnim);
-	path.PushBack({ 0.0f, 0.0f }, 3000, &planeAnim);
+
 
 	
 	path.loop = false;
@@ -100,6 +98,7 @@ update_status SceneEnd::PostUpdate()
 bool SceneEnd::CleanUp()
 {
 	planeAnim.Reset();
+	
 	App->textures->Unload(winTexture);
 	App->textures->Unload(planeTex);
 	return true;

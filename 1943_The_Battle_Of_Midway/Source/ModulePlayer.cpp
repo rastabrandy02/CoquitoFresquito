@@ -59,9 +59,9 @@ bool ModulePlayer::Start()
 
 	char lookupTable1[] = { "01234567890" };
 	char lookupTable2[] = { "0123456789ABCDEFGHIJKMNOPQRSTUVWXYZ" };
-	char lookupTable3[] = { "! @,_./0123456789$;< ?abcdefghijklmnopqrstuvwxyz" };
+	char lookupTable3[] = { "abcdefghijklmnopqrstuvwxyz" };
 	scoreFont = App->fonts->Load("Assets/score_font.png", lookupTable1, 1);
-	textFont = App->fonts->Load("Assets/rtype_font.png", lookupTable3, 1);
+	textFont = App->fonts->Load("Assets/font.png", lookupTable3, 1);
 	
 	
 
@@ -176,6 +176,7 @@ update_status ModulePlayer::PostUpdate()
 	
 	// TODO 3: Blit the text of the score in at the bottom of the screen
 	App->fonts->BlitText(25, 25, textFont, scoreText);
+	App->fonts->BlitText(10, 10, textFont, "player");
 	LOG("%s", scoreText);
 
 	
