@@ -43,7 +43,7 @@ bool SceneLevel1::Start()
 	App->enemies->AddEnemy(ENEMY_TYPE::REDPLANE, 60, -40);
 
 	
-
+	App->collisions->AddCollider({ 0, -5400, 400, 200 }, Collider::Type::WIN);
 
 	App->enemies->AddEnemy(ENEMY_TYPE::REDLOOPPLANE, 150, -100);
 
@@ -77,6 +77,11 @@ update_status SceneLevel1::PostUpdate()
 
 
 	return update_status::UPDATE_CONTINUE;
+}
+
+void SceneLevel1::OnCollision(Collider* c1, Collider* c2)
+{
+	
 }
 
 bool SceneLevel1::CleanUp()
