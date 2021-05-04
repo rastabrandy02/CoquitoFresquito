@@ -8,13 +8,13 @@ Videogame Development - Project 1 - Our first amazing game
 - Player shot
 - Auto (player can shot without releasing the spacebar)
 ## Controls
-WASD-> Move       
-SPACEBAR-> Shoot  
+- WASD-> Move       
+- SPACEBAR-> Shoot  
 ### Debuggin controls
-F1 -> Show Colliders  
-F2 -> God Mode  
-F3 -> Direct Win  
-Keyboard arrows -> Move debuggin camera
+- F1 -> Show Colliders  
+- F2 -> God Mode  
+- F3 -> Direct Win  
+- Keyboard arrows -> Move debuggin camera
 
 ## Credits
 Jose Antonio Atencia https://github.com/JedTyde
