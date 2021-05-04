@@ -5,6 +5,7 @@
 #include "ModuleParticles.h"
 #include "ModuleAudio.h"
 #include "ModuleRender.h"
+#include <stdlib.h>
 
 Enemy::Enemy(int x, int y) : position(x, y)
 {
@@ -40,8 +41,11 @@ void Enemy::Draw()
 void Enemy::OnCollision(Collider* collider)
 {
 	App->particles->AddParticle(App->particles->enemyExplosion, position.x, position.y);
-	App->particles->AddParticle(App->particles->powerUp, position.x, position.y, Collider::Type::PU_AUTO);
-	//App->particles->AddParticle(App->particles->basicShot, position.x + 10, position.y - 10, Collider::Type::PLAYER_SHOT);
+	int random = rand() % 100;
+	if (random <= 25)
+	{
+		App->particles->AddParticle(App->particles->powerUp, position.x, position.y, Collider::Type::PU_AUTO);
+	}
 	App->audio->PlayFx(destroyedFx);
 
 	SetToDelete();

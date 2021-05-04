@@ -60,9 +60,10 @@ bool ModulePlayer::Start()
 	collider = App->collisions->AddCollider({ position.x, position.y, 35, 25 }, Collider::Type::PLAYER, this);
 
 	char lookupTable1[] = { "01234567890" };
-	char lookupTable2[] = { "0123456789ABCDEFGHIJKMNOPQRSTUVWXYZ" };
+	char lookupTable2[] = { "! @,_./0123456789$;< ?abcdefghijklmnopqrstuvwxyz" };
 	char lookupTable3[] = { "abcdefghijklmnopqrstuvwxyz" };
-	scoreFont = App->fonts->Load("Assets/score_font.png", lookupTable1, 1);
+	char lookupTable4[] = { "1234567890.:,' (!?)+-*=" };
+	scoreFont = App->fonts->Load("Assets/rtype_font.png", lookupTable2, 1);
 	textFont = App->fonts->Load("Assets/font.png", lookupTable3, 1);
 	
 	
@@ -174,11 +175,12 @@ update_status ModulePlayer::PostUpdate()
 	}
 	
 	// Draw UI (score) --------------------------------------
-	sprintf(scoreText, "%5d", score);
+	sprintf(scoreText, "%7d", score);
 	
 	// TODO 3: Blit the text of the score in at the bottom of the screen
-	App->fonts->BlitText(25, 25, textFont, scoreText);
+	App->fonts->BlitText(40, 40, scoreFont, scoreText);
 	App->fonts->BlitText(10, 10, textFont, "player");
+	
 	LOG("%s", scoreText);
 
 	
@@ -196,7 +198,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 
 	if (c1->type == Collider::Type::PLAYER_SHOT && c2->type == Collider::Type::ENEMY)
 	{
-		score += 23;
+		score += 100;
 	}
 	if (c1 == collider && c2->type == Collider::Type::PU_AUTO)
 	{

@@ -33,6 +33,7 @@ public:
 	void OnCollision(Collider* c1, Collider* c2) override;
 
 	bool CleanUp() override;
+	uint life = 9;
 
 public:
 	// Position of the player in the map
@@ -43,6 +44,7 @@ public:
 
 	// The player spritesheet loaded into an SDL_Texture
 	SDL_Texture* texture = nullptr;
+	
 	
 	// The pointer to the current player animation
 	// It will be switched depending on the player's movement direction
@@ -76,7 +78,6 @@ public:
 	int scoreFont = -1;
 	int textFont = 0;
 	char scoreText[10] = { 0 };
-	uint life = 9;
 
 
 
