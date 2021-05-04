@@ -9,6 +9,8 @@
 #include "ModuleCollisions.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleFonts.h"
+#include "ModuleEnemies.h"
+#include "SceneLevel1.h"
 
 #include "SDL/include/SDL_scancode.h"
 #include <stdio.h>
@@ -200,6 +202,13 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	{
 		powerUpAuto = true;
 		autoTimer = 0;
+	}
+	if (c1 == collider && c2->type == Collider::Type::WIN)
+	{
+		App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneEnd, 60);
+		position.x = 0;
+		position.y = 0;
+		
 	}
 }
 

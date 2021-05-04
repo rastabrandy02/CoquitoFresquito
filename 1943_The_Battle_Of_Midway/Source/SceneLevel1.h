@@ -27,6 +27,7 @@ public:
 	// Performs the render call of all the parts of the scene's background
 	update_status PostUpdate() override;
 
+	void OnCollision(Collider* c1, Collider* c2) override;
 	// Disables the player and the enemies
 	bool CleanUp();
 
