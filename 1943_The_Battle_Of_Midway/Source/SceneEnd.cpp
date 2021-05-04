@@ -43,12 +43,13 @@ bool SceneEnd::Start()
 	planeTex = App->textures->Load("Assets/Art/Endings/plane.png");
 
 	currentAnim = &planeAnim;
-
-
+	char lookupTable3[] = { "abcdefghijklmnopqrstuvwxyz" };
+	textFont = App->fonts->Load("Assets/font.png", lookupTable3, 1);
 
 	audio = App->audio->PlayMusic("Assets/Audio/015-Ending.ogg", 0.1f);
 
 	winTexture = App->textures->Load("Assets/end_level.png");
+	loseTexture = App->textures->Load("Assets/Death_Screen.png");
 
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
@@ -90,8 +91,17 @@ update_status SceneEnd::Update()
 update_status SceneEnd::PostUpdate()
 {
 	// Draw everything --------------------------------------
-	App->render->Blit(winTexture, 0, 0, NULL);
-	App->render->Blit(planeTex, position.x, position.y, &planeAnim.GetCurrentFrame(), 0.0f, false);
+	if (App->player->life != 0)
+	{
+		App->render->Blit(winTexture, 0, 0, NULL);
+		App->render->Blit(planeTex, position.x, position.y, &planeAnim.GetCurrentFrame(), 0.0f, false);
+		App->fonts->BlitText(100, 200, textFont, "mission");
+		App->fonts->BlitText(95, 230, textFont, "compleated");
+	}
+	else
+	{
+		App->render->Blit(loseTexture, 0, 0, NULL);
+	}
 	return update_status::UPDATE_CONTINUE;
 }
 

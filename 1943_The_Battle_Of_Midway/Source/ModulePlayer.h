@@ -80,7 +80,7 @@ public:
 	char scoreText[10] = { 0 };
 
 
-
+	int playerDeadParticle = 0;
 
 	bool powerUpAuto = false;
 	int autoCoolDown = 0;

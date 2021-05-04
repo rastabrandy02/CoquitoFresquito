@@ -36,8 +36,18 @@ public:
 	// The scene sprite sheet loaded into an SDL_Texture
 	SDL_Texture* bgTexture = nullptr;
 	SDL_Texture* cloudTexture = nullptr;
-	SDL_Texture* healtBar = nullptr;
-	Animation healthBarAnim;
+	SDL_Texture* healtBar1 = nullptr;
+	SDL_Texture* healtBar2 = nullptr;
+	SDL_Texture* healtBar3 = nullptr;
+	SDL_Texture* healtBar4 = nullptr;
+	SDL_Texture* healtBar5 = nullptr;
+	SDL_Texture* healtBar6 = nullptr;
+	SDL_Texture* healtBar7 = nullptr;
+	SDL_Texture* healtBar8 = nullptr;
+	SDL_Texture* healtBar9 = nullptr;
+	int timer = 0;
+
+
 };
 
 #endif

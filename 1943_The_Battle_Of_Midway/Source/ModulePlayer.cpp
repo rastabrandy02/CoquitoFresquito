@@ -44,7 +44,7 @@ bool ModulePlayer::Start()
 
 	bool ret = true;
 
-	
+	playerDeadParticle = 0;
 	texture = App->textures->Load("Assets/Art/SuperAce/yellow_plane.png");
 	currentAnimation = &idleAnim;
 
@@ -55,6 +55,7 @@ bool ModulePlayer::Start()
 	position.x = 195;
 	position.y = 480;
 
+	life = 9;
 	destroyed = false;
 
 	collider = App->collisions->AddCollider({ position.x, position.y, 35, 25 }, Collider::Type::PLAYER, this);
@@ -78,83 +79,83 @@ update_status ModulePlayer::Update()
 
 	autoCoolDown++;
 	autoTimer++;
-
-	if (position.x >= 0)
+	if (!destroyed)
 	{
-		if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
+		if (position.x >= 0)
 		{
-			position.x -= speed;
-			if (currentAnimation != &leftAnim)
+			if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
 			{
-				leftAnim.Reset();
-				currentAnimation = &leftAnim;
+				position.x -= speed;
+				if (currentAnimation != &leftAnim)
+				{
+					leftAnim.Reset();
+					currentAnimation = &leftAnim;
+				}
 			}
 		}
-	}
 
-	if (position.x <= 390)
+		if (position.x <= 390)
 
-	{
-		if (App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
 		{
-			position.x += speed;
-			if (currentAnimation != &rightAnim)
+			if (App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
 			{
-				rightAnim.Reset();
-				currentAnimation = &rightAnim;
+				position.x += speed;
+				if (currentAnimation != &rightAnim)
+				{
+					rightAnim.Reset();
+					currentAnimation = &rightAnim;
+				}
 			}
 		}
-	}
 		if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
 		{
-		
+
 			position.y += speed;
-			
+
 		}
 
-	if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
-	{
-		
-		
-		position.y -= speed;
-		
-			
-	}
+		if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
+		{
 
-	if (autoTimer >= 240) powerUpAuto = false;
-	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
-	{
-		App->particles->AddParticle(App->particles->basicShot, position.x + 10, position.y - 10, Collider::Type::PLAYER_SHOT);
-		App->particles->AddParticle(App->particles->basicShot, position.x + 25, position.y - 10, Collider::Type::PLAYER_SHOT);
-		App->audio->PlayFx(basicShotFx);
-	}
-	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_REPEAT && powerUpAuto)
-	{
-		score++;
-		
-		if (autoCoolDown >= 7)
+
+			position.y -= speed;
+
+
+		}
+
+		if (autoTimer >= 240) powerUpAuto = false;
+		if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
 		{
 			App->particles->AddParticle(App->particles->basicShot, position.x + 10, position.y - 10, Collider::Type::PLAYER_SHOT);
 			App->particles->AddParticle(App->particles->basicShot, position.x + 25, position.y - 10, Collider::Type::PLAYER_SHOT);
 			App->audio->PlayFx(basicShotFx);
-			autoCoolDown = 0;
 		}
-		
-	}
+		if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_REPEAT && powerUpAuto)
+		{
+			if (autoCoolDown >= 7)
+			{
+				App->particles->AddParticle(App->particles->basicShot, position.x + 10, position.y - 10, Collider::Type::PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->basicShot, position.x + 25, position.y - 10, Collider::Type::PLAYER_SHOT);
+				App->audio->PlayFx(basicShotFx);
+				autoCoolDown = 0;
+			}
 
-	// If no up/down movement detected, set the current animation back to idle
-	if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE
-		&& App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE)
-		currentAnimation = &idleAnim;
+		}
 
-	collider->SetPos(position.x, position.y);
+		// If no up/down movement detected, set the current animation back to idle
+		if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE
+			&& App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE)
+			currentAnimation = &idleAnim;
 
-	currentAnimation->Update();
+		collider->SetPos(position.x, position.y);
 
-	
-	if (App->input->keys[SDL_SCANCODE_F3] == KEY_STATE::KEY_DOWN)
-	{
-		godMode = !godMode;
+		currentAnimation->Update();
+
+
+		if (App->input->keys[SDL_SCANCODE_F3] == KEY_STATE::KEY_DOWN)
+		{
+			godMode = !godMode;
+		}
 	}
 	
 	return update_status::UPDATE_CONTINUE;
@@ -162,16 +163,25 @@ update_status ModulePlayer::Update()
 
 update_status ModulePlayer::PostUpdate()
 {
+	
 	if (!destroyed)
 	{
 		SDL_Rect rect = currentAnimation->GetCurrentFrame();
 		App->render->Blit(texture, position.x, position.y, &rect);
 	}
-	else if(life <= 0)
+	
+	if(life <= 0)
 	{
-		App->particles->AddParticle(App->particles->playerDeath, position.x, position.y, Collider::Type::NONE, 9);
-		App->audio->PlayFx(deathPlayerFx);
-		App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneEnd, 60);
+		playerDeadParticle++;
+		if (playerDeadParticle == 1)
+		{
+			destroyed = true;
+			App->particles->AddParticle(App->particles->playerDeath, position.x, position.y, Collider::Type::NONE, 0);
+			App->audio->PlayFx(deathPlayerFx);
+			playerDeadParticle = 2;
+
+		}
+		
 	}
 	
 	// Draw UI (score) --------------------------------------
@@ -181,7 +191,7 @@ update_status ModulePlayer::PostUpdate()
 	App->fonts->BlitText(40, 40, scoreFont, scoreText);
 	App->fonts->BlitText(10, 10, textFont, "player");
 	
-	LOG("%s", scoreText);
+	
 
 	
 
@@ -196,7 +206,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		App->particles->AddParticle(App->particles->enemyExplosion, position.x, position.y, Collider::Type::NONE, 0);
 	}
 
-	if (c1->type == Collider::Type::PLAYER_SHOT && c2->type == Collider::Type::ENEMY)
+	if (c1->type == Collider::Type::ENEMY && c2->type == Collider::Type::PLAYER_SHOT)
 	{
 		score += 100;
 	}

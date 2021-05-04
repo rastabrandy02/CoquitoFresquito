@@ -14,7 +14,7 @@
 #include <stdio.h> 
 SceneLevel1::SceneLevel1(bool startEnabled) : Module(startEnabled)
 {
-	healthBarAnim.PushBack({ 274, 69, 250, 24 });
+	
 	
 }
 
@@ -27,9 +27,18 @@ SceneLevel1::~SceneLevel1()
 bool SceneLevel1::Start()
 {
 	LOG("Loading background assets");
-
+	timer = 0;
 	bool ret = true;
-	healtBar = App->textures->Load("Assets/life_bar.png");
+	healtBar1 = App->textures->Load("Assets/Lifebars/life_bar_1.png");
+	healtBar2 = App->textures->Load("Assets/Lifebars/life_bar_2.png");
+	healtBar3 = App->textures->Load("Assets/Lifebars/life_bar_3.png");
+	healtBar4 = App->textures->Load("Assets/Lifebars/life_bar_4.png");
+	healtBar5 = App->textures->Load("Assets/Lifebars/life_bar_5.png");
+	healtBar6 = App->textures->Load("Assets/Lifebars/life_bar_6.png");
+	healtBar7 = App->textures->Load("Assets/Lifebars/life_bar_7.png");
+	healtBar8 = App->textures->Load("Assets/Lifebars/life_bar_8.png");
+	healtBar9 = App->textures->Load("Assets/Lifebars/life_bar_9.png");
+
 
 	cloudTexture = App->textures->Load("Assets/CloudsMap.png");
 	bgTexture = App->textures->Load("Assets/SeaMap.png");
@@ -75,7 +84,15 @@ update_status SceneLevel1::Update()
 	{
 		App->fade->FadeToBlack(this, (Module*)App->sceneEnd, 60);
 	}
-	
+	if (App->player->life <= 0)
+	{
+		
+		timer++;
+		if (timer == 400)
+		{
+			App->fade->FadeToBlack(this, (Module*)App->sceneEnd, 60);
+		}
+	}
 	return update_status::UPDATE_CONTINUE;
 }
 
@@ -85,7 +102,38 @@ update_status SceneLevel1::PostUpdate()
 	// Draw everything --------------------------------------
 	App->render->Blit(bgTexture, 0, -5600, NULL);
 	App->render->Blit(cloudTexture, 0, -5600, NULL, 0.75f);
-	App->render->Blit(healtBar, 0, 300, &healthBarAnim.GetCurrentFrame(), 0.0f, false);
+	
+	switch (App->player->life)
+	{
+	case 9:
+		App->render->Blit(healtBar1, 0, 488, NULL, 0.0f, false);
+		break;
+	case 8:
+		App->render->Blit(healtBar2, 0, 488, NULL, 0.0f, false);
+		break;
+	case 7:
+		App->render->Blit(healtBar3, 0, 488, NULL, 0.0f, false);
+		break;
+	case 6:
+		App->render->Blit(healtBar4, 0, 488, NULL, 0.0f, false);
+		break;
+	case 5:
+		App->render->Blit(healtBar5, 0, 488, NULL, 0.0f, false);
+		break;
+	case 4:
+		App->render->Blit(healtBar6, 0, 488, NULL, 0.0f, false);
+		break;
+	case 3:
+		App->render->Blit(healtBar7, 0, 488, NULL, 0.0f, false);
+	case 2:
+		App->render->Blit(healtBar8, 0, 488, NULL, 0.0f, false);
+		break;
+	case 1:
+		App->render->Blit(healtBar9, 0, 488, NULL, 0.0f, false);
+		break;
+	default:
+		break;
+	}
 
 
 	return update_status::UPDATE_CONTINUE;
