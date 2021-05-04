@@ -26,6 +26,7 @@ SceneLevel1::~SceneLevel1()
 // Load assets
 bool SceneLevel1::Start()
 {
+	App->collisions->Enable();
 	LOG("Loading background assets");
 	timer = 0;
 	bool ret = true;
@@ -88,7 +89,7 @@ update_status SceneLevel1::Update()
 	{
 		
 		timer++;
-		if (timer == 400)
+		if (timer == 300)
 		{
 			App->fade->FadeToBlack(this, (Module*)App->sceneEnd, 60);
 		}
@@ -148,7 +149,7 @@ bool SceneLevel1::CleanUp()
 {
 	App->player->Disable();
 	App->enemies->Disable();
-	
+	App->collisions->Disable();
 	App->textures->Unload(bgTexture);
 	App->textures->Unload(cloudTexture);
 

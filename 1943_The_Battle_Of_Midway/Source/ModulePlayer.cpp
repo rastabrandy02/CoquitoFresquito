@@ -227,5 +227,6 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 bool ModulePlayer::CleanUp()
 {
 	App->textures->Unload(texture);
+
 	return true;
 }

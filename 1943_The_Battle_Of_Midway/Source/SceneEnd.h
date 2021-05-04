@@ -37,7 +37,7 @@ private:
 	SDL_Texture* winTexture = nullptr;
 	SDL_Texture* loseTexture = nullptr;
 	SDL_Texture* planeTex = nullptr;
-	int  textFont = -1;
+	int  textFont = 2;
 	Animation planeAnim;
 	Animation* currentAnim = nullptr;
 	Path path;
