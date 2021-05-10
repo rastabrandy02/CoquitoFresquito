@@ -3,6 +3,8 @@ Videogame Development - Project 1 - Our first amazing game
 
 ## About 1943:The Battle of Midway
 1943: The Battle of Midway is a 1987 shoot 'em up arcade game developed and published by Capcom. This second title of the 19XX series takes place 3 years after the original and continues from where 1942 (the sequel) left off. After the Super Ace fighter plane successfully destroyed an entire fleet of Japanese jets, the next mission consists of taking out an enemy battleship.
+
+
 ## Features
 - Player movement
 - Player shot
@@ -12,6 +14,7 @@ Videogame Development - Project 1 - Our first amazing game
 ## Controls
 - WASD-> Move       
 - SPACEBAR-> Shoot  
+
 ### Debuggin controls
 - F1 -> Show Colliders  
 - F2 -> God Mode  
@@ -21,11 +24,11 @@ Videogame Development - Project 1 - Our first amazing game
 ## Credits
 [Jose Antonio Atencia](https://github.com/JedTyde)
 
-Víctor Falcón Zaro https://github.com/ZaroDev
+[Víctor Falcón Zaro](https://github.com/ZaroDev)
 
-Fernando Freixenet Garcia https://github.com/rastabrandy02
+[Fernando Freixenet Garcia](https://github.com/rastabrandy02)
 
-Anna Metreveli https://github.com/aNnAm2606
+[Anna Metreveli](https://github.com/aNnAm2606)
 
 ## GitHub Repository
-https://github.com/rastabrandy02/CoquitoFresquito
+Check the CoquitoFresquito repository [here](https://github.com/rastabrandy02/CoquitoFresquito)
