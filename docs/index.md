@@ -7,6 +7,8 @@ Videogame Development - Project 1 - Our first amazing game
 - Player movement
 - Player shot
 - Auto (player can shot without releasing the spacebar)
+
+
 ## Controls
 - WASD-> Move       
 - SPACEBAR-> Shoot  
@@ -17,7 +19,7 @@ Videogame Development - Project 1 - Our first amazing game
 - Keyboard arrows -> Move debuggin camera
 
 ## Credits
-Jose Antonio Atencia https://github.com/JedTyde
+[Jose Antonio Atencia](https://github.com/JedTyde)
 
 Víctor Falcón Zaro https://github.com/ZaroDev
 
