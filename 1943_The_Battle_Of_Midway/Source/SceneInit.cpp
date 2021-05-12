@@ -45,10 +45,12 @@ update_status SceneInit::Update()
 {
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
-	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
+	timer++;
+	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN || timer == 200)
 	{
-		App->fade->FadeToBlack(this, (Module*)App->sceneIntro, 90);
+		App->fade->FadeToBlack(this, (Module*)App->sceneIntro, 60);
 	}
+
 
 	return update_status::UPDATE_CONTINUE;
 }

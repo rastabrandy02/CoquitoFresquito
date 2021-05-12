@@ -16,6 +16,7 @@
 #include "ModuleRender.h"
 #include "SceneInit.h"
 #include "SceneEnd.h"
+#include "ModuleUI.h"
 
 Application::Application()
 {
@@ -40,7 +41,10 @@ Application::Application()
 
 	modules[12] = fade = new ModuleFadeToBlack(true);
 	modules[13] = fonts = new ModuleFonts(true);
-	modules[14] = render = new ModuleRender(true);
+	modules[14] = UI = new ModuleUI(false);
+
+	modules[15] = render = new ModuleRender(true);
+	prevTime = GetTickCount64();
 }
 
 Application::~Application()
@@ -71,7 +75,9 @@ bool Application::Init()
 update_status Application::Update()
 {
 	update_status ret = update_status::UPDATE_CONTINUE;
-
+	double currentTime = GetTickCount64();
+	App->UI->fps = 1000 / (currentTime - prevTime);
+	prevTime = currentTime;
 	for (int i = 0; i < NUM_MODULES && ret == update_status::UPDATE_CONTINUE; ++i)
 		ret = modules[i]->IsEnabled() ? modules[i]->PreUpdate() : update_status::UPDATE_CONTINUE;
 

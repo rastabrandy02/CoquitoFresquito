@@ -76,10 +76,7 @@ public:
 	uint basicShotFx = 0;
 
 	// Font score index
-	uint score = 000;
-	int scoreFont = -1;
-	int textFont = 0;
-	char scoreText[10] = { 0 };
+	int score;
 
 
 	int playerDeadParticle = 0;
