@@ -44,7 +44,11 @@ void Enemy::OnCollision(Collider* collider)
 	int random = rand() % 100;
 	if (random <= 25)
 	{
-		App->particles->AddParticle(App->particles->powerUp, position.x, position.y, Collider::Type::PU_AUTO);
+		App->particles->AddParticle(App->particles->powerUp_Auto, position.x, position.y, Collider::Type::PU_AUTO);
+	}
+	else if (random <= 50)
+	{
+		App->particles->AddParticle(App->particles->powerUp_ThreeWay, position.x, position.y, Collider::Type::PU_THREEWAY);
 	}
 	App->audio->PlayFx(destroyedFx);
 

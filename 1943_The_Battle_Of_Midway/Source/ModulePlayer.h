@@ -81,6 +81,9 @@ public:
 
 	int playerDeadParticle = 0;
 
+	bool powerUpThreeWay = false;
+	int threeWayTimer = 0;
+
 	bool powerUpAuto = false;
 	int autoCoolDown = 0;
 	int autoTimer = 0;
