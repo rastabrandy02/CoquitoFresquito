@@ -19,6 +19,7 @@ struct Collider
 		ENEMY_SHOT,
 		PU_AUTO,
 		PU_THREEWAY,
+		PU_POW,
 		WIN,
 
 		MAX

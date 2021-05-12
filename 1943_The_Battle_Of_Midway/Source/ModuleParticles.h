@@ -71,6 +71,7 @@ public:
 	Particle enemyExplosion;
 	Particle powerUp_Auto;
 	Particle powerUp_ThreeWay;
+	Particle powerUp_Pow;
 	
 };
 

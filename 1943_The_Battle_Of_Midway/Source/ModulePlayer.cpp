@@ -239,6 +239,11 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		powerUpThreeWay = true;
 		threeWayTimer = 0;
 	}
+	if (c1 == collider && c2->type == Collider::Type::PU_POW)
+	{
+		if(life < 9)
+		life += 1;
+	}
 	if (c1 == collider && c2->type == Collider::Type::WIN)
 	{
 		App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneEnd, 60);
