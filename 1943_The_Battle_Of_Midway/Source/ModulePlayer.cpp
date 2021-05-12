@@ -79,6 +79,7 @@ update_status ModulePlayer::Update()
 
 	autoCoolDown++;
 	autoTimer++;
+	threeWayTimer++;
 	if (!destroyed)
 	{
 		if (position.x >= 0)
@@ -124,22 +125,44 @@ update_status ModulePlayer::Update()
 		}
 
 		if (autoTimer >= 240) powerUpAuto = false;
-		if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
+		if (threeWayTimer >= 240) powerUpThreeWay = false;
+		if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && !powerUpThreeWay)
 		{
-			App->particles->AddParticle(App->particles->basicShot, position.x + 10, position.y - 10, Collider::Type::PLAYER_SHOT);
-			App->particles->AddParticle(App->particles->basicShot, position.x + 25, position.y - 10, Collider::Type::PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->basicShot, position.x + 8, position.y - 10, Collider::Type::PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->basicShot, position.x + 23, position.y - 10, Collider::Type::PLAYER_SHOT);
 			App->audio->PlayFx(basicShotFx);
 		}
-		if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_REPEAT && powerUpAuto)
+		if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && powerUpThreeWay)
+		{
+			App->particles->AddParticle(App->particles->basicShot, position.x + 8, position.y - 10, Collider::Type::PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->basicShot, position.x + 23, position.y - 10, Collider::Type::PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->anglePosShot, position.x + 23, position.y - 10, Collider::Type::PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->angleNegShot, position.x + 8, position.y - 10, Collider::Type::PLAYER_SHOT);
+			App->audio->PlayFx(basicShotFx);
+		}
+		if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_REPEAT && powerUpAuto && !powerUpThreeWay)
 		{
 			if (autoCoolDown >= 7)
 			{
-				App->particles->AddParticle(App->particles->basicShot, position.x + 10, position.y - 10, Collider::Type::PLAYER_SHOT);
-				App->particles->AddParticle(App->particles->basicShot, position.x + 25, position.y - 10, Collider::Type::PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->basicShot, position.x + 8, position.y - 10, Collider::Type::PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->basicShot, position.x + 23, position.y - 10, Collider::Type::PLAYER_SHOT);
 				App->audio->PlayFx(basicShotFx);
 				autoCoolDown = 0;
 			}
 
+		}
+		if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_REPEAT && powerUpAuto && powerUpThreeWay)
+		{
+			if (autoCoolDown >= 7)
+			{
+				App->particles->AddParticle(App->particles->basicShot, position.x + 8, position.y - 10, Collider::Type::PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->basicShot, position.x + 23, position.y - 10, Collider::Type::PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->anglePosShot, position.x + 23, position.y - 10, Collider::Type::PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->angleNegShot, position.x + 8, position.y - 10, Collider::Type::PLAYER_SHOT);
+				App->audio->PlayFx(basicShotFx);
+				autoCoolDown = 0;
+			}
+			
 		}
 
 		// If no up/down movement detected, set the current animation back to idle
@@ -220,6 +243,11 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	{
 		powerUpAuto = true;
 		autoTimer = 0;
+	}
+	if (c1 == collider && c2->type == Collider::Type::PU_THREEWAY)
+	{
+		powerUpThreeWay = true;
+		threeWayTimer = 0;
 	}
 	if (c1 == collider && c2->type == Collider::Type::WIN)
 	{
