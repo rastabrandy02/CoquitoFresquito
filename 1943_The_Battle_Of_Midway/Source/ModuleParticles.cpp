@@ -27,11 +27,22 @@ bool ModuleParticles::Start()
 	
 
 
-	basicShotTex = App->textures->Load("Assets/particles_auto.png");
+	//basicShotTex = App->textures->Load("Assets/particles_auto.png");
+	basicShotTex = App->textures->Load("Assets/particles_powerUps.png");
 
 	basicShot.anim.PushBack({ 722, 95, 6, 24 });
 	basicShot.speed.y = -5;
 	basicShot.lifetime = 180;
+
+	anglePosShot.anim.PushBack({ 727, 71, 18, 24 });
+	anglePosShot.speed.y = -5;
+	anglePosShot.speed.x = 5;
+	anglePosShot.lifetime = 180;
+
+	angleNegShot.anim.PushBack({ 727, 94, 18, 24 });
+	angleNegShot.speed.y = -5;
+	angleNegShot.speed.x = -5;
+	angleNegShot.lifetime = 180;
 
 
 
@@ -70,13 +81,21 @@ bool ModuleParticles::Start()
 
 	
 
-	powerUp.anim.PushBack({ 610, 237, 20, 23 });
-	powerUp.anim.PushBack({ 630, 237, 20,23 });
-	powerUp.anim.PushBack({ 650, 237, 20,23 });
-	powerUp.anim.PushBack({ 670, 237, 20,23 });
-	powerUp.anim.loop = true;
-	powerUp.anim.speed = 0.3f;
-	powerUp.lifetime = 600;
+	powerUp_Auto.anim.PushBack({ 610, 237, 20, 23 });
+	powerUp_Auto.anim.PushBack({ 630, 237, 20, 23 });
+	powerUp_Auto.anim.PushBack({ 650, 237, 20, 23 });
+	powerUp_Auto.anim.PushBack({ 670, 237, 20, 23 });
+	powerUp_Auto.anim.loop = true;
+	powerUp_Auto.anim.speed = 0.3f;
+	powerUp_Auto.lifetime = 600;
+
+	powerUp_ThreeWay.anim.PushBack({ 608, 277, 20, 23 });
+	powerUp_ThreeWay.anim.PushBack({ 629, 277, 20, 23 });
+	powerUp_ThreeWay.anim.PushBack({ 650, 277, 20, 23 });
+	powerUp_ThreeWay.anim.PushBack({ 670, 277, 20, 23 });
+	powerUp_ThreeWay.anim.loop = true;
+	powerUp_ThreeWay.anim.speed = 0.3f;
+	powerUp_ThreeWay.lifetime = 600;
 
 
 	

@@ -66,8 +66,11 @@ public:
 	
 	Particle playerDeath;
 	Particle basicShot;
+	Particle anglePosShot;
+	Particle angleNegShot;
 	Particle enemyExplosion;
-	Particle powerUp;
+	Particle powerUp_Auto;
+	Particle powerUp_ThreeWay;
 	
 };
 
