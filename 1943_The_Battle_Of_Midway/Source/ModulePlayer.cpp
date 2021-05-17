@@ -75,6 +75,7 @@ update_status ModulePlayer::Update()
 	autoCoolDown++;
 	autoTimer++;
 	threeWayTimer++;
+	
 	if (!destroyed)
 	{
 		if (position.x >= 0)

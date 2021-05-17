@@ -82,7 +82,7 @@ bool SceneLevel1::Start()
 
 update_status SceneLevel1::Update()
 {
-	App->render->camera.y -= 2;
+	App->render->camera.y -= 1;
 	if (App->input->keys[SDL_SCANCODE_F2] == KEY_STATE::KEY_DOWN)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->sceneEnd, 60);

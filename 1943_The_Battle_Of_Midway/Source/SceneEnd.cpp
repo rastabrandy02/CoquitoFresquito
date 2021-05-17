@@ -84,6 +84,7 @@ update_status SceneEnd::Update()
 	}
 	planeAnim.Update();
 	path.Update();
+
 	return update_status::UPDATE_CONTINUE;
 }
 

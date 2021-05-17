@@ -44,6 +44,7 @@ update_status ModuleInput::PreUpdate()
 			keys[i] = (keys[i] == KEY_REPEAT || keys[i] == KEY_DOWN) ? KEY_UP : KEY_IDLE;
 	}
 
+	if (App->input->keys[SDL_SCANCODE_ESCAPE] == KEY_STATE::KEY_DOWN) return update_status::UPDATE_STOP;
 
 	return update_status::UPDATE_CONTINUE;
 }
