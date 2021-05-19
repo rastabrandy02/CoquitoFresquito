@@ -24,6 +24,8 @@ public:
 
 	update_status PostUpdate() override;
 
+	void DebugDrawGamepadInfo();
+
 	float fps = 0;
 private:
 	 
