@@ -32,8 +32,9 @@ private:
 	uint score = 000;
 	int scoreFont = -1;
 	int textFont = 0;
-	char scoreText[10] = { 0 };
+	char scoreText[150] = { 0 };
 	char fpsText[16] = { 0 };
+	char text[150] = {"\0"};
 	SDL_Texture* healtBar1 = nullptr;
 	SDL_Texture* healtBar2 = nullptr;
 	SDL_Texture* healtBar3 = nullptr;

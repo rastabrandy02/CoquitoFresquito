@@ -60,6 +60,7 @@ update_status ModuleInput::PreUpdate()
 			break;
 		}
 		}
+	}
 
 		//Read all keyboard data and update our custom array
 		SDL_PumpEvents();
@@ -74,14 +75,28 @@ update_status ModuleInput::PreUpdate()
 
 		if (App->input->keys[SDL_SCANCODE_ESCAPE] == KEY_STATE::KEY_DOWN) return update_status::UPDATE_STOP;
 
+		UpdateGamepadsInput();
+
 		return update_status::UPDATE_CONTINUE;
-	}
+	
 }
 
 bool ModuleInput::CleanUp()
 {
 	LOG("Quitting SDL input event subsystem");
 
+	for (uint i = 0; i < MAX_PADS; ++i)
+	{
+		if (pads[i].haptic != nullptr)
+		{
+			SDL_HapticStopAll(pads[i].haptic);
+			SDL_HapticClose(pads[i].haptic);
+		}
+		if (pads[i].controller != nullptr) SDL_GameControllerClose(pads[i].controller);
+	}
+
+	SDL_QuitSubSystem(SDL_INIT_HAPTIC);
+	SDL_QuitSubSystem(SDL_INIT_GAMECONTROLLER);
 	SDL_QuitSubSystem(SDL_INIT_EVENTS);
 	return true;
 }

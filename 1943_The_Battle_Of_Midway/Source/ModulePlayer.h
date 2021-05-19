@@ -78,6 +78,8 @@ public:
 	// Font score index
 	int score;
 
+	int shotMaxCountDown = 20;
+	int shotCountDown = 0;
 
 	int playerDeadParticle = 0;
 

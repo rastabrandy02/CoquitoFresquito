@@ -145,53 +145,48 @@ update_status ModulePlayer::Update()
 		if (threeWayTimer >= 240) powerUpThreeWay = false;
 		if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN || pad.a == true)
 		{
-			if (!powerUpThreeWay)
+			if (!powerUpThreeWay && shotCountDown == 0)
 			{
 				App->particles->AddParticle(App->particles->basicShot, position.x + 8, position.y - 10, Collider::Type::PLAYER_SHOT);
 				App->particles->AddParticle(App->particles->basicShot, position.x + 23, position.y - 10, Collider::Type::PLAYER_SHOT);
 				App->audio->PlayFx(basicShotFx);
+				shotCountDown = shotMaxCountDown;
 			}
-			else if (powerUpThreeWay)
+			
+		}
+		if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && powerUpThreeWay && shotCountDown == 0)
+		{
+			if (pad.a == true)
 			{
 				App->particles->AddParticle(App->particles->basicShot, position.x + 8, position.y - 10, Collider::Type::PLAYER_SHOT);
 				App->particles->AddParticle(App->particles->basicShot, position.x + 23, position.y - 10, Collider::Type::PLAYER_SHOT);
 				App->particles->AddParticle(App->particles->anglePosShot, position.x + 23, position.y - 10, Collider::Type::PLAYER_SHOT);
 				App->particles->AddParticle(App->particles->angleNegShot, position.x + 8, position.y - 10, Collider::Type::PLAYER_SHOT);
 				App->audio->PlayFx(basicShotFx);
+				shotCountDown = shotMaxCountDown;
 			}
-			else if (powerUpAuto && !powerUpThreeWay)
-			{
-				if (autoCoolDown >= 7)
-				{
-					App->particles->AddParticle(App->particles->basicShot, position.x + 8, position.y - 10, Collider::Type::PLAYER_SHOT);
-					App->particles->AddParticle(App->particles->basicShot, position.x + 23, position.y - 10, Collider::Type::PLAYER_SHOT);
-					App->audio->PlayFx(basicShotFx);
-					autoCoolDown = 0;
-				}
-			}
-			else if (powerUpAuto && powerUpThreeWay)
-			{
-				if (autoCoolDown >= 7)
-				{
-					App->particles->AddParticle(App->particles->basicShot, position.x + 8, position.y - 10, Collider::Type::PLAYER_SHOT);
-					App->particles->AddParticle(App->particles->basicShot, position.x + 23, position.y - 10, Collider::Type::PLAYER_SHOT);
-					App->particles->AddParticle(App->particles->anglePosShot, position.x + 23, position.y - 10, Collider::Type::PLAYER_SHOT);
-					App->particles->AddParticle(App->particles->angleNegShot, position.x + 8, position.y - 10, Collider::Type::PLAYER_SHOT);
-					App->audio->PlayFx(basicShotFx);
-					autoCoolDown = 0;
-				}
-			}
-		}
-		if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && powerUpThreeWay)
-		{
 		}
 		if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_REPEAT && powerUpAuto && !powerUpThreeWay)
 		{
-
+			if (autoCoolDown >= 7 && pad.a == true)
+			{
+				App->particles->AddParticle(App->particles->basicShot, position.x + 8, position.y - 10, Collider::Type::PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->basicShot, position.x + 23, position.y - 10, Collider::Type::PLAYER_SHOT);
+				App->audio->PlayFx(basicShotFx);
+				autoCoolDown = 0;
+			}
 		}
 		if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_REPEAT && powerUpAuto && powerUpThreeWay)
 		{
-			
+			if (autoCoolDown >= 7 && pad.a == true)
+			{
+				App->particles->AddParticle(App->particles->basicShot, position.x + 8, position.y - 10, Collider::Type::PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->basicShot, position.x + 23, position.y - 10, Collider::Type::PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->anglePosShot, position.x + 23, position.y - 10, Collider::Type::PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->angleNegShot, position.x + 8, position.y - 10, Collider::Type::PLAYER_SHOT);
+				App->audio->PlayFx(basicShotFx);
+				autoCoolDown = 0;
+			}
 		}
 
 		// If no up/down movement detected, set the current animation back to idle
@@ -199,7 +194,7 @@ update_status ModulePlayer::Update()
 		{
 			if (pad.left_x == 0.0f && pad.left_y == 0.0f) currentAnimation = &idleAnim;
 		}
-		if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE
+		else if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE
 			&& App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE)
 			currentAnimation = &idleAnim;
 
@@ -207,7 +202,7 @@ update_status ModulePlayer::Update()
 
 		currentAnimation->Update();
 
-		if (App->input->keys[SDL_SCANCODE_F2] == KEY_DOWN)
+		if (App->input->keys[SDL_SCANCODE_F4] == KEY_DOWN)
 			debugGamepadInfo = !debugGamepadInfo;
 
 		if (App->input->keys[SDL_SCANCODE_F3] == KEY_STATE::KEY_DOWN)
@@ -215,7 +210,7 @@ update_status ModulePlayer::Update()
 			godMode = !godMode;
 		}
 	}
-	
+	if (shotCountDown > 0) --shotCountDown;
 	return update_status::UPDATE_CONTINUE;
 }
 
