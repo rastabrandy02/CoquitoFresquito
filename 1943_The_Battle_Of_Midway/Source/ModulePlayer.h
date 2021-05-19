@@ -87,6 +87,8 @@ public:
 	bool powerUpAuto = false;
 	int autoCoolDown = 0;
 	int autoTimer = 0;
+
+	bool debugGamepadInfo = false;
 };
 
 #endif //!__MODULE_PLAYER_H__
