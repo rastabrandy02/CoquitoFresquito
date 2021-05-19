@@ -150,7 +150,7 @@ update_status ModulePlayer::Update()
 				App->particles->AddParticle(App->particles->basicShot, position.x + 8, position.y - 10, Collider::Type::PLAYER_SHOT);
 				App->particles->AddParticle(App->particles->basicShot, position.x + 23, position.y - 10, Collider::Type::PLAYER_SHOT);
 				App->audio->PlayFx(basicShotFx);
-				App->input->ShakeController(0, 12, 0.33f);
+				App->input->ShakeController(0, 1, 0.33f);
 				shotCountDown = shotMaxCountDown;
 			}
 			
@@ -164,7 +164,7 @@ update_status ModulePlayer::Update()
 				App->particles->AddParticle(App->particles->anglePosShot, position.x + 23, position.y - 10, Collider::Type::PLAYER_SHOT);
 				App->particles->AddParticle(App->particles->angleNegShot, position.x + 8, position.y - 10, Collider::Type::PLAYER_SHOT);
 				App->audio->PlayFx(basicShotFx);
-				App->input->ShakeController(0, 12, 0.33f);
+				App->input->ShakeController(0, 1, 0.33f);
 				shotCountDown = shotMaxCountDown;
 			}
 		}
@@ -175,7 +175,7 @@ update_status ModulePlayer::Update()
 				App->particles->AddParticle(App->particles->basicShot, position.x + 8, position.y - 10, Collider::Type::PLAYER_SHOT);
 				App->particles->AddParticle(App->particles->basicShot, position.x + 23, position.y - 10, Collider::Type::PLAYER_SHOT);
 				App->audio->PlayFx(basicShotFx);
-				App->input->ShakeController(0, 12, 0.33f);
+				App->input->ShakeController(0, 1, 0.33f);
 				autoCoolDown = 0;
 			}
 		}
@@ -188,7 +188,7 @@ update_status ModulePlayer::Update()
 				App->particles->AddParticle(App->particles->anglePosShot, position.x + 23, position.y - 10, Collider::Type::PLAYER_SHOT);
 				App->particles->AddParticle(App->particles->angleNegShot, position.x + 8, position.y - 10, Collider::Type::PLAYER_SHOT);
 				App->audio->PlayFx(basicShotFx);
-				App->input->ShakeController(0, 12, 0.33f);
+				App->input->ShakeController(0, 1, 0.33f);
 				autoCoolDown = 0;
 			}
 		}

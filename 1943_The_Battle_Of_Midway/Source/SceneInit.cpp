@@ -43,12 +43,17 @@ bool SceneInit::Start()
 
 update_status SceneInit::Update()
 {
+	GamePad& pad = App->input->pads[0];
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
 	timer++;
-	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN || timer == 200)
+	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN || timer == 200 || pad.a)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->sceneIntro, 60);
+	}
+	else if (App->input->keys[SDL_SCANCODE_LSHIFT] || pad.start)
+	{
+		App->fade->FadeToBlack(this, (Module*)App->sceneLevel_1, 60);
 	}
 
 

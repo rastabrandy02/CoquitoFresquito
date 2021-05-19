@@ -76,9 +76,10 @@ bool SceneEnd::Start()
 
 update_status SceneEnd::Update()
 {
+	GamePad& pad = App->input->pads[0];
 	position += path.GetRelativePosition();
 	
-	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
+	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN || pad.a)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->sceneIntro, 90);
 	}
