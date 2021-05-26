@@ -155,10 +155,10 @@ update_status ModulePlayer::Update()
 			}
 			
 		}
-		if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && powerUpThreeWay && shotCountDown == 0)
+		if ((App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN || pad.a == true) && powerUpThreeWay && shotCountDown == 0)
 		{
-			if (pad.a == true)
-			{
+			
+			
 				App->particles->AddParticle(App->particles->basicShot, position.x + 8, position.y - 10, Collider::Type::PLAYER_SHOT);
 				App->particles->AddParticle(App->particles->basicShot, position.x + 23, position.y - 10, Collider::Type::PLAYER_SHOT);
 				App->particles->AddParticle(App->particles->anglePosShot, position.x + 23, position.y - 10, Collider::Type::PLAYER_SHOT);
@@ -166,11 +166,11 @@ update_status ModulePlayer::Update()
 				App->audio->PlayFx(basicShotFx);
 				App->input->ShakeController(0, 1, 0.33f);
 				shotCountDown = shotMaxCountDown;
-			}
+			
 		}
-		if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_REPEAT && powerUpAuto && !powerUpThreeWay)
+		if ((App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_REPEAT || pad.a == true) && powerUpAuto && !powerUpThreeWay)
 		{
-			if (autoCoolDown >= 7 && pad.a == true)
+			if (autoCoolDown >= 7)
 			{
 				App->particles->AddParticle(App->particles->basicShot, position.x + 8, position.y - 10, Collider::Type::PLAYER_SHOT);
 				App->particles->AddParticle(App->particles->basicShot, position.x + 23, position.y - 10, Collider::Type::PLAYER_SHOT);
@@ -179,9 +179,9 @@ update_status ModulePlayer::Update()
 				autoCoolDown = 0;
 			}
 		}
-		if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_REPEAT && powerUpAuto && powerUpThreeWay)
+		if ((App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_REPEAT || pad.a == true) && powerUpAuto && powerUpThreeWay)
 		{
-			if (autoCoolDown >= 7 && pad.a == true)
+			if (autoCoolDown >= 7)
 			{
 				App->particles->AddParticle(App->particles->basicShot, position.x + 8, position.y - 10, Collider::Type::PLAYER_SHOT);
 				App->particles->AddParticle(App->particles->basicShot, position.x + 23, position.y - 10, Collider::Type::PLAYER_SHOT);
