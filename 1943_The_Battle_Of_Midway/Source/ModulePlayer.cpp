@@ -54,7 +54,7 @@ bool ModulePlayer::Start()
 	basicShotFx = App->audio->LoadFx("Assets/FX/basic_shot.wav");
 
 	position.x = 195;
-	position.y = 480;
+	position.y = 465;
 
 	life = 9;
 	destroyed = false;
@@ -112,7 +112,7 @@ update_status ModulePlayer::Update()
 			}
 		}
 
-		if (position.x <= 390)
+		if (position.x <= 365)
 
 		{
 			if (App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT || pad.left_x > 0.0f)
@@ -127,16 +127,22 @@ update_status ModulePlayer::Update()
 		}
 		if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT || pad.left_y > 0.0f)
 		{
-
-			position.y += speed;
+			if (position.y < App->render->camera.y + 465)
+			{
+				position.y += speed;
+			}
+			
 
 		}
 
 		if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT || pad.left_y < 0.0f)
 		{
 
-
-			position.y -= speed;
+			if (position.y > App->render->camera.y + 50)
+			{
+				position.y -= speed;
+			}
+			
 
 
 		}
