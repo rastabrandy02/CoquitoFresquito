@@ -101,7 +101,7 @@ bool ModuleParticles::Start()
 	//powerUp_Pow.anim.PushBack({ 154, 719, 27, 37 });
 	//powerUp_Pow.anim.PushBack({ 57, 629, 18, 41 });
 	powerUp_Pow.anim.loop = true;
-	powerUp_Pow.anim.speed = 0.3f;
+	powerUp_Pow.anim.speed = 0.3f; 
 	powerUp_Pow.lifetime = 600;
 	
 
