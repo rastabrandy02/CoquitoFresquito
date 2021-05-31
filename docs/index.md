@@ -22,13 +22,22 @@
 - F3 -> Direct Win  
 - Keyboard arrows -> Move debuggin camera
 
-## Credits
+## Our team
+
+<p align="center">
+<img src="https://github.com/rastabrandy02/CoquitoFresquito/blob/main/Wiki_Resources/Home/cokitofreskitoteamphoto.png" heigth=600 width=600>
+</p>
+
+### Q&A
 [Jose Antonio Atencia](https://github.com/JedTyde)
 
+### Code
 [Víctor Falcón Zaro](https://github.com/ZaroDev)
 
+### Managment
 [Fernando Freixenet Garcia](https://github.com/rastabrandy02)
 
+### Art/Design
 [Anna Metreveli](https://github.com/aNnAm2606)
 
 ## GitHub Repository
