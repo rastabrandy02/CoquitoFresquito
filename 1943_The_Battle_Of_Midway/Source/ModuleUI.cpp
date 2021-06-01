@@ -17,12 +17,13 @@ ModuleUI::~ModuleUI()
 bool ModuleUI::Start()
 {
 	bool ret = true;
-	char lookupTable1[] = { "01234567890" };
+	char lookupTable1[] = { "0123456789" };
 	char lookupTable2[] = { "! @,_./0123456789$;< ?abcdefghijklmnopqrstuvwxyz" };
 	char lookupTable3[] = { "abcdefghijklmnopqrstuvwxyz" };
 	char lookupTable4[] = { "1234567890.:,' (!?)+-*=" };
-	scoreFont = App->fonts->Load("Assets/rtype_font.png", lookupTable2, 1);
+	scoreFont = App->fonts->Load("Assets/score_font.png", lookupTable1, 1);
 	textFont = App->fonts->Load("Assets/font.png", lookupTable3, 1);
+	testFont = App->fonts->Load("Assets/rtype_font.png", lookupTable2, 1);
 
 	healtBar1 = App->textures->Load("Assets/Lifebars/life_bar_1.png");
 	healtBar2 = App->textures->Load("Assets/Lifebars/life_bar_2.png");
@@ -76,7 +77,7 @@ update_status ModuleUI::PostUpdate()
 	sprintf_s(fpsText, "fps %.2f", fps);
 	App->fonts->BlitText(40, 40, scoreFont, scoreText);
 	App->fonts->BlitText(10, 10, textFont, "player");
-	App->fonts->BlitText(300, 10, scoreFont, fpsText);
+	App->fonts->BlitText(300, 10, testFont, fpsText);
 	return update_status::UPDATE_CONTINUE;
 }
 

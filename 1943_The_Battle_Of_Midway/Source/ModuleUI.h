@@ -27,11 +27,12 @@ public:
 	void DebugDrawGamepadInfo();
 
 	float fps = 0;
+	uint score = 000;
 private:
 	 
-	uint score = 000;
 	int scoreFont = -1;
 	int textFont = 0;
+	int testFont = 1;
 	char scoreText[150] = { 0 };
 	char fpsText[16] = { 0 };
 	char text[150] = {"\0"};

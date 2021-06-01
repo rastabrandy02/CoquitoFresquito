@@ -48,7 +48,7 @@ bool ModulePlayer::Start()
 	playerDeadParticle = 0;
 	texture = App->textures->Load("Assets/Art/SuperAce/yellow_plane.png");
 	currentAnimation = &idleAnim;
-
+	App->UI->score = 0;
 	
 	deathPlayerFx = App->audio->LoadFx("Assets/FX/death_player.wav");
 	basicShotFx = App->audio->LoadFx("Assets/FX/basic_shot.wav");
@@ -301,5 +301,5 @@ bool ModulePlayer::CleanUp()
 
 void ModulePlayer::AddScore()
 {
-	score += 100;
+	App->UI->score += 100;
 }
