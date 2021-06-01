@@ -19,10 +19,10 @@ bool ModuleUI::Start()
 	bool ret = true;
 	char lookupTable1[] = { "0123456789 " };
 	char lookupTable2[] = { "! @,_./0123456789$;< ?abcdefghijklmnopqrstuvwxyz" };
-	char lookupTable3[] = { "0123456789abcdefghijklmnopqrstuvwxyz" };
+	char lookupTable3[] = { "0123456789abcdefghijklmnopqrstuvwxyz " };
 	char lookupTable4[] = { "1234567890.:,' (!?)+-*=" };
 	scoreFont = App->fonts->Load("Assets/score_font.png", lookupTable1, 1);
-	textFont = App->fonts->Load("Assets/textfont.png", lookupTable3, 1);
+	textFont = App->fonts->Load("Assets/test.png", lookupTable3, 1);
 	testFont = App->fonts->Load("Assets/rtype_font.png", lookupTable2, 1);
 
 	healtBar1 = App->textures->Load("Assets/Lifebars/life_bar_1.png");
@@ -44,38 +44,48 @@ update_status ModuleUI::PostUpdate()
 	switch (App->player->life)
 	{
 	case 9:
-		App->render->Blit(healtBar1, 0, 488, NULL, 0.0f, false);
+		App->render->Blit(healtBar1, 0, 458, NULL, 0.0f, false);
 		break;
 	case 8:
-		App->render->Blit(healtBar2, 0, 488, NULL, 0.0f, false);
+		App->render->Blit(healtBar2, 0, 458, NULL, 0.0f, false);
 		break;
 	case 7:
-		App->render->Blit(healtBar3, 0, 488, NULL, 0.0f, false);
+		App->render->Blit(healtBar3, 0, 458, NULL, 0.0f, false);
 		break;
 	case 6:
-		App->render->Blit(healtBar4, 0, 488, NULL, 0.0f, false);
+		App->render->Blit(healtBar4, 0, 458, NULL, 0.0f, false);
 		break;
 	case 5:
-		App->render->Blit(healtBar5, 0, 488, NULL, 0.0f, false);
+		App->render->Blit(healtBar5, 0, 458, NULL, 0.0f, false);
 		break;
 	case 4:
-		App->render->Blit(healtBar6, 0, 488, NULL, 0.0f, false);
+		App->render->Blit(healtBar6, 0, 458, NULL, 0.0f, false);
 		break;
 	case 3:
-		App->render->Blit(healtBar7, 0, 488, NULL, 0.0f, false);
+		App->render->Blit(healtBar7, 0, 458, NULL, 0.0f, false);
 	case 2:
-		App->render->Blit(healtBar8, 0, 488, NULL, 0.0f, false);
+		App->render->Blit(healtBar8, 0, 458, NULL, 0.0f, false);
 		break;
 	case 1:
-		App->render->Blit(healtBar9, 0, 488, NULL, 0.0f, false);
+		App->render->Blit(healtBar9, 0, 458, NULL, 0.0f, false);
 		break;
 	default:
 		break;
 	}
-
+	
+	counter++;
+	if ((counter / 60) % 2 == 0)
+	{
+		App->fonts->BlitText(250, 458, textFont,"insert a coin");
+	}
+	if (autopw)
+	{
+		App->fonts->BlitText(0, 488, textFont, "auto");
+		
+	}
 	sprintf_s(scoreText, "%7d", score);
 	sprintf_s(fpsText, "fps %.2f", fps);
-	App->fonts->BlitText(90, 35, scoreFont, scoreText);
+	App->fonts->BlitText(50, 35, scoreFont, scoreText);
 	App->fonts->BlitText(10, 9, textFont, "1player");
 	App->fonts->BlitText(260, 9, textFont, "2player");
 	//App->fonts->BlitText(300, 10, testFont, fpsText);

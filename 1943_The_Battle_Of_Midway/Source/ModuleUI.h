@@ -29,13 +29,16 @@ public:
 	float fps = 0;
 	uint score = 000;
 private:
-	 
+	int autoCounter = 0;
+	int counter = 0;
 	int scoreFont = -1;
 	int textFont = 0;
 	int testFont = 1;
 	char scoreText[150] = { 0 };
 	char fpsText[16] = { 0 };
 	char text[150] = {"\0"};
+	bool way;
+	bool autopw;
 	SDL_Texture* healtBar1 = nullptr;
 	SDL_Texture* healtBar2 = nullptr;
 	SDL_Texture* healtBar3 = nullptr;
