@@ -28,6 +28,9 @@ public:
 
 	float fps = 0;
 	uint score = 000;
+	bool way;
+	bool autopw;
+
 private:
 	int autoCounter = 0;
 	int counter = 0;
@@ -37,8 +40,6 @@ private:
 	char scoreText[150] = { 0 };
 	char fpsText[16] = { 0 };
 	char text[150] = {"\0"};
-	bool way;
-	bool autopw;
 	SDL_Texture* healtBar1 = nullptr;
 	SDL_Texture* healtBar2 = nullptr;
 	SDL_Texture* healtBar3 = nullptr;

@@ -83,6 +83,10 @@ update_status ModuleUI::PostUpdate()
 		App->fonts->BlitText(0, 488, textFont, "auto");
 		
 	}
+	else if (way)
+	{
+		App->fonts->BlitText(0, 488, textFont, "way");
+	}
 	sprintf_s(scoreText, "%7d", score);
 	sprintf_s(fpsText, "fps %.2f", fps);
 	App->fonts->BlitText(50, 35, scoreFont, scoreText);

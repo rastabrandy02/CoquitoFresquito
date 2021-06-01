@@ -158,6 +158,8 @@ update_status ModulePlayer::Update()
 				App->audio->PlayFx(basicShotFx);
 				App->input->ShakeController(0, 60, 0.33f);
 				shotCountDown = shotMaxCountDown;
+				App->UI->way = false;
+				App->UI->autopw = false;
 			}
 			
 		}
@@ -172,6 +174,7 @@ update_status ModulePlayer::Update()
 				App->audio->PlayFx(basicShotFx);
 				App->input->ShakeController(0, 60, 0.33f);
 				shotCountDown = shotMaxCountDown;
+				App->UI->way = true;
 			
 		}
 		if ((App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_REPEAT || pad.a == true) && powerUpAuto && !powerUpThreeWay)
@@ -183,6 +186,7 @@ update_status ModulePlayer::Update()
 				App->audio->PlayFx(basicShotFx);
 				App->input->ShakeController(0, 60, 0.33f);
 				autoCoolDown = 0;
+				App->UI->autopw = true;
 			}
 		}
 		if ((App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_REPEAT || pad.a == true) && powerUpAuto && powerUpThreeWay)
@@ -196,6 +200,7 @@ update_status ModulePlayer::Update()
 				App->audio->PlayFx(basicShotFx);
 				App->input->ShakeController(0, 1, 0.33f);
 				autoCoolDown = 0;
+				App->UI->way = true;
 			}
 		}
 
