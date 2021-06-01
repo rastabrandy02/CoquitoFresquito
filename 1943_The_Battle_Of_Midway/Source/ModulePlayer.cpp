@@ -156,7 +156,7 @@ update_status ModulePlayer::Update()
 				App->particles->AddParticle(App->particles->basicShot, position.x + 8, position.y - 10, Collider::Type::PLAYER_SHOT);
 				App->particles->AddParticle(App->particles->basicShot, position.x + 23, position.y - 10, Collider::Type::PLAYER_SHOT);
 				App->audio->PlayFx(basicShotFx);
-				App->input->ShakeController(0, 1, 0.33f);
+				App->input->ShakeController(0, 60, 0.33f);
 				shotCountDown = shotMaxCountDown;
 			}
 			
@@ -170,7 +170,7 @@ update_status ModulePlayer::Update()
 				App->particles->AddParticle(App->particles->anglePosShot, position.x + 23, position.y - 10, Collider::Type::PLAYER_SHOT);
 				App->particles->AddParticle(App->particles->angleNegShot, position.x + 8, position.y - 10, Collider::Type::PLAYER_SHOT);
 				App->audio->PlayFx(basicShotFx);
-				App->input->ShakeController(0, 1, 0.33f);
+				App->input->ShakeController(0, 60, 0.33f);
 				shotCountDown = shotMaxCountDown;
 			
 		}
@@ -181,7 +181,7 @@ update_status ModulePlayer::Update()
 				App->particles->AddParticle(App->particles->basicShot, position.x + 8, position.y - 10, Collider::Type::PLAYER_SHOT);
 				App->particles->AddParticle(App->particles->basicShot, position.x + 23, position.y - 10, Collider::Type::PLAYER_SHOT);
 				App->audio->PlayFx(basicShotFx);
-				App->input->ShakeController(0, 1, 0.33f);
+				App->input->ShakeController(0, 60, 0.33f);
 				autoCoolDown = 0;
 			}
 		}
@@ -242,6 +242,7 @@ update_status ModulePlayer::PostUpdate()
 			App->particles->AddParticle(App->particles->playerDeath, position.x, position.y, Collider::Type::NONE, 0);
 			App->audio->PlayFx(deathPlayerFx);
 			playerDeadParticle = 2;
+			App->input->ShakeController(0, 60, 1.0f);
 
 		}
 		
@@ -258,6 +259,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		
 		App->particles->AddParticle(App->particles->enemyExplosion, position.x, position.y, Collider::Type::NONE, 0);
 		if (godMode == false) life--;
+		App->input->ShakeController(0, 60, 0.66f);
 	}
 
 	/*if (c1->type == Collider::Type::ENEMY && c2->type == Collider::Type::PLAYER_SHOT)
