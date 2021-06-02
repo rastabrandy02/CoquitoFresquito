@@ -42,6 +42,9 @@ private:
 	char scoreText[150] = { 0 };
 	char fpsText[16] = { 0 };
 	char text[150] = {"\0"};
+	char powerupText[150] = { "\0" };
+	int timersAuto;
+	int timersWay;
 	SDL_Texture* healtBar1 = nullptr;
 	SDL_Texture* healtBar2 = nullptr;
 	SDL_Texture* healtBar3 = nullptr;

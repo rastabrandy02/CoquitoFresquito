@@ -22,7 +22,7 @@ bool ModuleUI::Start()
 	char lookupTable3[] = { "0123456789abcdefghijklmnopqrstuvwxyz " };
 	char lookupTable4[] = { "1234567890.:,' (!?)+-*=" };
 	scoreFont = App->fonts->Load("Assets/score_font.png", lookupTable1, 1);
-	textFont = App->fonts->Load("Assets/test.png", lookupTable3, 1);
+	textFont = App->fonts->Load("Assets/textFont.png", lookupTable3, 1);
 	testFont = App->fonts->Load("Assets/rtype_font.png", lookupTable2, 1);
 
 	healtBar1 = App->textures->Load("Assets/Lifebars/life_bar_1.png");
@@ -34,7 +34,8 @@ bool ModuleUI::Start()
 	healtBar7 = App->textures->Load("Assets/Lifebars/life_bar_7.png");
 	healtBar8 = App->textures->Load("Assets/Lifebars/life_bar_8.png");
 	healtBar9 = App->textures->Load("Assets/Lifebars/life_bar_9.png");
-
+	timersAuto = 240;
+	
 
 	return ret;
 }
@@ -80,12 +81,25 @@ update_status ModuleUI::PostUpdate()
 	}
 	if (autopw)
 	{
+		timersAuto--;
+		timersWay = timersAuto / 60;
+		sprintf_s(powerupText, "%2d", timersWay);
 		App->fonts->BlitText(0, 488, textFont, "auto");
+		App->fonts->BlitText(50, 488, scoreFont, powerupText);
 		
 	}
 	else if (way)
 	{
+		timersAuto--;
+		timersWay = timersAuto / 60;
+		sprintf_s(powerupText, "%2d", timersWay);
+
 		App->fonts->BlitText(0, 488, textFont, "way");
+		App->fonts->BlitText(50, 488, scoreFont, powerupText);
+	}
+	else
+	{
+		timersAuto = 240;
 	}
 	sprintf_s(scoreText, "%7d", score);
 	sprintf_s(fpsText, "fps %.2f", fps);

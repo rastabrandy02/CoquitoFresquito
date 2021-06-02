@@ -37,7 +37,6 @@ public:
 	bool CleanUp() override;
 	uint life = 9;
 
-public:
 	// Position of the player in the map
 	iPoint position;
 
