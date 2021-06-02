@@ -47,6 +47,10 @@ public:
 	// A flag for the enemy removal. Important! We do not delete objects instantly
 	bool pendingToDelete = false;
 
+	int health;
+	bool invincible = false;
+	
+
 protected:
 	// A ptr to the current animation
 	Animation* currentAnim = nullptr;

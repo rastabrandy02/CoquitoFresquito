@@ -33,6 +33,7 @@ Enemy_RedPlane::Enemy_RedPlane(int x, int y) : Enemy(x, y)
 	path.loop = true;
 
 	collider = App->collisions->AddCollider({0, 0, 24, 24}, Collider::Type::ENEMY, (Module*)App->enemies);
+	health = 1;
 }
 
 void Enemy_RedPlane::Update()

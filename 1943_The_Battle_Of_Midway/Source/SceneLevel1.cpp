@@ -66,6 +66,8 @@ bool SceneLevel1::Start()
 	App->enemies->AddEnemy(ENEMY_TYPE::REDLOOPPLANE, 250, -80);
 	App->enemies->AddEnemy(ENEMY_TYPE::REDLOOPPLANE, 250, -50);
 
+	App->enemies->AddEnemy(ENEMY_TYPE::GREENBOMBER, 165, -10);
+
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
 
