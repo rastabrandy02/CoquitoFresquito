@@ -96,6 +96,27 @@ update_status ModuleUI::PostUpdate()
 	return update_status::UPDATE_CONTINUE;
 }
 
+bool ModuleUI::CleanUp()
+{
+	bool ret = true;
+	App->textures->Unload(healtBar1);
+	App->textures->Unload(healtBar2);
+	App->textures->Unload(healtBar3);
+	App->textures->Unload(healtBar4);
+	App->textures->Unload(healtBar5);
+	App->textures->Unload(healtBar6);
+	App->textures->Unload(healtBar7);
+	App->textures->Unload(healtBar8);
+	App->textures->Unload(healtBar9);
+
+	App->fonts->UnLoad(scoreFont);
+	App->fonts->UnLoad(testFont);
+	App->fonts->UnLoad(textFont);
+
+
+	return ret;
+}
+
 void ModuleUI::DebugDrawGamepadInfo()
 {
 	GamePad& pad = App->input->pads[0];

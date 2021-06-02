@@ -23,6 +23,8 @@ private:
 	Animation downAnim;
 	Animation stayAnim;
 	Animation upAnim;
+	Animation left;
+	Animation right;
 
 	Path path;
 };

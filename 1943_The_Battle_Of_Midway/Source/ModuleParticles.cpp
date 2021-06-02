@@ -104,6 +104,12 @@ bool ModuleParticles::Start()
 	powerUp_Pow.anim.speed = 0.3f; 
 	powerUp_Pow.lifetime = 600;
 	
+	enemyShot.anim.PushBack({ 38, 403, 8, 8 });
+	enemyShot.anim.PushBack({ 47, 403, 8, 8 });
+	enemyShot.anim.PushBack({ 61, 403, 8, 8 });
+	enemyShot.anim.speed = 0.1f;
+	enemyShot.anim.loop = true;
+	enemyShot.speed = { (App->player->position.x - enemyShot.position.x), (App->player->position.y - enemyShot.position.y) };
 
 	return true;
 }

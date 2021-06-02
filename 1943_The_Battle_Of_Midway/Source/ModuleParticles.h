@@ -72,6 +72,8 @@ public:
 	Particle powerUp_Auto;
 	Particle powerUp_ThreeWay;
 	Particle powerUp_Pow;
+	Particle enemyShot;
+	Particle biplaneDeath;
 	
 };
 

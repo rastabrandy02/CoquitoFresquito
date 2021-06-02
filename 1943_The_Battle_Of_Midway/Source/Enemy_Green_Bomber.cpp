@@ -2,10 +2,11 @@
 
 #include "Application.h"
 #include "ModuleCollisions.h"
+#include "ModuleParticles.h"
 
-Enemy_Green_Bomber:: Enemy_Green_Bomber(int x, int y) : Enemy(x, y)
+Enemy_Green_Bomber::Enemy_Green_Bomber(int x, int y) : Enemy(x, y)
 {
-	
+
 
 
 	//Idle
@@ -42,11 +43,23 @@ Enemy_Green_Bomber:: Enemy_Green_Bomber(int x, int y) : Enemy(x, y)
 	upAnim.PushBack({ 940, 1075, 100, 80 });
 	upAnim.PushBack({ 820, 885, 100, 80 });
 	upAnim.PushBack({ 930, 885, 105, 85 });
+	upAnim.speed = 0.1f;
+	upAnim.loop = false;
 
 	//upAnim.PushBack({ 815,975, 110, 90 });
 
-	upAnim.speed = 0.1f;
-	upAnim.loop = false;
+	right.PushBack({ 929, 971, 103, 86 });
+	right.PushBack({ 830, 1074, 92, 86 });
+	right.PushBack({940, 1076, 100, 83});
+	right.speed = 0.1f;
+	right.loop = false;
+
+	left.PushBack({ 823, 884, 94, 87 });
+	left.PushBack({ 934, 884, 98, 89 });
+	left.PushBack({ 817, 975, 110, 87 });
+	left.speed = 0.1f;
+	left.loop = false;
+
 	//Idle
 	//flyAnim.PushBack({ 815,975, 110, 90 });
 	
@@ -68,40 +81,45 @@ void Enemy_Green_Bomber::Update()
 {
 
 	position.y -= 1;
-	
-	if (timer < fase[1])
+	if (this->health > 0)
 	{
-		currentAnim = &flyAnim;
+
+		if (timer < fase[1])
+		{
+			currentAnim = &left;
+			position.x += -0.5f;
+		}
+		if (timer >= fase[1] && timer < fase[2])
+		{
+			position.x += 0;
+			currentAnim = &downAnim;
+			invincible = true;
+			collider->type = Collider::Type::NONE;
+		}
+		if (timer >= fase[2] && timer < fase[3])
+		{
+			downAnim.Reset();
+			currentAnim = &stayAnim;
+		}
+		if (timer >= fase[3] && timer < fase[4])
+		{
+			stayAnim.Reset();
+			currentAnim = &upAnim;
+			invincible = false;
+			collider->type = Collider::Type::ENEMY;
+		}
+		if (timer >= fase[4])
+		{
+			position.x += 0.5f;
+			currentAnim = &right;
+			upAnim.Reset();
+			timer = fase[0];
+			currentAnim = &flyAnim;
+			App->particles->AddParticle(App->particles->enemyShot, position.x, position.y, Collider::ENEMY_SHOT);
+		}
+		timer++;
 	}
-	if (timer >= fase[1] && timer < fase[2])
-	{
-		
-		currentAnim = &downAnim;
-		invincible = true;
-		collider->type = Collider::Type::NONE;
-	}
-	if (timer >= fase[2] && timer < fase[3])
-	{
-		downAnim.Reset();
-		currentAnim = &stayAnim;
-	}
-	if (timer >= fase[3] && timer < fase[4])
-	{
-		stayAnim.Reset();
-		currentAnim = &upAnim;
-		invincible = false;
-		collider->type = Collider:: Type::ENEMY;
-	}
-	if (timer >= fase[4])
-	{
-		upAnim.Reset();
-		timer = fase[0];
-		currentAnim = &flyAnim;
-	}
-	timer++;
-	/*path.Update();
-	position = spawnPos + path.GetRelativePosition();
-	currentAnim = path.GetCurrentAnimation();*/
+
 
 
 	// Call to the base class. It must be called at the end
