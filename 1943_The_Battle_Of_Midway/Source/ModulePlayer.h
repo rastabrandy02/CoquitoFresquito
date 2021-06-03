@@ -84,6 +84,7 @@ public:
 
 	bool powerUpThreeWay = false;
 	int threeWayTimer = 0;
+	int threeWayBullets = 0;
 
 	bool powerUpAuto = false;
 	int autoCoolDown = 0;

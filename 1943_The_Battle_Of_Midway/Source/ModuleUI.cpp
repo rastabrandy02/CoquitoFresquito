@@ -92,7 +92,8 @@ update_status ModuleUI::PostUpdate()
 	{
 		timersAuto--;
 		timersWay = timersAuto / 60;
-		sprintf_s(powerupText, "%2d", timersWay);
+		//sprintf_s(powerupText, "%2d", timersWay);
+		sprintf_s(powerupText, "%2d", App->player->threeWayBullets);
 
 		App->fonts->BlitText(0, 488, textFont, "way");
 		App->fonts->BlitText(50, 488, scoreFont, powerupText);
