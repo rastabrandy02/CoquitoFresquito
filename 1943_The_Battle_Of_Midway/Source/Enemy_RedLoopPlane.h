@@ -27,6 +27,7 @@ private:
 
 	// The total height of the wave
 	int waveHeight = 100;
+	bool hasAttacked = false;
 
 	// The enemy animation
 	Animation flyAnim;

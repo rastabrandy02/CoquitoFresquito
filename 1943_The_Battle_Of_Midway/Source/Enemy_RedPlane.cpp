@@ -2,6 +2,7 @@
 
 #include "Application.h"
 #include "ModuleCollisions.h"
+#include "ModuleParticles.h"
 
 Enemy_RedPlane::Enemy_RedPlane(int x, int y) : Enemy(x, y)
 {
@@ -41,7 +42,12 @@ void Enemy_RedPlane::Update()
 	path.Update();
 	position = spawnPos + path.GetRelativePosition();
 	currentAnim = path.GetCurrentAnimation();
-
+	if (attackTimer >= 240)
+	{
+		App->particles->AddParticle(App->particles->enemyShot, position.x + 5, position.y - 5, Collider::ENEMY_SHOT);
+		attackTimer = 0;
+	}
+	attackTimer++;
 	// Call to the base class. It must be called at the end
 	// It will update the collider depending on the position
 	Enemy::Update();

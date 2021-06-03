@@ -2,6 +2,7 @@
 
 #include "Application.h"
 #include "ModuleCollisions.h"
+#include "ModuleParticles.h"
 
 Enemy_RedLoopPlane::Enemy_RedLoopPlane(int x, int y): Enemy(x, y)
 {
@@ -66,11 +67,18 @@ void Enemy_RedLoopPlane::Update()
 		//position.x = spawnPos.x + (waveHeight * sinf(waveRatio));
 		position.x = spawnPos.x;
 		currentAnim = &flyAnim;
+		if (!hasAttacked)
+		{
+			App->particles->AddParticle(App->particles->enemyShot, position.x + 5, position.y - 5, Collider::ENEMY_SHOT);
+			hasAttacked = true;
+		}
 	}
 	if (timer >360)
 	{
 		waveRatio = 0.0f;
+		hasAttacked = false;
 		timer = 0;
+		
 	}
 	timer++;
 	

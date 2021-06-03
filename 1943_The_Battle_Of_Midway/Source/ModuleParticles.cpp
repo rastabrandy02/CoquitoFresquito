@@ -110,13 +110,11 @@ bool ModuleParticles::Start()
 	enemyShot.anim.PushBack({ 61, 403, 8, 8 });
 	enemyShot.anim.speed = 0.1f;
 	enemyShot.anim.loop = true;
-	//enemyShot.speed = { (App->player->position.x - enemyShot.position.x), (App->player->position.y - enemyShot.position.y) };
-	//enemyShot.speed.x = App->player->position.x - enemyShot.position.x;
-	//enemyShot.speed.y = App->player->position.y - enemyShot.position.y;
+	
 	if (App->player->position.x - enemyShot.position.x < 0) enemyShot.speed.x = -1;
 	else if (App->player->position.x - enemyShot.position.x >= 0) enemyShot.speed.x = 1;
-
 	enemyShot.speed.y = 1.5f;
+	enemyShot.lifetime = 350;
 	return true;
 }
 
