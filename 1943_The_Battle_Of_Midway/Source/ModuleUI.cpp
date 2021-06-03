@@ -21,8 +21,12 @@ bool ModuleUI::Start()
 	char lookupTable2[] = { "! @,_./0123456789$;< ?abcdefghijklmnopqrstuvwxyz" };
 	char lookupTable3[] = { "0123456789abcdefghijklmnopqrstuvwxyz " };
 	char lookupTable4[] = { "1234567890.:,' (!?)+-*=" };
-	scoreFont = App->fonts->Load("Assets/score_font.png", lookupTable1, 1);
+	scoreFont = App->fonts->Load("Assets/score_font_1.png", lookupTable1, 1);
+	scoreFontPowerUps = App->fonts->Load("Assets/score_fontPowerUps.png", lookupTable1, 1);
+	scoreFontHiScore = App->fonts->Load("Assets/score_font.png", lookupTable1, 1);
 	textFont = App->fonts->Load("Assets/textFont.png", lookupTable3, 1);
+	textFontPowerUps = App->fonts->Load("Assets/textFontPowerUps.png", lookupTable3, 1);
+	textFontHiScore = App->fonts->Load("Assets/textFont_1.png", lookupTable3, 1);
 	testFont = App->fonts->Load("Assets/rtype_font.png", lookupTable2, 1);
 
 	healtBar1 = App->textures->Load("Assets/Lifebars/life_bar_1.png");
@@ -84,8 +88,8 @@ update_status ModuleUI::PostUpdate()
 		timersAuto--;
 		timersWay = timersAuto / 60;
 		sprintf_s(powerupText, "%2d", timersWay);
-		App->fonts->BlitText(0, 488, textFont, "auto");
-		App->fonts->BlitText(50, 488, scoreFont, powerupText);
+		App->fonts->BlitText(0, 488, textFontPowerUps, "auto");
+		App->fonts->BlitText(50, 488, scoreFontPowerUps, powerupText);
 		
 	}
 	else if (way)
@@ -95,18 +99,26 @@ update_status ModuleUI::PostUpdate()
 		//sprintf_s(powerupText, "%2d", timersWay);
 		sprintf_s(powerupText, "%2d", App->player->threeWayBullets);
 
-		App->fonts->BlitText(0, 488, textFont, "way");
-		App->fonts->BlitText(50, 488, scoreFont, powerupText);
+		App->fonts->BlitText(0, 488, textFontPowerUps, "way");
+		App->fonts->BlitText(50, 488, scoreFontPowerUps, powerupText);
 	}
 	else
 	{
 		timersAuto = 240;
 	}
+	if (score >= hiScore)
+	{
+		hiScore = score;
+	}
 	sprintf_s(scoreText, "%7d", score);
-	sprintf_s(fpsText, "fps %.2f", fps);
-	App->fonts->BlitText(50, 35, scoreFont, scoreText);
+
+	sprintf_s(hiScoreText, "%7d", hiScore);
+	App->fonts->BlitText(40, 35, scoreFont, scoreText);
 	App->fonts->BlitText(10, 9, textFont, "1player");
-	App->fonts->BlitText(260, 9, textFont, "2player");
+	App->fonts->BlitText(300, 9, textFont, "2player");
+	App->fonts->BlitText(370, 35, scoreFont, "0");
+	App->fonts->BlitText(150, 9, textFontHiScore, "hiscore");
+	App->fonts->BlitText(225, 35, scoreFontHiScore, hiScoreText);
 	//App->fonts->BlitText(300, 10, testFont, fpsText);
 	return update_status::UPDATE_CONTINUE;
 }
@@ -127,6 +139,11 @@ bool ModuleUI::CleanUp()
 	App->fonts->UnLoad(scoreFont);
 	App->fonts->UnLoad(testFont);
 	App->fonts->UnLoad(textFont);
+	App->fonts->UnLoad(scoreFontPowerUps);
+	App->fonts->UnLoad(scoreFontHiScore);
+	App->fonts->UnLoad(textFontPowerUps);
+	App->fonts->UnLoad(textFontHiScore);
+	
 
 
 	return ret;

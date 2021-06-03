@@ -39,12 +39,23 @@ private:
 	int scoreFont = -1;
 	int textFont = 0;
 	int testFont = 1;
+	int scoreFontPowerUps = 2;
+	int textFontPowerUps = 3;
+	int scoreFontHiScore = 4;
+	int textFontHiScore = 5;
+	
 	char scoreText[150] = { 0 };
+	char hiScoreText[16] = { 0 };
 	char fpsText[16] = { 0 };
 	char text[150] = {"\0"};
 	char powerupText[150] = { "\0" };
+	
+	int hiScore = 0;
+
 	int timersAuto;
 	int timersWay;
+
+	
 	SDL_Texture* healtBar1 = nullptr;
 	SDL_Texture* healtBar2 = nullptr;
 	SDL_Texture* healtBar3 = nullptr;
