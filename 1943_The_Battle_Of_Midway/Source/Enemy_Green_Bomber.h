@@ -15,7 +15,7 @@ public:
 private:
 
 	int timer = 0;
-	int fase[5] = { 0, 240, 300, 440, 500 };
+	int fase[6] = { 0, 240, 300, 440, 500, 740};
 	
 
 	// The enemy animation
