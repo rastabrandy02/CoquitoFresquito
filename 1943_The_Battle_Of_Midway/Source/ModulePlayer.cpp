@@ -95,7 +95,7 @@ update_status ModulePlayer::Update()
 
 	autoCoolDown++;
 	autoTimer++;
-	threeWayTimer++;
+	
 	
 	if (!destroyed)
 	{
@@ -148,7 +148,8 @@ update_status ModulePlayer::Update()
 		}
 
 		if (autoTimer >= 240) powerUpAuto = false;
-		if (threeWayTimer >= 240) powerUpThreeWay = false;
+		
+		if (threeWayBullets <= 0) powerUpThreeWay = false;
 		if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN || pad.a == true)
 		{
 			if (!powerUpThreeWay && shotCountDown == 0)
@@ -175,6 +176,7 @@ update_status ModulePlayer::Update()
 				App->input->ShakeController(0, 60, 0.33f);
 				shotCountDown = shotMaxCountDown;
 				App->UI->way = true;
+				threeWayBullets--;
 			
 		}
 		if ((App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_REPEAT || pad.a == true) && powerUpAuto && !powerUpThreeWay)
@@ -201,6 +203,7 @@ update_status ModulePlayer::Update()
 				App->input->ShakeController(0, 1, 0.33f);
 				autoCoolDown = 0;
 				App->UI->way = true;
+				threeWayBullets--;
 			}
 		}
 
@@ -267,10 +270,6 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		App->input->ShakeController(0, 60, 0.66f);
 	}
 
-	/*if (c1->type == Collider::Type::ENEMY && c2->type == Collider::Type::PLAYER_SHOT)
-	{
-		score += 100;
-	}*/
 	if (c1 == collider && c2->type == Collider::Type::ENEMY)
 	{
 		AddScore();
@@ -283,7 +282,8 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	if (c1 == collider && c2->type == Collider::Type::PU_THREEWAY)
 	{
 		powerUpThreeWay = true;
-		threeWayTimer = 0;
+		threeWayBullets = 50;
+		
 	}
 	if (c1 == collider && c2->type == Collider::Type::PU_POW)
 	{
