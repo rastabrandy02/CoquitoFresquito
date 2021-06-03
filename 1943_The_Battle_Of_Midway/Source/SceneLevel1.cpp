@@ -91,7 +91,6 @@ update_status SceneLevel1::Update()
 	}
 	if (App->player->life <= 0)
 	{
-		
 		timer++;
 		if (timer == 300)
 		{

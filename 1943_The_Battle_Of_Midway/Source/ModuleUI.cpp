@@ -21,6 +21,7 @@ bool ModuleUI::Start()
 	char lookupTable2[] = { "! @,_./0123456789$;< ?abcdefghijklmnopqrstuvwxyz" };
 	char lookupTable3[] = { "0123456789abcdefghijklmnopqrstuvwxyz " };
 	char lookupTable4[] = { "1234567890.:,' (!?)+-*=" };
+
 	scoreFont = App->fonts->Load("Assets/score_font_1.png", lookupTable1, 1);
 	scoreFontPowerUps = App->fonts->Load("Assets/score_fontPowerUps.png", lookupTable1, 1);
 	scoreFontHiScore = App->fonts->Load("Assets/score_font.png", lookupTable1, 1);
@@ -137,12 +138,12 @@ bool ModuleUI::CleanUp()
 	App->textures->Unload(healtBar9);
 
 	App->fonts->UnLoad(scoreFont);
-	App->fonts->UnLoad(testFont);
 	App->fonts->UnLoad(textFont);
 	App->fonts->UnLoad(scoreFontPowerUps);
 	App->fonts->UnLoad(scoreFontHiScore);
 	App->fonts->UnLoad(textFontPowerUps);
 	App->fonts->UnLoad(textFontHiScore);
+	App->fonts->UnLoad(testFont);
 	
 
 
