@@ -98,6 +98,7 @@ bool ModuleParticles::Start()
 	powerUp_ThreeWay.lifetime = 600;
 
 	powerUp_Pow.anim.PushBack({ 606, 310, 23, 25 });
+	powerUp_Pow.anim.PushBack({ 606, 310, 23, 25 });
 	//powerUp_Pow.anim.PushBack({ 154, 719, 27, 37 });
 	//powerUp_Pow.anim.PushBack({ 57, 629, 18, 41 });
 	powerUp_Pow.anim.loop = true;
