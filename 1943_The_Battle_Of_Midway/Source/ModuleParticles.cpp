@@ -112,7 +112,7 @@ bool ModuleParticles::Start()
 	enemyShot.anim.loop = true;
 	
 	if (App->player->position.x - enemyShot.position.x <= 0) enemyShot.speed.x = -1;
-	if (App->player->position.x - enemyShot.position.x >= 0) enemyShot.speed.x = 1;
+	else if (App->player->position.x - enemyShot.position.x > 0) enemyShot.speed.x = 1;
 	enemyShot.speed.y = 1.5f;
 	enemyShot.lifetime = 350;
 	return true;
@@ -129,7 +129,7 @@ update_status ModuleParticles::PreUpdate()
 			particles[i] = nullptr;
 		}
 	}
-	
+
 	return update_status::UPDATE_CONTINUE;
 }
 

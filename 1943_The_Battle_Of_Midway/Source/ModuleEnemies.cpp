@@ -158,7 +158,7 @@ void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info)
 		{
 			switch (info.type)
 			{
-				case ENEMY_TYPE::GREENPLANE:
+				case ENEMY_TYPE::REDPLANE:
 					enemies[i] = new Enemy_RedPlane(info.x, info.y);
 					break;
 
