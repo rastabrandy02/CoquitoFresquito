@@ -11,8 +11,11 @@ Enemy_RedPlane::Enemy_RedPlane(int x, int y) : Enemy(x, y)
 	flyAnim.speed = 0.1f;
 	flyAnim.loop = true;
 
+
 	backwardAnim.PushBack({525, 551, 27, 24});
 	backwardAnim.PushBack({526, 527, 27, 24});
+	backwardAnim.PushBack({ 525, 551, 27, 24 });
+	backwardAnim.PushBack({ 526, 527, 27, 24 });
 	backwardAnim.speed = 0.1f;
 	backwardAnim.loop = true;
 
@@ -20,6 +23,7 @@ Enemy_RedPlane::Enemy_RedPlane(int x, int y) : Enemy(x, y)
 	turnAnim.PushBack({ 727, 654, 26, 19 });
 	turnAnim.PushBack({ 562, 697, 27, 22 });
 	turnAnim.PushBack({ 590, 696, 27, 24 });
+	turnAnim.PushBack({ 589, 696, 27, 24 });
 	turnAnim.PushBack({ 591, 651, 18, 27 });
 	turnAnim.PushBack({ 617, 653, 22, 23 });
 	turnAnim.loop = true;
