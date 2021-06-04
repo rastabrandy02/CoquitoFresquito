@@ -80,7 +80,7 @@ Enemy_Green_Bomber::Enemy_Green_Bomber(int x, int y) : Enemy(x, y)
 void Enemy_Green_Bomber::Update()
 {
 
-	position.y -= 0.999f;
+	position.y -= 1;
 	if (this->health > 0)
 	{
 
@@ -95,7 +95,7 @@ void Enemy_Green_Bomber::Update()
 			
 			currentAnim = &downAnim;
 			invincible = true;
-			//collider->type = Collider::Type::NONE;
+			collider->type = Collider::Type::NONE;
 		}
 		if (timer >= fase[2] && timer < fase[3])
 		{
@@ -107,7 +107,7 @@ void Enemy_Green_Bomber::Update()
 			stayAnim.Reset();
 			currentAnim = &upAnim;
 			invincible = false;
-			//collider->type = Collider::Type::ENEMY;
+			collider->type = Collider::Type::ENEMY;
 		}
 		if (timer >= fase[4] && timer < fase[5])
 		{
