@@ -26,14 +26,13 @@ Enemy_RedPlane::Enemy_RedPlane(int x, int y) : Enemy(x, y)
 	turnAnim.PushBack({ 617, 696, 29, 24 });
 	turnAnim.PushBack({ 590, 700, 29, 24 });
 	turnAnim.PushBack({ 590, 700, 29, 24 });
-	turnAnim.PushBack({ 590, 700, 29, 24 });
 	turnAnim.PushBack({ 562, 696, 28, 23 });
 	turnAnim.PushBack({ 562, 696, 28, 23 });
 	turnAnim.PushBack({ 617, 696, 29, 24 });
 	turnAnim.PushBack({ 644, 697, 29, 24 });
 	turnAnim.PushBack({ 727, 653, 28, 23 });
 	turnAnim.loop = true;
-	turnAnim.speed = 0.1f;
+	turnAnim.speed = 0.08f;
 
 
 	currentAnim = &flyAnim;
