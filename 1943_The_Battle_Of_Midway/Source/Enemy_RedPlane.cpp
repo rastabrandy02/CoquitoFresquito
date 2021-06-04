@@ -30,7 +30,7 @@ Enemy_RedPlane::Enemy_RedPlane(int x, int y) : Enemy(x, y)
 
 	path.PushBack({ 0.0f, 1.0f }, 180, &flyAnim);
 	path.PushBack({ -0.1f, -1.0f }, 60, &turnAnim);
-	path.PushBack({ 0.0f, -2.0f }, 300, &backwardAnim);
+	path.PushBack({ 0.0f, -2.0f }, 200, &backwardAnim);
 	path.loop = true;
 
 	collider = App->collisions->AddCollider({0, 0, 24, 24}, Collider::Type::ENEMY, (Module*)App->enemies);
