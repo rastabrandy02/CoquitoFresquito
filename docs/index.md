@@ -25,7 +25,7 @@
 ## Our team
 
 <p align="center">
-<img src="https://github.com/rastabrandy02/CoquitoFresquito/blob/main/Wiki_Resources/Home/cokitofreskitoteamphoto.png" heigth=600 width=600>
+<img src="https://raw.githubusercontent.com/rastabrandy02/CoquitoFresquito/main/Wiki_Resources/Home/cokitofreskitoteamphoto.png" heigth=600 width=600>
 </p>
 
 ### Q&A
