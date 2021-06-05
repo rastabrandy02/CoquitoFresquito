@@ -163,8 +163,8 @@ bool SceneLevel1::Start()
 	App->enemies->AddEnemy(ENEMY_TYPE::GREENPLANE, 80, -1720);
 	App->enemies->AddEnemy(ENEMY_TYPE::GREENPLANE, 60, -1740);
 
-	App->enemies->AddEnemy(ENEMY_TYPE::GREENBOMBER, 50, -2500);
-	App->enemies->AddEnemy(ENEMY_TYPE::GREENBOMBER, 350, -2500);
+	App->enemies->AddEnemy(ENEMY_TYPE::GREENBOMBER, 50, -2400);
+	App->enemies->AddEnemy(ENEMY_TYPE::GREENBOMBER, 350, -2600);
 
 	App->enemies->AddEnemy(ENEMY_TYPE::REDLOOPPLANE, 150, -2010);
 	App->enemies->AddEnemy(ENEMY_TYPE::REDLOOPPLANE, 150, -2080);
@@ -186,8 +186,15 @@ bool SceneLevel1::Start()
 	App->enemies->AddEnemy(ENEMY_TYPE::GREENPLANE, 80, -2320);
 	App->enemies->AddEnemy(ENEMY_TYPE::GREENPLANE, 60, -2340);
 
-	App->enemies->AddEnemy(ENEMY_TYPE::GREENBOMBER, 50, -4500);
-	App->enemies->AddEnemy(ENEMY_TYPE::GREENBOMBER, 350, -4500);
+	App->enemies->AddEnemy(ENEMY_TYPE::GREENBOMBER, 50, -4600);
+	App->enemies->AddEnemy(ENEMY_TYPE::GREENBOMBER, 350, -4400);
+
+	App->enemies->AddEnemy(ENEMY_TYPE::REDLOOPPLANE, 150, -3010);
+	App->enemies->AddEnemy(ENEMY_TYPE::REDLOOPPLANE, 150, -3080);
+	App->enemies->AddEnemy(ENEMY_TYPE::REDLOOPPLANE, 150, -3050);
+	App->enemies->AddEnemy(ENEMY_TYPE::REDLOOPPLANE, 250, -3010);
+	App->enemies->AddEnemy(ENEMY_TYPE::REDLOOPPLANE, 250, -3080);
+	App->enemies->AddEnemy(ENEMY_TYPE::REDLOOPPLANE, 250, -3050);
 
 	App->enemies->AddEnemy(ENEMY_TYPE::TURRETSHIP, 100, 100);
 
