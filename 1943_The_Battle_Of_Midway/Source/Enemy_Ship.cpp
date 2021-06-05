@@ -8,11 +8,11 @@
 Enemy_Ship::Enemy_Ship(int x, int y) : Enemy(x, y)
 {
 	ship.PushBack({ 164, 1295, 38, 180 });
-	App->enemies->AddEnemy(ENEMY_TYPE::TURRETSHIP, x + 5, y + 44);
-	App->enemies->AddEnemy(ENEMY_TYPE::TURRETSHIP, x + 5, y + 138);
-	App->enemies->AddEnemy(ENEMY_TYPE::TURRETSHIP, x + 5, y + 185);
-	App->enemies->AddEnemy(ENEMY_TYPE::TURRETSHIP, x + 5, y + 213);
-	App->enemies->AddEnemy(ENEMY_TYPE::TURRETSHIP, x + 5, y + 240);
+	App->enemies->AddEnemy(ENEMY_TYPE::TURRETSHIP, x + 3, y + 15);
+	App->enemies->AddEnemy(ENEMY_TYPE::TURRETSHIP, x + 3, y + 70);
+	App->enemies->AddEnemy(ENEMY_TYPE::TURRETSHIP, x + 3, y + 105);
+	App->enemies->AddEnemy(ENEMY_TYPE::TURRETSHIP, x + 3, y + 120);
+	App->enemies->AddEnemy(ENEMY_TYPE::TURRETSHIP, x + 3, y + 135);
 
 	collider = App->collisions->AddCollider({ 0,0, 56, 296 }, Collider::Type::NONE);
 

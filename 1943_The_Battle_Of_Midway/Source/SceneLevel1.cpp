@@ -42,6 +42,8 @@ bool SceneLevel1::Start()
 	App->collisions->AddCollider({ 0, -5400, 400, 200 }, Collider::Type::LVL2);
 
 	// Enemies ---
+
+	App->enemies->AddEnemy(ENEMY_TYPE::SHIP, 150, 200);
 	
 	
 	App->enemies->AddEnemy(ENEMY_TYPE::GREENPLANE, 300, -100);

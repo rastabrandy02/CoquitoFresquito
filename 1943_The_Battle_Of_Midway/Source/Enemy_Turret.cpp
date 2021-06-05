@@ -10,22 +10,22 @@
 
 Enemy_Turret::Enemy_Turret(int x, int y) : Enemy(x, y)
 {
-	angle[0].PushBack({ 22, 158, 30, 35 });
-	angle[1].PushBack({ 56, 159, 28, 35 });
-	angle[2].PushBack({ 88, 159, 31, 32 });
-	angle[3].PushBack({ 122, 162, 31, 27 });
-	angle[4].PushBack({ 154, 162, 34, 27 });
-	angle[5].PushBack({ 20, 196, 33, 28 });
-	angle[6].PushBack({ 56, 196, 31, 28 });
-	angle[7].PushBack({ 92, 195, 27, 29 });
-	angle[8].PushBack({ 125, 195, 28, 29 });
-	angle[9].PushBack({ 156, 194, 26, 30 });
-	angle[10].PushBack({ 22, 231, 30, 27 });
-	angle[11].PushBack({ 54, 232, 33, 26 });
-	angle[12].PushBack({ 88, 232, 33, 26 });
-	angle[13].PushBack({ 121, 232, 33, 26 });
-	angle[14].PushBack({ 155, 227, 34, 31 });
-	angle[15].PushBack({ 24, 260, 30, 32 });
+	angle[0].PushBack({ 41, 160, 19, 18 });
+	angle[1].PushBack({ 58, 160, 19, 18 });
+	angle[2].PushBack({ 75, 160, 19, 18 });
+	angle[3].PushBack({ 92, 160, 19, 18 });
+	angle[4].PushBack({ 109, 160, 19, 18 });
+	angle[5].PushBack({ 41, 178, 19, 18 });
+	angle[6].PushBack({ 59, 178, 19, 18 });
+	angle[7].PushBack({ 76, 178, 19, 18 });
+	angle[8].PushBack({ 93, 178, 19, 18 });
+	angle[9].PushBack({ 119, 178, 19, 18 });
+	angle[10].PushBack({ 41, 194, 19, 18 });
+	angle[11].PushBack({ 59, 194, 19, 18 });
+	angle[12].PushBack({ 77, 194, 19, 18 });
+	angle[13].PushBack({ 93, 194, 19, 18 });
+	angle[14].PushBack({ 111, 294, 19, 18 });
+	angle[15].PushBack({ 42, 212, 19, 18 });
 
 	currentAnim = &angle[8];
 
