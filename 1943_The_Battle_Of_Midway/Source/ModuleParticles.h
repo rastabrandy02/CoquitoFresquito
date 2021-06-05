@@ -54,6 +54,7 @@ public:
 
 private:
 	// Particles spritesheet loaded into an SDL Texture
+	
 	SDL_Texture* basicShotTex = nullptr;
 	SDL_Texture* playerDeathTex = nullptr;
 	SDL_Texture* enemyExplosionTex = nullptr;
@@ -63,6 +64,8 @@ private:
 	Particle* particles[MAX_ACTIVE_PARTICLES] = { nullptr };
 
 public:
+
+	
 	
 	Particle playerDeath;
 	Particle basicShot;

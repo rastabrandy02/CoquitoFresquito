@@ -27,6 +27,7 @@ public:
 	void SetToDelete();
 
 public:
+	iPoint spawnPos;
 	// Defines the position in the screen
 	iPoint position;
 

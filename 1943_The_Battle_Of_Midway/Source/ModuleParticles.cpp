@@ -111,8 +111,8 @@ bool ModuleParticles::Start()
 	enemyShot.anim.speed = 0.1f;
 	enemyShot.anim.loop = true;
 	
-	if (App->player->position.x - enemyShot.position.x <= 0) enemyShot.speed.x = -1.0f;
-	if (App->player->position.x - enemyShot.position.x >= 0) enemyShot.speed.x = 1.0f;
+	if ((App->player->position.x - enemyShot.spawnPos.x) < 0) enemyShot.speed.x = -1.0f;
+	if ((App->player->position.x - enemyShot.spawnPos.x) > 0) enemyShot.speed.x = 1.0f;
 	enemyShot.speed.y = 1.5f;
 	enemyShot.lifetime = 350;
 	return true;
@@ -222,7 +222,10 @@ void ModuleParticles::AddParticle(const Particle& particle, int x, int y, Collid
 				p->collider = App->collisions->AddCollider(p->anim.GetCurrentFrame(), colliderType, this);
 
 			particles[i] = p;
+			p->spawnPos.x = x;
+			p->spawnPos.y = y;
 			break;
 		}
 	}
+	
 }
