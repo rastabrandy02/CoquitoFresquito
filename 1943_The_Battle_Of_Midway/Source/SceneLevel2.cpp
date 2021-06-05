@@ -35,7 +35,7 @@ bool SceneLevel2::Start()
 
 
 	bgTexture = App->textures->Load("Assets/SeaMap.png");
-	App->audio->PlayMusic("Assets/Audio/stage1.ogg", 1.0f);
+	App->audio->PlayMusic("Assets/Audio/stage2.ogg", 1.0f);
 
 	App->collisions->AddCollider({ 0, -5400, 400, 200 }, Collider::Type::WIN);
 
