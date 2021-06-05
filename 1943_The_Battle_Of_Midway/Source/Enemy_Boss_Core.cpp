@@ -3,6 +3,7 @@
 #include "ModuleCollisions.h"
 #include "ModuleParticles.h"
 #include "ModulePlayer.h"
+#include "ModuleRender.h"
 
 
 Enemy_Boss_Core::Enemy_Boss_Core(int x, int y) : Enemy(x, y)
@@ -11,9 +12,14 @@ Enemy_Boss_Core::Enemy_Boss_Core(int x, int y) : Enemy(x, y)
 	health = 5;
 	currentAnim = &ship;
 	App->collisions->AddCollider({ 0, 0, 32, 30 }, Collider::Type::ENEMY, (Module*)App->enemies);
+	health = 5;
 }
 
 void Enemy_Boss_Core::Update()
 {
+	if (health <= 0)
+	{
+		App->render->percentage -= 25;
+	}
 	Enemy::Update();
 }

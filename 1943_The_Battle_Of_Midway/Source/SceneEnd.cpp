@@ -9,6 +9,7 @@
 #include "ModuleFadeToBlack.h"
 #include "ModuleInput.h"
 #include "Path.h"
+#include <stdio.h>
 
 #include "SDL/include/SDL_scancode.h"
 
@@ -43,8 +44,8 @@ bool SceneEnd::Start()
 	planeTex = App->textures->Load("Assets/Art/Endings/plane.png");
 
 	currentAnim = &planeAnim;
-	char lookupTable3[] = { "abcdefghijklmnopqrstuvwxyz" };
-	textFont = App->fonts->Load("Assets/font.png", lookupTable3, 1);
+	char lookupTable3[] = { "0123456789abcdefghijklmnopqrstuvwxyz" };
+	textFont = App->fonts->Load("Assets/textfontbig.png", lookupTable3, 1);
 
 	audio = App->audio->PlayMusic("Assets/Audio/015-Ending.ogg", 0.1f);
 
@@ -97,8 +98,20 @@ update_status SceneEnd::PostUpdate()
 	{
 		App->render->Blit(winTexture, 0, 0, NULL);
 		App->render->Blit(planeTex, position.x, position.y, &planeAnim.GetCurrentFrame(), 0.0f, false);
-		App->fonts->BlitText(100, 200, textFont, "mission");
-		App->fonts->BlitText(95, 230, textFont, "compleated");
+		if (App->render->percentage <= 25)
+		{
+			App->fonts->BlitText(100, 200, textFont, "mission");
+			App->fonts->BlitText(95, 230, textFont, "compleated");
+		}
+		else
+		{
+			
+			sprintf_s(text, "%i", (100 - App->render->percentage));
+			App->fonts->BlitText(100, 200, textFont, "mission");
+			App->fonts->BlitText(95, 230, textFont, "failed");
+			App->fonts->BlitText(95, 260, textFont, text);
+			App->fonts->BlitText(120, 260, textFont, "compleated");
+		}
 	}
 	else
 	{

@@ -86,12 +86,7 @@ update_status ModuleUI::PostUpdate()
 	}
 	if (autopw)
 	{
-		timersAuto--;
-		timersWay = timersAuto / 60;
-		sprintf_s(powerupText, "%2d", timersWay);
 		App->fonts->BlitText(0, 488, textFontPowerUps, "auto");
-		App->fonts->BlitText(50, 488, scoreFontPowerUps, powerupText);
-		
 	}
 	else if (way)
 	{
@@ -114,12 +109,12 @@ update_status ModuleUI::PostUpdate()
 	sprintf_s(scoreText, "%7d", score);
 
 	sprintf_s(hiScoreText, "%7d", hiScore);
-	App->fonts->BlitText(40, 35, scoreFont, scoreText);
+	App->fonts->BlitText(25, 30, scoreFont, scoreText);
 	App->fonts->BlitText(10, 9, textFont, "1player");
 	App->fonts->BlitText(300, 9, textFont, "2player");
-	App->fonts->BlitText(370, 35, scoreFont, "0");
+	App->fonts->BlitText(360, 30, scoreFont, "0");
 	App->fonts->BlitText(150, 9, textFontHiScore, "hiscore");
-	App->fonts->BlitText(225, 35, scoreFontHiScore, hiScoreText);
+	App->fonts->BlitText(165, 30, scoreFontHiScore, hiScoreText);
 	//App->fonts->BlitText(300, 10, testFont, fpsText);
 	return update_status::UPDATE_CONTINUE;
 }

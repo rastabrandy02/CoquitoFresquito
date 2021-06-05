@@ -91,6 +91,7 @@ public:
 	int autoTimer = 0;
 
 	bool debugGamepadInfo = false;
+	bool playerMove = true;
 };
 
 #endif //!__MODULE_PLAYER_H__

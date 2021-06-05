@@ -56,6 +56,7 @@ public:
 
 	// The speed at which the camera will be moving
 	int cameraSpeed = 3;
+	int percentage = 100;
 
 };
 

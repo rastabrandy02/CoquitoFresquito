@@ -30,8 +30,8 @@ public:
 
 	float fps = 0;
 	uint score = 000;
-	bool way;
-	bool autopw;
+	bool way = false;
+	bool autopw = false;
 
 private:
 	int autoCounter = 0;

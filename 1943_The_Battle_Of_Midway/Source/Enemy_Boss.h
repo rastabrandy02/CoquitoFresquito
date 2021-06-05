@@ -18,6 +18,7 @@ public:
 private:
 	// The enemy animation
 	Animation ship;
+	
 };
 
 #endif 

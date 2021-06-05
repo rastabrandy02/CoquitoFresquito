@@ -73,7 +73,8 @@ update_status ModulePlayer::Update()
 {
 	GamePad& pad = App->input->pads[0];
 	// Moving the player with the camera scroll
-	App->player->position.y -= 1;
+	if (playerMove)
+		App->player->position.y -= 1;
 
 
 	// Debug key for gamepad rumble testing purposes

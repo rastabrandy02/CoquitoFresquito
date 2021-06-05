@@ -115,10 +115,6 @@ bool SceneLevel1::Start()
 	App->enemies->AddEnemy(ENEMY_TYPE::GREENPLANE, 60, -1160);
 
 
-
-	App->enemies->AddEnemy(ENEMY_TYPE::GREENBOMBER, 50, -1200);
-	App->enemies->AddEnemy(ENEMY_TYPE::GREENBOMBER, 350, -1400);
-
 	App->enemies->AddEnemy(ENEMY_TYPE::REDLOOPPLANE, 130, -1250);
 	App->enemies->AddEnemy(ENEMY_TYPE::REDLOOPPLANE, 150, -1270);
 	App->enemies->AddEnemy(ENEMY_TYPE::REDLOOPPLANE, 170, -1290);
@@ -163,8 +159,8 @@ bool SceneLevel1::Start()
 	App->enemies->AddEnemy(ENEMY_TYPE::GREENPLANE, 80, -1720);
 	App->enemies->AddEnemy(ENEMY_TYPE::GREENPLANE, 60, -1740);
 
-	App->enemies->AddEnemy(ENEMY_TYPE::GREENBOMBER, 50, -2400);
-	App->enemies->AddEnemy(ENEMY_TYPE::GREENBOMBER, 350, -2600);
+
+
 
 	App->enemies->AddEnemy(ENEMY_TYPE::REDLOOPPLANE, 150, -2010);
 	App->enemies->AddEnemy(ENEMY_TYPE::REDLOOPPLANE, 150, -2080);
@@ -188,7 +184,7 @@ bool SceneLevel1::Start()
 
 
 	App->enemies->AddEnemy(ENEMY_TYPE::GREENBOMBER, 50, -4600);
-	App->enemies->AddEnemy(ENEMY_TYPE::GREENBOMBER, 350, -4400);
+
 
 	App->enemies->AddEnemy(ENEMY_TYPE::REDLOOPPLANE, 150, -3010);
 	App->enemies->AddEnemy(ENEMY_TYPE::REDLOOPPLANE, 150, -3080);
@@ -197,8 +193,7 @@ bool SceneLevel1::Start()
 	App->enemies->AddEnemy(ENEMY_TYPE::REDLOOPPLANE, 250, -3080);
 	App->enemies->AddEnemy(ENEMY_TYPE::REDLOOPPLANE, 250, -3050);
 
-	App->enemies->AddEnemy(ENEMY_TYPE::GREENBOMBER, 50, -4500);
-	App->enemies->AddEnemy(ENEMY_TYPE::GREENBOMBER, 350, -4500);
+	
 
 
 	
@@ -223,6 +218,10 @@ update_status SceneLevel1::Update()
 	if (App->input->keys[SDL_SCANCODE_F2] == KEY_STATE::KEY_DOWN)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->sceneEnd, 60);
+	}
+	if (App->input->keys[SDL_SCANCODE_F5] == KEY_STATE::KEY_DOWN)
+	{
+		App->fade->FadeToBlack(this, (Module*)App->sceneLevel_2, 60);
 	}
 	if (App->player->life <= 0)
 	{

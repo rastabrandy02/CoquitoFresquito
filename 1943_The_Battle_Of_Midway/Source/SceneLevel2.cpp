@@ -187,6 +187,8 @@ bool SceneLevel2::Start()
 
 	App->enemies->AddEnemy(ENEMY_TYPE::GREENBOMBER, 50, -4500);
 	App->enemies->AddEnemy(ENEMY_TYPE::GREENBOMBER, 350, -4500);*/
+	
+	App->enemies->AddEnemy(ENEMY_TYPE::BOSS, 150, -4450);
 
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
@@ -204,7 +206,17 @@ bool SceneLevel2::Start()
 
 update_status SceneLevel2::Update()
 {
-	App->render->camera.y -= 1;
+	if (App->render->camera.y >= -4500)
+	{
+		App->render->camera.y -= 1;
+		App->player->playerMove = true;
+		endTime++;
+	}
+	if(endTime == 3600)
+	{
+		App->fade->FadeToBlack(this, (Module*)App->sceneEnd, 60);
+	}
+	else App->player->playerMove = false;
 	if (App->input->keys[SDL_SCANCODE_F2] == KEY_STATE::KEY_DOWN)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->sceneEnd, 60);

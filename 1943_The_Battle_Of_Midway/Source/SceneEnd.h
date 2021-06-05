@@ -42,6 +42,7 @@ private:
 	Animation* currentAnim = nullptr;
 	Path path;
 	iPoint position;
+	char text[150] = { 0 };
 };
 
 #endif
