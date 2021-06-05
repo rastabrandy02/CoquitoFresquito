@@ -5,7 +5,7 @@
 #include "ModuleParticles.h"
 #include "ModulePlayer.h"
 #include <math.h>
-#include <stdio.h>
+
 #define PI 3.14159265
 
 Enemy_Turret::Enemy_Turret(int x, int y) : Enemy(x, y)
