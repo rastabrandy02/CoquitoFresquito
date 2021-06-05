@@ -62,7 +62,8 @@ bool ModulePlayer::Start()
 
 	collider = App->collisions->AddCollider({ position.x, position.y, 35, 25 }, Collider::Type::PLAYER, this);
 
-	
+	powerUpAuto = false;
+	powerUpThreeWay = false;
 	
 	
 

@@ -10,7 +10,7 @@
 #include "ModuleFadeToBlack.h"
 #include "ModuleInput.h"
 #include "ModuleUI.h"
-
+#include "ModuleParticles.h"
 #include "SDL/include/SDL_scancode.h"
 #include <stdio.h> 
 SceneLevel1::SceneLevel1(bool startEnabled) : Module(startEnabled)
@@ -256,6 +256,7 @@ bool SceneLevel1::CleanUp()
 	App->enemies->Disable();
 	App->collisions->Disable();
 	App->UI->Disable();
+	App->particles->Disable();
 	App->textures->Unload(bgTexture);
 	App->textures->Unload(cloudTexture);
 
