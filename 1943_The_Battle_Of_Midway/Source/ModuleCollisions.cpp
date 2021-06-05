@@ -205,6 +205,9 @@ void ModuleCollisions::DebugDraw()
 			case Collider::Type::WIN:
 			App->render->DrawQuad(colliders[i]->rect, 255, 135, 0, alpha);
 			break;
+			case Collider::Type::LVL2:
+			App->render->DrawQuad(colliders[i]->rect, 200, 255, 100, alpha);
+			break;
 		}
 	}
 }

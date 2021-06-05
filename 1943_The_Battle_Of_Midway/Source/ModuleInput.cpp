@@ -4,7 +4,11 @@
 #include "SDL/include/SDL.h"
 
 ModuleInput::ModuleInput(bool startEnabled) : Module(startEnabled)
-{}
+{
+	for (uint i = 0; i < MAX_KEYS; ++i) keys[i] = KEY_IDLE;
+
+	memset(&pads[0], 0, sizeof(GamePad) * MAX_PADS);
+}
 
 ModuleInput::~ModuleInput()
 {}
@@ -39,6 +43,16 @@ bool ModuleInput::Init()
 update_status ModuleInput::PreUpdate()
 {
 	//Read new SDL events, mostly from the window
+		
+	const Uint8* keyboard = SDL_GetKeyboardState(NULL);
+	for (int i = 0; i < MAX_KEYS; ++i)
+		{
+			if (keyboard[i])
+				keys[i] = (keys[i] == KEY_IDLE) ? KEY_DOWN : KEY_REPEAT;
+			else
+				keys[i] = (keys[i] == KEY_REPEAT || keys[i] == KEY_DOWN) ? KEY_UP : KEY_IDLE;
+	}
+	if (App->input->keys[SDL_SCANCODE_ESCAPE] == KEY_STATE::KEY_DOWN) return update_status::UPDATE_STOP;
 	SDL_Event event;
 	if (SDL_PollEvent(&event) != 0)
 	{
@@ -62,22 +76,9 @@ update_status ModuleInput::PreUpdate()
 		}
 	}
 
-		//Read all keyboard data and update our custom array
-		SDL_PumpEvents();
-		const Uint8* keyboard = SDL_GetKeyboardState(NULL);
-		for (int i = 0; i < MAX_KEYS; ++i)
-		{
-			if (keyboard[i])
-				keys[i] = (keys[i] == KEY_IDLE) ? KEY_DOWN : KEY_REPEAT;
-			else
-				keys[i] = (keys[i] == KEY_REPEAT || keys[i] == KEY_DOWN) ? KEY_UP : KEY_IDLE;
-		}
+	UpdateGamepadsInput();
 
-		if (App->input->keys[SDL_SCANCODE_ESCAPE] == KEY_STATE::KEY_DOWN) return update_status::UPDATE_STOP;
-
-		UpdateGamepadsInput();
-
-		return update_status::UPDATE_CONTINUE;
+	return update_status::UPDATE_CONTINUE;
 	
 }
 
