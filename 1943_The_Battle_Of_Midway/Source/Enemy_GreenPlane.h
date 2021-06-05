@@ -4,13 +4,13 @@
 #include "Enemy.h"
 #include "Path.h"
 
-class Enemy_RedPlane : public Enemy
+class Enemy_GreenPlane : public Enemy
 {
 public:
 
 	// Constructor (x y coordinates in the world)
 	// Creates animation data and the collider
-	Enemy_RedPlane(int x, int y);
+	Enemy_GreenPlane(int x, int y);
 
 	// The enemy is going to perform a sinusoidal movement
 	void Update() override;

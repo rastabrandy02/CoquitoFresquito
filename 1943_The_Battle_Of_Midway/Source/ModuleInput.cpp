@@ -52,7 +52,9 @@ update_status ModuleInput::PreUpdate()
 			else
 				keys[i] = (keys[i] == KEY_REPEAT || keys[i] == KEY_DOWN) ? KEY_UP : KEY_IDLE;
 	}
-	if (App->input->keys[SDL_SCANCODE_ESCAPE] == KEY_STATE::KEY_DOWN) return update_status::UPDATE_STOP;
+	if (App->input->keys[SDL_SCANCODE_ESCAPE] == KEY_STATE::KEY_DOWN)
+		return update_status::UPDATE_STOP;
+	
 	SDL_Event event;
 	if (SDL_PollEvent(&event) != 0)
 	{

@@ -82,7 +82,7 @@
     <ClInclude Include="Enemy.h">
       <Filter>Source Files\Entities\Enemies</Filter>
     </ClInclude>
-    <ClInclude Include="Enemy_RedPlane.h">
+    <ClInclude Include="Enemy_GreenPlane.h">
       <Filter>Source Files\Entities\Enemies</Filter>
     </ClInclude>
     <ClInclude Include="Path.h">
@@ -117,6 +117,9 @@
     </ClInclude>
     <ClInclude Include="SceneLevel2.h">
       <Filter>Source Files\Modules\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_Turret.h">
+      <Filter>Source Files\Entities\Enemies</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -168,7 +171,7 @@
     <ClCompile Include="Enemy.cpp">
       <Filter>Source Files\Entities\Enemies</Filter>
     </ClCompile>
-    <ClCompile Include="Enemy_RedPlane.cpp">
+    <ClCompile Include="Enemy_GreenPlane.cpp">
       <Filter>Source Files\Entities\Enemies</Filter>
     </ClCompile>
     <ClCompile Include="Path.cpp">
@@ -203,6 +206,9 @@
     </ClCompile>
     <ClCompile Include="SceneLevel2.cpp">
       <Filter>Source Files\Modules\Gameplay</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_Turret.cpp">
+      <Filter>Source Files\Entities\Enemies</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

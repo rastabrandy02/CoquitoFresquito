@@ -1,10 +1,10 @@
-#include "Enemy_RedPlane.h"
+#include "Enemy_GreenPlane.h"
 
 #include "Application.h"
 #include "ModuleCollisions.h"
 #include "ModuleParticles.h"
 
-Enemy_RedPlane::Enemy_RedPlane(int x, int y) : Enemy(x, y)
+Enemy_GreenPlane::Enemy_GreenPlane(int x, int y) : Enemy(x, y)
 {
 	flyAnim.PushBack({529,598,28,24});
 	flyAnim.PushBack({ 530,623, 28, 24 });
@@ -46,7 +46,7 @@ Enemy_RedPlane::Enemy_RedPlane(int x, int y) : Enemy(x, y)
 	health = 1;
 }
 
-void Enemy_RedPlane::Update()
+void Enemy_GreenPlane::Update()
 {
 	path.Update();
 	position = spawnPos + path.GetRelativePosition();

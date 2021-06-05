@@ -7,7 +7,7 @@
 #include "ModuleAudio.h"
 
 #include "Enemy.h"
-#include "Enemy_RedPlane.h"
+#include "Enemy_GreenPlane.h"
 #include "Enemy_RedLoopPlane.h"
 #include "Enemy_Green_Bomber.h"
 
@@ -159,7 +159,7 @@ void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info)
 			switch (info.type)
 			{
 				case ENEMY_TYPE::GREENPLANE:
-					enemies[i] = new Enemy_RedPlane(info.x, info.y);
+					enemies[i] = new Enemy_GreenPlane(info.x, info.y);
 					break;
 
 				case ENEMY_TYPE::REDLOOPPLANE:
@@ -167,6 +167,7 @@ void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info)
 					break;
 				case ENEMY_TYPE::GREENBOMBER:
 					enemies[i] = new Enemy_Green_Bomber(info.x, info.y);
+				
 			
 			}
 			enemies[i]->texture = texture;

@@ -86,7 +86,7 @@ bool ModuleParticles::Start()
 	powerUp_Auto.anim.PushBack({ 650, 237, 20, 23 });
 	powerUp_Auto.anim.PushBack({ 670, 237, 20, 23 });
 	powerUp_Auto.anim.loop = true;
-	powerUp_Auto.anim.speed = 0.3f;
+	powerUp_Auto.anim.speed = 0.1f;
 	powerUp_Auto.lifetime = 600;
 
 	powerUp_ThreeWay.anim.PushBack({ 608, 277, 20, 23 });
@@ -94,7 +94,7 @@ bool ModuleParticles::Start()
 	powerUp_ThreeWay.anim.PushBack({ 650, 277, 20, 23 });
 	powerUp_ThreeWay.anim.PushBack({ 670, 277, 20, 23 });
 	powerUp_ThreeWay.anim.loop = true;
-	powerUp_ThreeWay.anim.speed = 0.3f;
+	powerUp_ThreeWay.anim.speed = 0.1f;
 	powerUp_ThreeWay.lifetime = 600;
 
 	powerUp_Pow.anim.PushBack({ 606, 310, 23, 25 });
