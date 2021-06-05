@@ -34,8 +34,8 @@ Enemy_Turret::Enemy_Turret(int x, int y) : Enemy(x, y)
 
 void Enemy_Turret::Update()
 {
-	iPoint vect = { position.x - App->player->position.x, position.y - App->player->position.y };
-	float degrees = 1 / (tan(vect.y / vect.x));
+	iPoint vect = { (position.x - App->player->position.x), (position.y - App->player->position.y) };
+	float degrees = atan(vect.y / vect.x);
 
 	if (0 <= degrees < 22.5f)
 		currentAnim = &angle[0];
