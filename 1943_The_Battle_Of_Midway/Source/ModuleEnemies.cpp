@@ -10,6 +10,7 @@
 #include "Enemy_GreenPlane.h"
 #include "Enemy_RedLoopPlane.h"
 #include "Enemy_Green_Bomber.h"
+#include "Enemy_Turret.h"
 
 
 #define SPAWN_MARGIN 50
@@ -167,11 +168,15 @@ void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info)
 					break;
 				case ENEMY_TYPE::GREENBOMBER:
 					enemies[i] = new Enemy_Green_Bomber(info.x, info.y);
-				
+					break;
+				case ENEMY_TYPE::TURRETSHIP:
+					enemies[i] = new Enemy_Turret(info.x, info.y);
+					break;
 			
 			}
 			enemies[i]->texture = texture;
 			enemies[i]->destroyedFx = enemyDestroyedFx;
+			
 			break;
 		}
 	}

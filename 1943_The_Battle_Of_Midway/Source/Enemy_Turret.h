@@ -17,7 +17,7 @@ public:
 
 private:
 	// The enemy animation
-	Animation position[16];
+	Animation angle[16];
 };
 
 #endif // __ENEMY_REDBIRD_H__

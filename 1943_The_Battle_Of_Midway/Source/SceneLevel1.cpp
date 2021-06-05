@@ -189,6 +189,8 @@ bool SceneLevel1::Start()
 	App->enemies->AddEnemy(ENEMY_TYPE::GREENBOMBER, 50, -4500);
 	App->enemies->AddEnemy(ENEMY_TYPE::GREENBOMBER, 350, -4500);
 
+	App->enemies->AddEnemy(ENEMY_TYPE::TURRETSHIP, 100, 100);
+
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
 
