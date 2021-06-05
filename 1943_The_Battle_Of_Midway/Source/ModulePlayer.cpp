@@ -252,7 +252,6 @@ update_status ModulePlayer::PostUpdate()
 			App->audio->PlayFx(deathPlayerFx);
 			playerDeadParticle = 2;
 			App->input->ShakeController(0, 60, 1.0f);
-
 		}
 		
 	}
