@@ -5,6 +5,7 @@
 #include "ModuleParticles.h"
 #include "ModuleAudio.h"
 #include "ModuleRender.h"
+#include "ModuleEnemies.h"
 #include <stdlib.h>
 
 Enemy::Enemy(int x, int y) : position(x, y)
@@ -46,17 +47,20 @@ void Enemy::OnCollision(Collider* collider)
 		App->particles->AddParticle(App->particles->enemyExplosion, position.x, position.y);
 		int random = rand() % 100;
 		
-		if (random <= 3)
+		if (powerUp)
 		{
-			App->particles->AddParticle(App->particles->powerUp_Auto, position.x, position.y, Collider::Type::PU_AUTO);
-		}
-		else if (random >= 50 && random <= 55)
-		{
-			App->particles->AddParticle(App->particles->powerUp_ThreeWay, position.x, position.y, Collider::Type::PU_THREEWAY);
-		}
-		else if (random >= 96)
-		{
-			App->particles->AddParticle(App->particles->powerUp_Pow, position.x, position.y, Collider::Type::PU_POW);
+			if (random <= 3)
+			{
+				App->particles->AddParticle(App->particles->powerUp_Auto, position.x, position.y, Collider::Type::PU_AUTO);
+			}
+			else if (random >= 50 && random <= 55)
+			{
+				App->particles->AddParticle(App->particles->powerUp_ThreeWay, position.x, position.y, Collider::Type::PU_THREEWAY);
+			}
+			else if (random >= 96)
+			{
+				App->particles->AddParticle(App->particles->powerUp_Pow, position.x, position.y, Collider::Type::PU_POW);
+			}
 		}
 		App->audio->PlayFx(destroyedFx);
 

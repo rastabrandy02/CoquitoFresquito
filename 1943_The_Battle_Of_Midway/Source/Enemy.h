@@ -49,6 +49,7 @@ public:
 
 	int health;
 	bool invincible = false;
+	bool powerUp = true;
 	
 
 protected:

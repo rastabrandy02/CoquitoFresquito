@@ -16,8 +16,9 @@ Enemy_Ship::Enemy_Ship(int x, int y) : Enemy(x, y)
 
 	App->collisions->AddCollider({ 0,0, 56, 296 }, Collider::Type::NONE);
 
-	
+	health = 1;
 	currentAnim = &ship;
+	powerUp = false;
 }
 
 void Enemy_Ship::Update()

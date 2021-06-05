@@ -75,11 +75,11 @@ private:
 	void SpawnEnemy(const EnemySpawnpoint& info);
 
 private:
+	Enemy* enemies[MAX_ENEMIES] = { nullptr };
 	// A queue with all spawn points information
 	EnemySpawnpoint spawnQueue[MAX_ENEMIES];
 
 	// All spawned enemies in the scene
-	Enemy* enemies[MAX_ENEMIES] = { nullptr };
 
 	// The enemies sprite sheet
 	SDL_Texture* texture = nullptr;
