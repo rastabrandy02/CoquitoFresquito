@@ -43,8 +43,6 @@ bool SceneLevel1::Start()
 
 	// Enemies ---
 
-	App->enemies->AddEnemy(ENEMY_TYPE::SHIP, 150, 200);
-	
 	
 	App->enemies->AddEnemy(ENEMY_TYPE::GREENPLANE, 300, -100);
 	App->enemies->AddEnemy(ENEMY_TYPE::GREENPLANE, 320, -120);

@@ -81,26 +81,29 @@ bool ModuleParticles::Start()
 
 	
 
-	powerUp_Auto.anim.PushBack({ 610, 237, 20, 23 });
-	powerUp_Auto.anim.PushBack({ 630, 237, 20, 23 });
-	powerUp_Auto.anim.PushBack({ 650, 237, 20, 23 });
-	powerUp_Auto.anim.PushBack({ 670, 237, 20, 23 });
+	powerUp_Auto.anim.PushBack({ 605, 278, 23, 21 });
+	powerUp_Auto.anim.PushBack({ 627, 278, 23, 21 });
+	powerUp_Auto.anim.PushBack({ 649, 278, 23, 21 });
+	powerUp_Auto.anim.PushBack({ 671, 278, 23, 21 });
 	powerUp_Auto.anim.loop = true;
 	powerUp_Auto.anim.speed = 0.1f;
 	powerUp_Auto.lifetime = 600;
 
-	powerUp_ThreeWay.anim.PushBack({ 608, 277, 20, 23 });
-	powerUp_ThreeWay.anim.PushBack({ 629, 277, 20, 23 });
-	powerUp_ThreeWay.anim.PushBack({ 650, 277, 20, 23 });
-	powerUp_ThreeWay.anim.PushBack({ 670, 277, 20, 23 });
+	powerUp_ThreeWay.anim.PushBack({ 613, 198, 20, 17 });
+	powerUp_ThreeWay.anim.PushBack({ 632, 198, 20, 17 });
+	powerUp_ThreeWay.anim.PushBack({ 651, 198, 20, 17 });
+	powerUp_ThreeWay.anim.PushBack({ 670, 198, 20, 17 });
 	powerUp_ThreeWay.anim.loop = true;
 	powerUp_ThreeWay.anim.speed = 0.1f;
 	powerUp_ThreeWay.lifetime = 600;
 
-	powerUp_Pow.anim.PushBack({ 606, 310, 23, 25 });
-	powerUp_Pow.anim.PushBack({ 606, 310, 23, 25 });
-	//powerUp_Pow.anim.PushBack({ 154, 719, 27, 37 });
-	//powerUp_Pow.anim.PushBack({ 57, 629, 18, 41 });
+	powerUp_Pow.anim.PushBack({ 605, 346, 20, 17 });
+	powerUp_Pow.anim.PushBack({ 624, 346, 20, 17 });
+	powerUp_Pow.anim.PushBack({ 643, 346, 20, 17 });
+	powerUp_Pow.anim.PushBack({ 662, 346, 20, 17 });
+	powerUp_Pow.anim.PushBack({ 681, 346, 20, 17 });
+	powerUp_Pow.anim.PushBack({ 700, 346, 20, 17 });
+	powerUp_Pow.anim.PushBack({ 719, 346, 20, 17 });
 	powerUp_Pow.anim.loop = true;
 	powerUp_Pow.anim.speed = 0.3f; 
 	powerUp_Pow.lifetime = 600;
