@@ -87,7 +87,7 @@ void Enemy_Green_Bomber::Update()
 		if (timer < fase[1])
 		{
 			currentAnim = &left;
-			if(position.x > 10)position.x -= 0.5f;
+			if(position.x > 10)position.x -= 1;
 			
 		}
 		if (timer >= fase[1] && timer < fase[2])
@@ -99,25 +99,53 @@ void Enemy_Green_Bomber::Update()
 		}
 		if (timer >= fase[2] && timer < fase[3])
 		{
+			if(timer == fase[2]) App->particles->AddParticle(App->particles->enemyShot, position.x + 50, position.y + 75, Collider::ENEMY_SHOT);
 			downAnim.Reset();
 			currentAnim = &stayAnim;
 		}
 		if (timer >= fase[3] && timer < fase[4])
 		{
+			if(timer == fase[3]) App->particles->AddParticle(App->particles->enemyShot, position.x + 50, position.y + 75, Collider::ENEMY_SHOT);
 			stayAnim.Reset();
 			currentAnim = &upAnim;
 			invincible = false;
 			//collider->type = Collider::Type::ENEMY;
 		}
+		if (timer == fase[4])
+		{
+			App->particles->AddParticle(App->particles->enemyShot, position.x + 50, position.y + 75, Collider::ENEMY_SHOT);
+			
+		}
 		if (timer >= fase[4] && timer < fase[5])
 		{
-			if(position.x < 200)position.x += 0.5f;
+			if(position.x < 300) position.x += 1;
 			currentAnim = &right;
 			upAnim.Reset();
 			
 			
 		}
-		if (timer >= fase[5])
+		if (timer >= fase[5] && timer < fase[6])
+		{
+
+			currentAnim = &downAnim;
+			invincible = true;
+			//collider->type = Collider::Type::NONE;
+		}
+		if (timer >= fase[6] && timer < fase[7])
+		{
+			if(timer == fase[6]) App->particles->AddParticle(App->particles->enemyShot, position.x + 50, position.y + 75, Collider::ENEMY_SHOT);
+			downAnim.Reset();
+			currentAnim = &stayAnim;
+		}
+		if (timer >= fase[7] && timer < fase[8])
+		{
+			if(timer == fase[7])  App->particles->AddParticle(App->particles->enemyShot, position.x + 50, position.y + 75, Collider::ENEMY_SHOT);
+			stayAnim.Reset();
+			currentAnim = &upAnim;
+			invincible = false;
+			//collider->type = Collider::Type::ENEMY;
+		}
+		if (timer >= fase[8])
 		{
 			timer = fase[0];
 			currentAnim = &flyAnim;
