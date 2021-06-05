@@ -42,7 +42,7 @@ bool SceneLevel1::Start()
 
 	// Enemies ---
 	
-	App->enemies->AddEnemy(ENEMY_TYPE::GREENPLANE, 300, 0);
+	/*App->enemies->AddEnemy(ENEMY_TYPE::GREENPLANE, 300, 0);
 	App->enemies->AddEnemy(ENEMY_TYPE::GREENPLANE, 320, -20);
 	App->enemies->AddEnemy(ENEMY_TYPE::GREENPLANE, 340, -40);
 	App->enemies->AddEnemy(ENEMY_TYPE::GREENPLANE, 100, 0);
@@ -186,6 +186,7 @@ bool SceneLevel1::Start()
 	App->enemies->AddEnemy(ENEMY_TYPE::GREENPLANE, 80, -2320);
 	App->enemies->AddEnemy(ENEMY_TYPE::GREENPLANE, 60, -2340);
 
+<<<<<<< Updated upstream
 	App->enemies->AddEnemy(ENEMY_TYPE::GREENBOMBER, 50, -4600);
 	App->enemies->AddEnemy(ENEMY_TYPE::GREENBOMBER, 350, -4400);
 
@@ -195,8 +196,12 @@ bool SceneLevel1::Start()
 	App->enemies->AddEnemy(ENEMY_TYPE::REDLOOPPLANE, 250, -3010);
 	App->enemies->AddEnemy(ENEMY_TYPE::REDLOOPPLANE, 250, -3080);
 	App->enemies->AddEnemy(ENEMY_TYPE::REDLOOPPLANE, 250, -3050);
+=======
+	App->enemies->AddEnemy(ENEMY_TYPE::GREENBOMBER, 50, -4500);
+	App->enemies->AddEnemy(ENEMY_TYPE::GREENBOMBER, 350, -4500);*/
+>>>>>>> Stashed changes
 
-	App->enemies->AddEnemy(ENEMY_TYPE::TURRETSHIP, 100, 100);
+	App->enemies->AddEnemy(ENEMY_TYPE::TURRETSHIP, 200, 0);
 
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;

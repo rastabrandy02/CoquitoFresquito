@@ -5,6 +5,8 @@
 #include "ModuleParticles.h"
 #include "ModulePlayer.h"
 #include <math.h>
+#include <stdio.h>
+#define PI 3.14159265
 
 Enemy_Turret::Enemy_Turret(int x, int y) : Enemy(x, y)
 {
@@ -34,42 +36,48 @@ Enemy_Turret::Enemy_Turret(int x, int y) : Enemy(x, y)
 
 void Enemy_Turret::Update()
 {
-	iPoint vect = { (position.x - App->player->position.x), (position.y - App->player->position.y) };
-	float degrees = atan(vect.y / vect.x);
+	iPoint vect = position - App->player->position;
+	float degrees = (atan(vect.y / vect.x) * 180)/PI;
+	if (vect.x < 0)
+		degrees += 180;
+	else if (vect.x > 0 && vect.y < 0)
+		degrees += 360;
+	printf("%f\n", degrees);
 
-	if (0 <= degrees < 22.5f)
-		currentAnim = &angle[0];
-	else if (22.5f <= degrees < 2 * 22.5f)
-		currentAnim = &angle[1];
-	else if (2 * 22.5f <= degrees < 3 * 22.5f)
-		currentAnim = &angle[2];
-	else if (3 * 22.5f <= degrees < 4 * 22.5f)
-		currentAnim = &angle[3];
-	else if (4 * 22.5f <= degrees < 5 * 22.5f)
-		currentAnim = &angle[4];
-	else if (5 * 22.5f <= degrees < 6 * 22.5f)
-		currentAnim = &angle[5];
-	else if (6 * 22.5f <= degrees < 7 * 22.5f)
-		currentAnim = &angle[6];
-	else if (7 * 22.5f <= degrees < 8 * 22.5f)
-		currentAnim = &angle[7];
-	else if (8 * 22.5f <= degrees < 9 * 22.5f)
-		currentAnim = &angle[8];
-	else if (9 * 22.5f <= degrees < 10 * 22.5f)
-		currentAnim = &angle[9];
-	else if (10 * 22.5f <= degrees < 11 * 22.5f)
-		currentAnim = &angle[10];
-	else if (11 * 22.5f <= degrees < 12* 22.5f)
-		currentAnim = &angle[11];
-	else if (12 * 22.5f <= degrees < 13 * 22.5f)
+	if (0 <= degrees && degrees< 22.5f)
 		currentAnim = &angle[12];
-	else if (13 * 22.5f <= degrees < 14 * 22.5f)
+	else if (22.5f <= degrees && degrees < 2 * 22.5f)
 		currentAnim = &angle[13];
-	else if (14 * 22.5f <= degrees < 15 * 22.5f)
+	else if (2 * 22.5f <= degrees && degrees < 3 * 22.5f)
 		currentAnim = &angle[14];
-	else if (15 * 22.5f <= degrees)
+	else if (3 * 22.5f <= degrees && degrees < 4 * 22.5f)
 		currentAnim = &angle[15];
+	else if (4 * 22.5f <= degrees && degrees < 5 * 22.5f)
+		currentAnim = &angle[0];
+	else if (5 * 22.5f <= degrees && degrees < 6 * 22.5f)
+		currentAnim = &angle[1];
+	else if (6 * 22.5f <= degrees && degrees < 7 * 22.5f)
+		currentAnim = &angle[2];
+	else if ((7 * 22.5f) <= degrees && degrees < (8 * 22.5f))
+		currentAnim = &angle[2];
+	else if (8 * 22.5f <= degrees && degrees < 9 * 22.5f)
+		currentAnim = &angle[3];
+	else if (9 * 22.5f <= degrees && degrees < 10 * 22.5f)
+		currentAnim = &angle[4];
+	else if (10 * 22.5f <= degrees && degrees < 11 * 22.5f)
+		currentAnim = &angle[5];
+	else if (11 * 22.5f <= degrees && degrees < 12* 22.5f)
+		currentAnim = &angle[6];
+	else if (12 * 22.5f <= degrees && degrees < 13 * 22.5f)
+		currentAnim = &angle[7];
+	else if (13 * 22.5f <= degrees && degrees < 14 * 22.5f)
+		currentAnim = &angle[8];
+	else if (14 * 22.5f <= degrees && degrees < 15 * 22.5f)
+		currentAnim = &angle[9];
+	else if (15 * 22.5f <= degrees)
+		currentAnim = &angle[10];
 
+	position = spawnPos;
 
 	Enemy::Update();
 }
