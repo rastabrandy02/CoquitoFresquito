@@ -37,6 +37,7 @@ public:
 	SDL_Texture* bgTexture = nullptr;
 	int endTime = 0;
 	int timer = 0;
+	int introTimer = 0;
 
 
 };

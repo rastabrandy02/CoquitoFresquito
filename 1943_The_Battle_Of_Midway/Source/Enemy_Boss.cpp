@@ -19,7 +19,7 @@ Enemy_Boss::Enemy_Boss(int x, int y) : Enemy(x, y)
 	App->enemies->AddEnemy(ENEMY_TYPE::TURRETBOSS, x + 50, y + 163);
 	
 
-	App->collisions->AddCollider({ 0,0, 56, 296 }, Collider::Type::NONE);
+	collider = App->collisions->AddCollider({ 0,0, 56, 296 }, Collider::Type::NONE);
 
 	invincible = true;
 	currentAnim = &ship;

@@ -119,10 +119,16 @@ update_status ModuleUI::PostUpdate()
 	if (App->player->intro)
 	{
 		
-		App->fonts->BlitText(150, 240, textFont, "offensive target");
-		App->fonts->BlitText(200, 260, textFontHiScore, "tone");
-		App->fonts->BlitText(150, 280, textFont, "may you fight bravely");
+		App->fonts->BlitText(130, 240, textFont, "offensive target");
+		App->fonts->BlitText(180, 260, textFontHiScore, "tone");
+		App->fonts->BlitText(130, 280, textFont, "may you fight bravely");
 		
+	}
+	if (App->player->end)
+	{
+		App->fonts->BlitText(100, 240, textFont, "visual contact with");
+		App->fonts->BlitText(90, 260, textFont, "surface foreces confirmed");
+		App->fonts->BlitText(130, 280, textFont, "comencing attack");
 	}
 	return update_status::UPDATE_CONTINUE;
 }

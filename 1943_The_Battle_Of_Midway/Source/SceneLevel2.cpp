@@ -10,7 +10,7 @@
 #include "ModuleFadeToBlack.h"
 #include "ModuleInput.h"
 #include "ModuleUI.h"
-
+#include "ModuleParticles.h"
 #include "SDL/include/SDL_scancode.h"
 #include <stdio.h> 
 
@@ -37,7 +37,6 @@ bool SceneLevel2::Start()
 	bgTexture = App->textures->Load("Assets/SeaMap.png");
 	App->audio->PlayMusic("Assets/Audio/stage2.ogg", 1.0f);
 
-	App->collisions->AddCollider({ 0, -5400, 400, 200 }, Collider::Type::WIN);
 
 	// Enemies ---
 
@@ -196,7 +195,7 @@ bool SceneLevel2::Start()
 	App->player->Enable();
 	App->enemies->Enable();
 	App->UI->Enable();
-
+	App->particles->Enable();
 
 
 
@@ -206,17 +205,28 @@ bool SceneLevel2::Start()
 
 update_status SceneLevel2::Update()
 {
+	introTimer++;
+	if (introTimer <= 160)
+	{
+		App->player->end = false;
+	}
 	if (App->render->camera.y >= -4500)
 	{
 		App->render->camera.y -= 1;
 		App->player->playerMove = true;
+	}
+	else
+	{
+		App->player->playerMove = false;
 		endTime++;
 	}
-	if(endTime == 3600)
+	
+	if(endTime == 3600 || App->render->percentage <= 0)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->sceneEnd, 60);
 	}
-	else App->player->playerMove = false;
+	
+
 	if (App->input->keys[SDL_SCANCODE_F2] == KEY_STATE::KEY_DOWN)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->sceneEnd, 60);
@@ -253,6 +263,7 @@ bool SceneLevel2::CleanUp()
 	App->enemies->Disable();
 	App->collisions->Disable();
 	App->UI->Disable();
+	App->particles->Disable();
 	App->textures->Unload(bgTexture);
 
 	return true;

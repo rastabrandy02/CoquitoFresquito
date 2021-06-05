@@ -200,6 +200,7 @@ bool SceneLevel1::Start()
 	App->player->Enable();
 	App->enemies->Enable();
 	App->UI->Enable();
+	App->particles->Enable();
 
 	
 
