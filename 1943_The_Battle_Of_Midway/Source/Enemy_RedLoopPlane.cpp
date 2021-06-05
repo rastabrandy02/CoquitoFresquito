@@ -71,20 +71,22 @@ void Enemy_RedLoopPlane::Update()
 		//position.x = spawnPos.x + (waveHeight * sinf(waveRatio));
 		position.x = spawnPos.x;
 		currentAnim = &flyAnim;
-		if (!hasAttacked)
-		{
-			App->particles->AddParticle(App->particles->enemyShot, position.x + 5, position.y - 5, Collider::ENEMY_SHOT);
-			hasAttacked = true;
-		}
+		
 	}
 	if (timer >360)
 	{
 		waveRatio = 0.0f;
-		hasAttacked = false;
+		
 		timer = 0;
 		
 	}
 	timer++;
+	attacktimer++;
+	if (attacktimer > 650)
+	{
+		attacktimer = 0;
+		App->particles->AddParticle(App->particles->enemyShot, position.x + 5, position.y - 5, Collider::ENEMY_SHOT);
+	}
 	
 	/*path.Update();
 	position = spawnPos + path.GetRelativePosition();

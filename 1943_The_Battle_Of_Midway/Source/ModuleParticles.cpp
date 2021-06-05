@@ -32,17 +32,17 @@ bool ModuleParticles::Start()
 
 	basicShot.anim.PushBack({ 722, 95, 6, 24 });
 	basicShot.speed.y = -5;
-	basicShot.lifetime = 180;
+	basicShot.lifetime = 120;
 
 	anglePosShot.anim.PushBack({ 727, 71, 18, 24 });
 	anglePosShot.speed.y = -5;
 	anglePosShot.speed.x = 5;
-	anglePosShot.lifetime = 180;
+	anglePosShot.lifetime = 120;
 
 	angleNegShot.anim.PushBack({ 727, 94, 18, 24 });
 	angleNegShot.speed.y = -5;
 	angleNegShot.speed.x = -5;
-	angleNegShot.lifetime = 180;
+	angleNegShot.lifetime = 120;
 
 
 
@@ -113,7 +113,7 @@ bool ModuleParticles::Start()
 	
 	if ((App->player->position.x - enemyShot.spawnPos.x) < 0) enemyShot.speed.x = -1.0f;
 	if ((App->player->position.x - enemyShot.spawnPos.x) > 0) enemyShot.speed.x = 1.0f;
-	enemyShot.speed.y = 1.5f;
+	enemyShot.speed.y = 2.0f;
 	enemyShot.lifetime = 350;
 	return true;
 }

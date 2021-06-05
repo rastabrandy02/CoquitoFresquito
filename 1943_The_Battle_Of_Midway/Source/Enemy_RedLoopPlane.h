@@ -22,12 +22,13 @@ private:
 	// The speed at which the wave ratio is increased
 	float waveRatioSpeed = 0.05f;
 	int timer = 0;
+	int attacktimer = 0;
 	// The original spawning position. The wave will be calculated from that
 	int spawn_y = 0;
 
 	// The total height of the wave
 	int waveHeight = 100;
-	bool hasAttacked = false;
+	
 
 	// The enemy animation
 	Animation flyAnim;

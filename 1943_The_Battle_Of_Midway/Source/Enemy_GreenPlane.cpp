@@ -51,7 +51,7 @@ void Enemy_GreenPlane::Update()
 	path.Update();
 	position = spawnPos + path.GetRelativePosition();
 	currentAnim = path.GetCurrentAnimation();
-	if (attackTimer >= 240)
+	if (attackTimer >= 840)
 	{
 		App->particles->AddParticle(App->particles->enemyShot, position.x + 5, position.y - 5, Collider::ENEMY_SHOT);
 		attackTimer = 0;
