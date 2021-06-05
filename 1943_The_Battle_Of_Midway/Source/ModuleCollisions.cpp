@@ -18,6 +18,7 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::NONE][Collider::Type::PLAYER_SHOT] = false;
 	matrix[Collider::Type::NONE][Collider::Type::ENEMY_SHOT] = false;
 	matrix[Collider::Type::NONE][Collider::Type::WIN] = false;
+	matrix[Collider::Type::NONE][Collider::Type::LVL2] = false;
 	matrix[Collider::Type::NONE][Collider::Type::PU_AUTO] = false;
 	matrix[Collider::Type::NONE][Collider::Type::PU_THREEWAY] = false;
 	matrix[Collider::Type::NONE][Collider::Type::PU_POW] = false;
@@ -29,6 +30,7 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::WALL][Collider::Type::PLAYER_SHOT] = true;
 	matrix[Collider::Type::WALL][Collider::Type::ENEMY_SHOT] = true;
 	matrix[Collider::Type::WALL][Collider::Type::WIN] = false;
+	matrix[Collider::Type::WALL][Collider::Type::LVL2] = false;
 	matrix[Collider::Type::WALL][Collider::Type::PU_AUTO] = false;
 	matrix[Collider::Type::WALL][Collider::Type::PU_THREEWAY] = false;
 	matrix[Collider::Type::WALL][Collider::Type::PU_POW] = false;
@@ -40,6 +42,7 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::PLAYER][Collider::Type::PLAYER_SHOT] = false;
 	matrix[Collider::Type::PLAYER][Collider::Type::ENEMY_SHOT] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::WIN] = true;
+	matrix[Collider::Type::PLAYER][Collider::Type::LVL2] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::PU_AUTO] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::PU_THREEWAY] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::PU_POW] = true;

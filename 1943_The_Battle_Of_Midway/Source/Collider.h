@@ -21,6 +21,7 @@ struct Collider
 		PU_THREEWAY,
 		PU_POW,
 		WIN,
+		LVL2,
 
 		MAX
 	};

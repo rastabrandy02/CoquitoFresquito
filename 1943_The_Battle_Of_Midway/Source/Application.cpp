@@ -8,6 +8,7 @@
 #include "ModulePlayer.h"
 #include "SceneIntro.h"
 #include "SceneLevel1.h"
+#include "SceneLevel2.h"
 #include "ModuleParticles.h"
 #include "ModuleEnemies.h"
 #include "ModuleCollisions.h"
@@ -31,19 +32,20 @@ Application::Application()
 	modules[4] = sceneInit = new SceneInit(true);
 	modules[5] = sceneIntro = new SceneIntro(false);
 	modules[6] = sceneLevel_1 = new SceneLevel1(false);
-	modules[7] = sceneEnd = new SceneEnd(false);
-	modules[8] = player = new ModulePlayer(false);
-	modules[9] = particles = new ModuleParticles(true);
-	modules[10] = enemies = new ModuleEnemies(false);
+	modules[7] = sceneLevel_2 = new SceneLevel2(false);
+	modules[8] = sceneEnd = new SceneEnd(false);
+	modules[9] = player = new ModulePlayer(false);
+	modules[10] = particles = new ModuleParticles(true);
+	modules[11] = enemies = new ModuleEnemies(false);
 
-	modules[11] = collisions = new ModuleCollisions(true);
+	modules[12] = collisions = new ModuleCollisions(true);
 
 
-	modules[12] = fade = new ModuleFadeToBlack(true);
-	modules[13] = fonts = new ModuleFonts(true);
-	modules[14] = UI = new ModuleUI(false);
+	modules[13] = fade = new ModuleFadeToBlack(true);
+	modules[14] = fonts = new ModuleFonts(true);
+	modules[15] = UI = new ModuleUI(false);
 
-	modules[15] = render = new ModuleRender(true);
+	modules[16] = render = new ModuleRender(true);
 	prevTime = GetTickCount64();
 }
 

@@ -1,4 +1,4 @@
-#include "SceneLevel1.h"
+#include "SceneLevel2.h"
 
 #include "Application.h"
 #include "ModuleTextures.h"
@@ -13,36 +13,35 @@
 
 #include "SDL/include/SDL_scancode.h"
 #include <stdio.h> 
-SceneLevel1::SceneLevel1(bool startEnabled) : Module(startEnabled)
+
+SceneLevel2::SceneLevel2(bool startEnabled) : Module(startEnabled)
 {
-	
-	
+
+
 }
 
-SceneLevel1::~SceneLevel1()
+SceneLevel2::~SceneLevel2()
 {
 
 }
 
 // Load assets
-bool SceneLevel1::Start()
+bool SceneLevel2::Start()
 {
 	App->collisions->Enable();
 	LOG("Loading background assets");
 	timer = 0;
 	bool ret = true;
-	
 
 
-	cloudTexture = App->textures->Load("Assets/CloudsMap.png");
 	bgTexture = App->textures->Load("Assets/SeaMap.png");
 	App->audio->PlayMusic("Assets/Audio/stage1.ogg", 1.0f);
 
-	App->collisions->AddCollider({ 0, -5400, 400, 200 }, Collider::Type::LVL2);
+	App->collisions->AddCollider({ 0, -5400, 400, 200 }, Collider::Type::WIN);
 
 	// Enemies ---
-	
-	App->enemies->AddEnemy(ENEMY_TYPE::GREENPLANE, 300, 0);
+
+	/*App->enemies->AddEnemy(ENEMY_TYPE::GREENPLANE, 300, 0);
 	App->enemies->AddEnemy(ENEMY_TYPE::GREENPLANE, 320, -20);
 	App->enemies->AddEnemy(ENEMY_TYPE::GREENPLANE, 340, -40);
 	App->enemies->AddEnemy(ENEMY_TYPE::GREENPLANE, 100, 0);
@@ -187,7 +186,7 @@ bool SceneLevel1::Start()
 	App->enemies->AddEnemy(ENEMY_TYPE::GREENPLANE, 60, -2340);
 
 	App->enemies->AddEnemy(ENEMY_TYPE::GREENBOMBER, 50, -4500);
-	App->enemies->AddEnemy(ENEMY_TYPE::GREENBOMBER, 350, -4500);
+	App->enemies->AddEnemy(ENEMY_TYPE::GREENBOMBER, 350, -4500);*/
 
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
@@ -196,14 +195,14 @@ bool SceneLevel1::Start()
 	App->enemies->Enable();
 	App->UI->Enable();
 
-	
+
 
 
 
 	return ret;
 }
 
-update_status SceneLevel1::Update()
+update_status SceneLevel2::Update()
 {
 	App->render->camera.y -= 1;
 	if (App->input->keys[SDL_SCANCODE_F2] == KEY_STATE::KEY_DOWN)
@@ -222,29 +221,27 @@ update_status SceneLevel1::Update()
 }
 
 // Update: draw background
-update_status SceneLevel1::PostUpdate()
+update_status SceneLevel2::PostUpdate()
 {
 	// Draw everything --------------------------------------
 	App->render->Blit(bgTexture, 0, -5600, NULL);
-	App->render->Blit(cloudTexture, 0, -5600, NULL, 0.75f);
-	
+
 
 	return update_status::UPDATE_CONTINUE;
 }
 
-void SceneLevel1::OnCollision(Collider* c1, Collider* c2)
+void SceneLevel2::OnCollision(Collider* c1, Collider* c2)
 {
-	
+
 }
 
-bool SceneLevel1::CleanUp()
+bool SceneLevel2::CleanUp()
 {
 	App->player->Disable();
 	App->enemies->Disable();
 	App->collisions->Disable();
 	App->UI->Disable();
 	App->textures->Unload(bgTexture);
-	App->textures->Unload(cloudTexture);
 
 	return true;
 }

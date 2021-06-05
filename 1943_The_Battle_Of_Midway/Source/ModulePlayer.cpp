@@ -12,6 +12,7 @@
 #include "ModuleEnemies.h"
 #include "ModuleUI.h"
 #include "SceneLevel1.h"
+#include "SceneLevel2.h"
 
 #include "SDL/include/SDL_scancode.h"
 
@@ -293,6 +294,12 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	if (c1 == collider && c2->type == Collider::Type::WIN)
 	{
 		App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneEnd, 60);
+		position.x = 0;
+		position.y = 0;
+		
+	}if (c1 == collider && c2->type == Collider::Type::LVL2)
+	{
+		App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneLevel_2, 60);
 		position.x = 0;
 		position.y = 0;
 		
