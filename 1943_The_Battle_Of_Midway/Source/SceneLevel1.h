@@ -36,9 +36,9 @@ public:
 	// The scene sprite sheet loaded into an SDL_Texture
 	SDL_Texture* bgTexture = nullptr;
 	SDL_Texture* cloudTexture = nullptr;
-
+	SDL_Texture* ship = nullptr;
 	int timer = 0;
-
+	int introTimer = 0;
 
 };
 

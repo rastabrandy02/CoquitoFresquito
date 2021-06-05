@@ -53,8 +53,8 @@ public:
 
 	// A set of animations
 	Animation idleAnim;
-	Animation upAnim;
 	Animation downAnim;
+	Animation introAnim;
 
 	Animation leftAnim;
 	Animation rightAnim;
@@ -92,6 +92,9 @@ public:
 
 	bool debugGamepadInfo = false;
 	bool playerMove = true;
+	bool intro = true;
+	bool end = false;
+	int endTimer = 0;
 };
 
 #endif //!__MODULE_PLAYER_H__

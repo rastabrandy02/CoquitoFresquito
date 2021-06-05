@@ -13,6 +13,7 @@
 #include "ModuleUI.h"
 #include "SceneLevel1.h"
 #include "SceneLevel2.h"
+#include <stdio.h>
 
 #include "SDL/include/SDL_scancode.h"
 
@@ -20,19 +21,57 @@
 
 ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 {
-	// idle animation - just one sprite
 	
-	idleAnim.PushBack({ 175, 190, 35, 25 });
+	
+	idleAnim.PushBack({ 93, 28, 25, 16 });
+	idleAnim.PushBack({ 93, 48, 25, 16 });
+	idleAnim.loop = true;
+	idleAnim.speed = 0.1f;
 
-	leftAnim.PushBack({ 135, 190, 35, 25 });
-	leftAnim.PushBack({ 95, 190, 35, 25 });
+	leftAnim.PushBack({ 62, 29, 22, 16 });
+	leftAnim.PushBack({ 62, 48, 22, 16 });
+	leftAnim.PushBack({ 30, 29, 19, 16 });
+	leftAnim.PushBack({ 30, 48, 19, 16 });
 	leftAnim.loop = false;
 	leftAnim.speed = 0.1f;
 
-	rightAnim.PushBack({ 220, 190, 35, 25 });
-	rightAnim.PushBack({ 265, 190, 35, 25 });
+	rightAnim.PushBack({ 127, 29, 22, 16 });
+	rightAnim.PushBack({ 127, 48, 22, 16 });
+	rightAnim.PushBack({ 163, 29, 18, 16 });
+	rightAnim.PushBack({ 163, 48, 18, 16 });
 	rightAnim.loop = false;
 	rightAnim.speed = 0.1f;
+
+	downAnim.PushBack({ 24, 144, 46, 19 });
+	downAnim.PushBack({ 75, 144, 46, 19 });
+	downAnim.PushBack({ 126, 144, 46, 19 });
+	downAnim.PushBack({ 175, 144, 46, 19 });
+	downAnim.loop = false;
+	downAnim.speed = 0.05f;
+
+	introAnim.PushBack({ 271, 121, 7, 7 });
+	introAnim.PushBack({ 135, 121, 10, 6 });
+	introAnim.PushBack({ 236, 120, 8, 9 });
+	introAnim.PushBack({ 99, 120, 13, 9 });
+	introAnim.PushBack({ 165, 117, 14, 13 });
+	introAnim.PushBack({ 200, 119, 12, 10 });
+
+	introAnim.PushBack({ 25, 75, 25, 13 });
+	introAnim.PushBack({ 25, 93, 25, 14 });
+	introAnim.PushBack({ 58, 77, 27, 11 });
+	introAnim.PushBack({ 58, 93, 27, 13 });
+	introAnim.PushBack({ 92, 77, 28, 7 });
+	introAnim.PushBack({ 125, 77, 30, 10 });
+	introAnim.PushBack({ 159, 79, 30, 15 });
+	introAnim.PushBack({ 193, 74, 30, 16 });
+	introAnim.PushBack({ 228, 76, 28, 11 });
+	introAnim.PushBack({ 273, 79, 26, 6 });
+	introAnim.PushBack({ 228, 94, 26, 13 });
+	introAnim.PushBack({ 228, 94, 26, 13 });
+	introAnim.loop = false;
+	introAnim.speed = 0.05f;
+	currentAnimation = &introAnim;
+
 }
 
 ModulePlayer::~ModulePlayer()
@@ -47,8 +86,8 @@ bool ModulePlayer::Start()
 	bool ret = true;
 
 	playerDeadParticle = 0;
-	texture = App->textures->Load("Assets/Art/SuperAce/yellow_plane.png");
-	currentAnimation = &idleAnim;
+	texture = App->textures->Load("Assets/superAce.png");
+	
 	App->UI->score = 0;
 	
 	deathPlayerFx = App->audio->LoadFx("Assets/FX/death_player.wav");
@@ -76,7 +115,7 @@ update_status ModulePlayer::Update()
 	// Moving the player with the camera scroll
 	if (playerMove)
 		App->player->position.y -= 1;
-
+	
 
 	// Debug key for gamepad rumble testing purposes
 	if (App->input->keys[SDL_SCANCODE_1] == KEY_STATE::KEY_DOWN)
@@ -100,7 +139,7 @@ update_status ModulePlayer::Update()
 	autoTimer++;
 	
 	
-	if (!destroyed)
+	if (!destroyed || !intro || !end)
 	{
 		if (position.x >= 0)
 		{
@@ -111,6 +150,7 @@ update_status ModulePlayer::Update()
 				{
 					leftAnim.Reset();
 					currentAnimation = &leftAnim;
+					printf("left\n");
 				}
 			}
 		}
@@ -125,6 +165,7 @@ update_status ModulePlayer::Update()
 				{
 					rightAnim.Reset();
 					currentAnimation = &rightAnim;
+					printf("right\n");
 				}
 			}
 		}
@@ -211,14 +252,15 @@ update_status ModulePlayer::Update()
 		}
 
 		// If no up/down movement detected, set the current animation back to idle
-		if (pad.enabled)
+		if (!intro)
 		{
-			if (pad.left_x == 0.0f && pad.left_y == 0.0f) currentAnimation = &idleAnim;
+			if (pad.enabled)
+			{
+				if (pad.left_x == 0.0f && pad.left_y == 0.0f) currentAnimation = &idleAnim;
+			}
+			if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE && App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE)
+				currentAnimation = &idleAnim;
 		}
-		else if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE
-			&& App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE)
-			currentAnimation = &idleAnim;
-
 		collider->SetPos(position.x, position.y);
 
 		currentAnimation->Update();
@@ -232,6 +274,7 @@ update_status ModulePlayer::Update()
 		}
 	}
 	if (shotCountDown > 0) --shotCountDown;
+	if (end) currentAnimation = &downAnim;
 	return update_status::UPDATE_CONTINUE;
 }
 
@@ -300,10 +343,14 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		
 	}if (c1 == collider && c2->type == Collider::Type::LVL2)
 	{
-		App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneLevel_2, 60);
-		position.x = 0;
-		position.y = 0;
-		
+		end = true;
+		endTimer++;
+		if (endTimer <= 240)
+		{
+			App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneLevel_2, 60);
+			position.x = 0;
+			position.y = 0;
+		}
 	}
 }
 

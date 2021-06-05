@@ -36,18 +36,14 @@ bool SceneLevel1::Start()
 
 	cloudTexture = App->textures->Load("Assets/CloudsMap.png");
 	bgTexture = App->textures->Load("Assets/SeaMap.png");
+	ship = App->textures->Load("Assets/superAce.png");
 	App->audio->PlayMusic("Assets/Audio/stage1.ogg", 1.0f);
 
 	App->collisions->AddCollider({ 0, -5400, 400, 200 }, Collider::Type::LVL2);
 
 	// Enemies ---
 	
-	App->enemies->AddEnemy(ENEMY_TYPE::GREENPLANE, 300, 0);
-	App->enemies->AddEnemy(ENEMY_TYPE::GREENPLANE, 320, -20);
-	App->enemies->AddEnemy(ENEMY_TYPE::GREENPLANE, 340, -40);
-	App->enemies->AddEnemy(ENEMY_TYPE::GREENPLANE, 100, 0);
-	App->enemies->AddEnemy(ENEMY_TYPE::GREENPLANE, 80, -20);
-	App->enemies->AddEnemy(ENEMY_TYPE::GREENPLANE, 60, -40);
+	
 	App->enemies->AddEnemy(ENEMY_TYPE::GREENPLANE, 300, -100);
 	App->enemies->AddEnemy(ENEMY_TYPE::GREENPLANE, 320, -120);
 	App->enemies->AddEnemy(ENEMY_TYPE::GREENPLANE, 340, -140);
@@ -214,7 +210,16 @@ bool SceneLevel1::Start()
 
 update_status SceneLevel1::Update()
 {
-	App->render->camera.y -= 1;
+	introTimer++;
+	if (introTimer >= 180 || App->player->end)
+	{
+		App->render->camera.y -= 1;
+		App->player->intro = false;
+	}
+	else
+	{
+		App->player->currentAnimation = &App->player->introAnim;
+	}
 	if (App->input->keys[SDL_SCANCODE_F2] == KEY_STATE::KEY_DOWN)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->sceneEnd, 60);
@@ -237,10 +242,11 @@ update_status SceneLevel1::Update()
 // Update: draw background
 update_status SceneLevel1::PostUpdate()
 {
+	SDL_Rect rect = { 314, 24, 57, 241 };
 	// Draw everything --------------------------------------
 	App->render->Blit(bgTexture, 0, -5600, NULL);
 	App->render->Blit(cloudTexture, 0, -5600, NULL, 0.75f);
-	
+	App->render->Blit(ship, 170, 259, &(rect));
 
 	return update_status::UPDATE_CONTINUE;
 }

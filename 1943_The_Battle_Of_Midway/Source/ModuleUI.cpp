@@ -82,7 +82,7 @@ update_status ModuleUI::PostUpdate()
 	counter++;
 	if ((counter / 60) % 2 == 0)
 	{
-		App->fonts->BlitText(250, 458, textFont,"insert a coin");
+		App->fonts->BlitText(250, 458, textFont,"insert coin");
 	}
 	if (autopw)
 	{
@@ -116,6 +116,14 @@ update_status ModuleUI::PostUpdate()
 	App->fonts->BlitText(150, 9, textFontHiScore, "hiscore");
 	App->fonts->BlitText(165, 30, scoreFontHiScore, hiScoreText);
 	//App->fonts->BlitText(300, 10, testFont, fpsText);
+	if (App->player->intro)
+	{
+		
+		App->fonts->BlitText(150, 240, textFont, "offensive target");
+		App->fonts->BlitText(200, 260, textFontHiScore, "tone");
+		App->fonts->BlitText(150, 280, textFont, "may you fight bravely");
+		
+	}
 	return update_status::UPDATE_CONTINUE;
 }
 

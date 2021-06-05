@@ -41,7 +41,7 @@ bool SceneEnd::Start()
 	bool audio = true;
 
 
-	planeTex = App->textures->Load("Assets/Art/Endings/plane.png");
+	planeTex = App->textures->Load("Assets/planeEnd.png");
 
 	currentAnim = &planeAnim;
 	char lookupTable3[] = { "0123456789abcdefghijklmnopqrstuvwxyz" };
