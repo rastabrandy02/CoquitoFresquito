@@ -12,6 +12,9 @@
 #include "Enemy_Green_Bomber.h"
 #include "Enemy_Turret.h"
 #include "Enemy_Ship.h"
+#include "Enemy_Boss.h"
+#include "Enemy_Boss_Core.h"
+#include "Enemy_Turret_Boss.h"
 
 
 #define SPAWN_MARGIN 50
@@ -175,6 +178,15 @@ void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info)
 					break;
 				case ENEMY_TYPE::SHIP:
 					enemies[i] = new Enemy_Ship(info.x, info.y);
+					break;
+				case ENEMY_TYPE::TURRETBOSS:
+					enemies[i] = new Enemy_Turret_Boss(info.x, info.y);
+					break;
+				case ENEMY_TYPE::BOSS:
+					enemies[i] = new Enemy_Boss(info.x, info.y);
+					break;
+				case ENEMY_TYPE::BOSSCORE:
+					enemies[i] = new Enemy_Boss_Core(info.x, info.y);
 					break;
 			
 			}

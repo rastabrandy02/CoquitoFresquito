@@ -80,10 +80,13 @@
     <ClInclude Include="Application.h" />
     <ClInclude Include="Collider.h" />
     <ClInclude Include="Enemy.h" />
+    <ClInclude Include="Enemy_Boss.h" />
+    <ClInclude Include="Enemy_Boss_Core.h" />
     <ClInclude Include="Enemy_Green_Bomber.h" />
     <ClInclude Include="Enemy_RedLoopPlane.h" />
     <ClInclude Include="Enemy_GreenPlane.h" />
     <ClInclude Include="Enemy_Ship.h" />
+    <ClInclude Include="Enemy_Turret_Boss.h" />
     <ClInclude Include="ModuleAudio.h" />
     <ClInclude Include="ModuleCollisions.h" />
     <ClInclude Include="ModuleEnemies.h" />
@@ -113,10 +116,13 @@
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="Collider.cpp" />
     <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="Enemy_Boss.cpp" />
+    <ClCompile Include="Enemy_Boss_Core.cpp" />
     <ClCompile Include="Enemy_Green_Bomber.cpp" />
     <ClCompile Include="Enemy_RedLoopPlane.cpp" />
     <ClCompile Include="Enemy_GreenPlane.cpp" />
     <ClCompile Include="Enemy_Ship.cpp" />
+    <ClCompile Include="Enemy_Turret_Boss.cpp" />
     <ClCompile Include="Globals.cpp" />
     <ClCompile Include="ModuleAudio.cpp" />
     <ClCompile Include="ModuleCollisions.cpp" />

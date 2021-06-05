@@ -84,6 +84,10 @@ void Enemy_Turret::Update()
 		currentAnim = &angle[10];
 
 	position = spawnPos;
+	if (health <= 0)
+	{
+		App->particles->AddParticle(App->particles->enemyExplosion, position.x, position.y, Collider::Type::NONE);
+	}
 
 	Enemy::Update();
 }

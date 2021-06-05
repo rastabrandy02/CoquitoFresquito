@@ -42,7 +42,7 @@ bool SceneLevel1::Start()
 
 	// Enemies ---
 	
-	/*App->enemies->AddEnemy(ENEMY_TYPE::GREENPLANE, 300, 0);
+	App->enemies->AddEnemy(ENEMY_TYPE::GREENPLANE, 300, 0);
 	App->enemies->AddEnemy(ENEMY_TYPE::GREENPLANE, 320, -20);
 	App->enemies->AddEnemy(ENEMY_TYPE::GREENPLANE, 340, -40);
 	App->enemies->AddEnemy(ENEMY_TYPE::GREENPLANE, 100, 0);
@@ -198,10 +198,10 @@ bool SceneLevel1::Start()
 	App->enemies->AddEnemy(ENEMY_TYPE::REDLOOPPLANE, 250, -3050);
 
 	App->enemies->AddEnemy(ENEMY_TYPE::GREENBOMBER, 50, -4500);
-	App->enemies->AddEnemy(ENEMY_TYPE::GREENBOMBER, 350, -4500);*/
+	App->enemies->AddEnemy(ENEMY_TYPE::GREENBOMBER, 350, -4500);
 
 
-	App->enemies->AddEnemy(ENEMY_TYPE::SHIP, 100, 0);
+	
 
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;

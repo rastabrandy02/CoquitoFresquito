@@ -7,7 +7,7 @@
 
 Enemy_Ship::Enemy_Ship(int x, int y) : Enemy(x, y)
 {
-	ship.PushBack({ 175, 1223, 56, 296 });
+	ship.PushBack({ 164, 1295, 38, 180 });
 	App->enemies->AddEnemy(ENEMY_TYPE::TURRETSHIP, x + 5, y + 44);
 	App->enemies->AddEnemy(ENEMY_TYPE::TURRETSHIP, x + 5, y + 138);
 	App->enemies->AddEnemy(ENEMY_TYPE::TURRETSHIP, x + 5, y + 185);
