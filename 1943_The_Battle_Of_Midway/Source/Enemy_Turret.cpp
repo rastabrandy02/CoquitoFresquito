@@ -31,18 +31,25 @@ Enemy_Turret::Enemy_Turret(int x, int y) : Enemy(x, y)
 
 	collider = App->collisions->AddCollider({ 0,0, 30, 32 }, Collider::Type::ENEMY, (Module*)App->enemies);
 	health = 3;
+	degrees = 0;
 
 }
 
 void Enemy_Turret::Update()
 {
 	iPoint vect = position - App->player->position;
-	float degrees = (atan(vect.y / vect.x) * 180)/PI;
-	if (vect.x < 0)
-		degrees += 180;
-	else if (vect.x > 0 && vect.y < 0)
-		degrees += 360;
-	printf("%f\n", degrees);
+	
+	if (vect.x != 0)
+	{
+		degrees = (atan(vect.y / vect.x) * 180) / PI;
+		if (vect.x < 0)
+			degrees += 180;
+		else if (vect.x > 0 && vect.y < 0)
+			degrees += 360;
+		printf("%f\n", degrees);
+	}
+	else
+		degrees = 270;
 
 	if (0 <= degrees && degrees< 22.5f)
 		currentAnim = &angle[12];

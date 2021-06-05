@@ -83,6 +83,7 @@
     <ClInclude Include="Enemy_Green_Bomber.h" />
     <ClInclude Include="Enemy_RedLoopPlane.h" />
     <ClInclude Include="Enemy_GreenPlane.h" />
+    <ClInclude Include="Enemy_Ship.h" />
     <ClInclude Include="ModuleAudio.h" />
     <ClInclude Include="ModuleCollisions.h" />
     <ClInclude Include="ModuleEnemies.h" />
@@ -115,6 +116,7 @@
     <ClCompile Include="Enemy_Green_Bomber.cpp" />
     <ClCompile Include="Enemy_RedLoopPlane.cpp" />
     <ClCompile Include="Enemy_GreenPlane.cpp" />
+    <ClCompile Include="Enemy_Ship.cpp" />
     <ClCompile Include="Globals.cpp" />
     <ClCompile Include="ModuleAudio.cpp" />
     <ClCompile Include="ModuleCollisions.cpp" />
