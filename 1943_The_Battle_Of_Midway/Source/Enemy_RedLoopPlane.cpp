@@ -6,8 +6,8 @@
 
 Enemy_RedLoopPlane::Enemy_RedLoopPlane(int x, int y): Enemy(x, y)
 {
-	flyAnim.PushBack({ 1073,1172,27,26 });
-	flyAnim.PushBack({ 1080,1283, 29, 25 });
+	flyAnim.PushBack({ 1081, 1283, 28, 21 });
+	flyAnim.PushBack({ 1081, 1283, 28, 21 });
 	flyAnim.speed = 0.2f;
 	flyAnim.loop = true;
 
@@ -16,22 +16,41 @@ Enemy_RedLoopPlane::Enemy_RedLoopPlane(int x, int y): Enemy(x, y)
 	backwardAnim.speed = 0.1f;
 	backwardAnim.loop = true;*/
 
-	turnAnim.PushBack({ 1273, 1243, 27, 26 });
-	turnAnim.PushBack({ 1243, 1243, 30, 25 });
-	turnAnim.PushBack({ 1215, 1244, 29, 23 });
-	turnAnim.PushBack({ 1188, 1243, 27, 24 });
-	turnAnim.PushBack({ 1159, 1244, 29, 20 });
-	turnAnim.PushBack({ 1131, 1243, 29, 24 });
-	turnAnim.PushBack({ 1105, 1242, 27, 27 });
-	turnAnim.PushBack({ 1275, 1282, 32, 25 });
-	turnAnim.PushBack({ 1249, 1284, 28, 22 });
-	turnAnim.PushBack({ 1221, 1284, 28, 21 });
-	turnAnim.PushBack({ 1192, 1284, 28, 21 });
+	//turnAnim.PushBack({ 1273, 1243, 27, 26 });
+	//turnAnim.PushBack({ 1243, 1243, 30, 25 });
+	//turnAnim.PushBack({ 1215, 1244, 29, 23 });
+	//turnAnim.PushBack({ 1188, 1243, 27, 24 });
+	//turnAnim.PushBack({ 1159, 1244, 29, 20 });
+	//turnAnim.PushBack({ 1131, 1243, 29, 24 });
+	//turnAnim.PushBack({ 1105, 1242, 27, 27 });
+	//turnAnim.PushBack({ 1275, 1282, 32, 25 });
+	//turnAnim.PushBack({ 1249, 1284, 28, 22 });
+	//turnAnim.PushBack({ 1221, 1284, 28, 21 });
+	//turnAnim.PushBack({ 1192, 1284, 28, 21 });
+	//turnAnim.PushBack({ 1165, 1283, 28, 24 });
+	//turnAnim.PushBack({ 1136, 1283, 29, 24 });
+	//turnAnim.PushBack({ 1109, 1282, 25, 25 });
+	turnAnim.PushBack({ 1161, 1244, 28, 21 });
+	turnAnim.PushBack({ 1132, 1245, 28, 21 });
+	turnAnim.PushBack({ 1103, 1245, 28, 24 });
+	turnAnim.PushBack({ 1075, 1242, 28, 24 });
+	turnAnim.PushBack({ 1276, 1281, 28, 24 });
+	turnAnim.PushBack({ 1250, 1282, 28, 24 });
+	turnAnim.PushBack({ 1103, 1245, 28, 24 });
+	turnAnim.PushBack({ 1221, 1283, 28, 24 });
+	turnAnim.PushBack({ 1221, 1283, 28, 24 });
+	turnAnim.PushBack({ 1194, 1283, 28, 24 });
 	turnAnim.PushBack({ 1165, 1283, 28, 24 });
-	turnAnim.PushBack({ 1136, 1283, 29, 24 });
-	turnAnim.PushBack({ 1109, 1282, 25, 25 });
+	turnAnim.PushBack({ 1194, 1283, 28, 24 });
+	turnAnim.PushBack({ 1137, 1283, 28, 24 });
+	turnAnim.PushBack({ 1109, 1283, 28, 24 });
+	turnAnim.PushBack({ 1083, 1283, 28, 24 });
+	turnAnim.PushBack({ 1103, 1173, 28, 24 });
+	turnAnim.PushBack({ 1128, 1173, 28, 24 });
+	turnAnim.PushBack({ 1158, 1172, 28, 24 });
+
 	turnAnim.loop = false;
-	turnAnim.speed = 0.1f;
+	turnAnim.speed = 0.8f;
 
 
 	currentAnim = &flyAnim;
