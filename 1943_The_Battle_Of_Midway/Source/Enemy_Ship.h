@@ -2,7 +2,7 @@
 #define __ENEMY_SHIP_H__
 
 #include "Enemy.h"
-#include "Path.h"
+
 
 class Enemy_Ship : public Enemy
 {

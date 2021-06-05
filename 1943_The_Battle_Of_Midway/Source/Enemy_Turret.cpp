@@ -46,7 +46,6 @@ void Enemy_Turret::Update()
 			degrees += 180;
 		else if (vect.x > 0 && vect.y < 0)
 			degrees += 360;
-		printf("%f\n", degrees);
 	}
 	else
 		degrees = 270;

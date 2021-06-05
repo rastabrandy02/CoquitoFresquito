@@ -45,6 +45,7 @@ void Enemy::OnCollision(Collider* collider)
 	{
 		App->particles->AddParticle(App->particles->enemyExplosion, position.x, position.y);
 		int random = rand() % 100;
+		
 		if (random <= 3)
 		{
 			App->particles->AddParticle(App->particles->powerUp_Auto, position.x, position.y, Collider::Type::PU_AUTO);
