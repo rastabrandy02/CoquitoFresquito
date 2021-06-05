@@ -103,14 +103,17 @@ bool ModulePlayer::Start()
 
 	powerUpAuto = false;
 	powerUpThreeWay = false;
-	
-	
+	endTimer = 0;
+	end = false;
+	intro = false;
 
 	return ret;
 }
 
 update_status ModulePlayer::Update()
 {
+	if (App->sceneLevel_1->IsEnabled() && App->sceneLevel_1->introTimer <= 180)
+		intro = true;
 	GamePad& pad = App->input->pads[0];
 	// Moving the player with the camera scroll
 	if (playerMove)

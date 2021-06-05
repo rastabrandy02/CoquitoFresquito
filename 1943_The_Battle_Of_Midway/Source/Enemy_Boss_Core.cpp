@@ -21,7 +21,6 @@ void Enemy_Boss_Core::Update()
 	{
 		App->render->percentage -= 25;
 		App->particles->AddParticle(App->particles->enemyExplosion, position.x, position.y, Collider::Type::NONE);
-
 	}
 	
 	Enemy::Update();

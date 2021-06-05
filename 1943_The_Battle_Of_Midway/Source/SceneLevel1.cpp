@@ -203,7 +203,7 @@ bool SceneLevel1::Start()
 	App->particles->Enable();
 
 	
-
+	introTimer = 0;
 
 
 	return ret;
