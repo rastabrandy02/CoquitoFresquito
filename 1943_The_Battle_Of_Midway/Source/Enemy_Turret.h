@@ -19,6 +19,7 @@ private:
 	// The enemy animation
 	Animation angle[16];
 	float degrees;
+	int counter = 0;
 };
 
 #endif // __ENEMY_REDBIRD_H__

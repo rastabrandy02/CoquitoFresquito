@@ -6,6 +6,8 @@
 #include "ModuleAudio.h"
 #include "ModuleRender.h"
 #include "ModuleEnemies.h"
+#include "ModuleParticles.h"
+#include "ModulePlayer.h"
 #include <stdlib.h>
 
 Enemy::Enemy(int x, int y) : position(x, y)
@@ -31,6 +33,10 @@ void Enemy::Update()
 
 	if (collider != nullptr)
 		collider->SetPos(position.x, position.y);
+	if ((App->player->position.x - App->particles->enemyShot.spawnPos.x) < 0) direction.x = -1.0f;
+	else if ((App->player->position.x - App->particles->enemyShot.spawnPos.x) > 0)direction.x = 1.0f;
+	else direction.x = 0.0f;
+	
 }
 
 void Enemy::Draw()

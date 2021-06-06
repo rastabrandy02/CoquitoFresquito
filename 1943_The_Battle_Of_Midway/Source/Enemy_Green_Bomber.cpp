@@ -153,7 +153,10 @@ void Enemy_Green_Bomber::Update()
 		}
 		timer++;
 	}
-
+	if (health <= 0)
+	{
+		App->particles->AddParticle(App->particles->biplaneDeath, position.x, position.y, Collider::Type::NONE);
+	}
 
 
 	// Call to the base class. It must be called at the end

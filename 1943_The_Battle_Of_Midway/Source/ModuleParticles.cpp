@@ -8,6 +8,7 @@
 #include "ModulePlayer.h"
 
 #include "SDL/include/SDL_timer.h"
+#include <stdio.h>
 
 ModuleParticles::ModuleParticles(bool startEnabled) : Module(startEnabled)
 {
@@ -67,7 +68,7 @@ bool ModuleParticles::Start()
 	playerDeath.anim.PushBack({ 123, 192, 39, 28 });
 
 	playerDeath.anim.loop = false;
-	playerDeath.anim.speed = 0.3f;
+	playerDeath.anim.speed = 0.f;
 	
 	enemyExplosion.anim.PushBack({ 181, 20, 27, 25 });
 	enemyExplosion.anim.PushBack({ 215, 22, 30, 27 });
@@ -105,7 +106,7 @@ bool ModuleParticles::Start()
 	powerUp_Pow.anim.PushBack({ 700, 346, 20, 17 });
 	powerUp_Pow.anim.PushBack({ 719, 346, 20, 17 });
 	powerUp_Pow.anim.loop = true;
-	powerUp_Pow.anim.speed = 0.3f; 
+	powerUp_Pow.anim.speed = 0.1f; 
 	powerUp_Pow.lifetime = 600;
 	
 	enemyShot.anim.PushBack({ 38, 403, 8, 8 });
@@ -114,8 +115,18 @@ bool ModuleParticles::Start()
 	enemyShot.anim.speed = 0.1f;
 	enemyShot.anim.loop = true;
 	
-	if ((App->player->position.x - enemyShot.spawnPos.x) < 0) enemyShot.speed.x = -1.0f;
-	if ((App->player->position.x - enemyShot.spawnPos.x) > 0) enemyShot.speed.x = 1.0f;
+	biplaneDeath.anim.PushBack({ 316, 67, 61, 57 });
+	biplaneDeath.anim.PushBack({ 380, 68, 61, 60 });
+	biplaneDeath.anim.PushBack({ 449, 65, 61, 60 });
+	biplaneDeath.anim.PushBack({ 516, 66, 61, 63 });
+	biplaneDeath.anim.PushBack({ 516, 66, 61, 63 });
+	biplaneDeath.anim.PushBack({ 320, 196, 61, 63 });
+	biplaneDeath.anim.PushBack({ 384, 196, 61, 63 });
+	biplaneDeath.anim.PushBack({ 441, 201, 61, 63 });
+	biplaneDeath.anim.PushBack({ 517, 200, 61, 63 });
+	biplaneDeath.anim.speed = 0.1f;
+	biplaneDeath.anim.loop = false;
+
 	enemyShot.speed.y = 2.0f;
 	enemyShot.lifetime = 350;
 	return true;
@@ -186,6 +197,7 @@ update_status ModuleParticles::Update()
 			delete particle;
 			particles[i] = nullptr;
 		}
+		
 	}
 
 	return update_status::UPDATE_CONTINUE;
@@ -207,7 +219,7 @@ update_status ModuleParticles::PostUpdate()
 	return update_status::UPDATE_CONTINUE;
 }
 
-void ModuleParticles::AddParticle(const Particle& particle, int x, int y, Collider::Type colliderType, uint delay)
+void ModuleParticles::AddParticle(const Particle& particle, int x, int y, Collider::Type colliderType, uint delay, iPoint direction)
 {
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{
@@ -227,6 +239,8 @@ void ModuleParticles::AddParticle(const Particle& particle, int x, int y, Collid
 			particles[i] = p;
 			p->spawnPos.x = x;
 			p->spawnPos.y = y;
+			p->speed = direction;
+
 			break;
 		}
 	}

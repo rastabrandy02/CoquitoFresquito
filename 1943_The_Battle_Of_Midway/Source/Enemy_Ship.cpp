@@ -14,7 +14,7 @@ Enemy_Ship::Enemy_Ship(int x, int y) : Enemy(x, y)
 	App->enemies->AddEnemy(ENEMY_TYPE::TURRETSHIP, x + 3, y + 120);
 	App->enemies->AddEnemy(ENEMY_TYPE::TURRETSHIP, x + 3, y + 135);
 
-	collider = App->collisions->AddCollider({ 0,0, 56, 296 }, Collider::Type::NONE);
+	collider = App->collisions->AddCollider({ 0,0, 38, 180 }, Collider::Type::NONE);
 
 	health = 1;
 	currentAnim = &ship;
