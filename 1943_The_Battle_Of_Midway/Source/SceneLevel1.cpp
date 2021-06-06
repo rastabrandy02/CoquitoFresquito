@@ -39,7 +39,7 @@ bool SceneLevel1::Start()
 	ship = App->textures->Load("Assets/superAce.png");
 	App->audio->PlayMusic("Assets/Audio/stage1.ogg", 1.0f);
 
-	App->collisions->AddCollider({ 0, -5400, 400, 200 }, Collider::Type::LVL2);
+	App->collisions->AddCollider({ 0, -5200, 400, 200 }, Collider::Type::LVL2);
 
 	// Enemies ---
 

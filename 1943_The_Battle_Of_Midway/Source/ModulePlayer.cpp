@@ -55,7 +55,6 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	introAnim.PushBack({ 99, 120, 13, 9 });
 	introAnim.PushBack({ 165, 117, 14, 13 });
 	introAnim.PushBack({ 200, 119, 12, 10 });
-
 	introAnim.PushBack({ 25, 75, 25, 13 });
 	introAnim.PushBack({ 25, 93, 25, 14 });
 	introAnim.PushBack({ 58, 77, 27, 11 });
@@ -69,8 +68,9 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	introAnim.PushBack({ 228, 94, 26, 13 });
 	introAnim.PushBack({ 228, 94, 26, 13 });
 	introAnim.loop = false;
-	introAnim.speed = 0.05f;
-	currentAnimation = &introAnim;
+	introAnim.speed = 0.1f;
+
+	currentAnimation = &idleAnim;
 
 }
 
@@ -112,8 +112,15 @@ bool ModulePlayer::Start()
 
 update_status ModulePlayer::Update()
 {
-	if (App->sceneLevel_1->IsEnabled() && App->sceneLevel_1->introTimer <= 180)
+	if (App->sceneLevel_1->IsEnabled() && App->sceneLevel_1->introTimer <= 240)
+	{
+		if (currentAnimation = &introAnim)
+		{
+			introAnim.Reset();
+			currentAnimation = &introAnim;
+		}
 		intro = true;
+	}
 	GamePad& pad = App->input->pads[0];
 	// Moving the player with the camera scroll
 	if (playerMove)
@@ -142,7 +149,7 @@ update_status ModulePlayer::Update()
 	autoTimer++;
 	
 	
-	if (!destroyed || !intro || !end)
+	if (!destroyed && !intro && !end)
 	{
 		if (position.x >= 0)
 		{
@@ -278,6 +285,13 @@ update_status ModulePlayer::Update()
 	}
 	if (shotCountDown > 0) --shotCountDown;
 	if (end) currentAnimation = &downAnim;
+	if (position.y <= -5200)
+	{
+		end = true;
+		endTimer++;
+
+		App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneLevel_2, 60);
+	}
 	return update_status::UPDATE_CONTINUE;
 }
 
@@ -348,12 +362,12 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	{
 		end = true;
 		endTimer++;
-		if (endTimer <= 240)
-		{
-			App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneLevel_2, 60);
-			position.x = 0;
-			position.y = 0;
-		}
+		
+		App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneLevel_2, 60);
+		position.x = 0;
+		position.y = 0;
+		LOG("Collider");
+		
 	}
 }
 
