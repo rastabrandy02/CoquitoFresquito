@@ -13,13 +13,19 @@
 
 
 ## Controls
+### Keyboard
 - WASD-> Move       
 - SPACEBAR-> Shoot  
-
+### Gamepad
+- Left joystick -> Move
+- A button -> Shoot
 ### Debuggin controls
 - F1 -> Show Colliders  
 - F2 -> God Mode  
 - F3 -> Direct Win  
+- F4 -> Gamepad Debug
+- F5 -> Level 2 transition
+- Esc -> Exit
 - Keyboard arrows -> Move debuggin camera
 
 ## Our team
