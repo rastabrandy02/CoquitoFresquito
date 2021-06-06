@@ -39,18 +39,103 @@ bool SceneLevel2::Start()
 
 
 	// Enemies ---
+	App->enemies->AddEnemy(ENEMY_TYPE::GREENPLANE, 350, -100);
+	App->enemies->AddEnemy(ENEMY_TYPE::GREENPLANE, 300, -120);
+	App->enemies->AddEnemy(ENEMY_TYPE::GREENPLANE, 250, -140);
+	App->enemies->AddEnemy(ENEMY_TYPE::GREENPLANE, 200, -160);
+	App->enemies->AddEnemy(ENEMY_TYPE::GREENPLANE, 50, -100);
+	App->enemies->AddEnemy(ENEMY_TYPE::GREENPLANE, 100, -120);
+	App->enemies->AddEnemy(ENEMY_TYPE::GREENPLANE, 150, -140);
+	
+	App->enemies->AddEnemy(ENEMY_TYPE::GREENPLANE, 350, -220);
+	App->enemies->AddEnemy(ENEMY_TYPE::GREENPLANE, 300, -200);
+	App->enemies->AddEnemy(ENEMY_TYPE::GREENPLANE, 250, -180);
+	App->enemies->AddEnemy(ENEMY_TYPE::GREENPLANE, 50, -220);
+	App->enemies->AddEnemy(ENEMY_TYPE::GREENPLANE, 100, -200);
+	App->enemies->AddEnemy(ENEMY_TYPE::GREENPLANE, 150, -180);
+
+	App->enemies->AddEnemy(ENEMY_TYPE::GREENPLANE, 50, -400);
+	App->enemies->AddEnemy(ENEMY_TYPE::GREENPLANE, 80, -430);
+	App->enemies->AddEnemy(ENEMY_TYPE::GREENPLANE, 110, -460);
+	App->enemies->AddEnemy(ENEMY_TYPE::GREENPLANE, 140, -490);
+	App->enemies->AddEnemy(ENEMY_TYPE::GREENPLANE, 200, -400);
+	App->enemies->AddEnemy(ENEMY_TYPE::GREENPLANE, 230, -430);
+	App->enemies->AddEnemy(ENEMY_TYPE::GREENPLANE, 260, -460);
+	App->enemies->AddEnemy(ENEMY_TYPE::GREENPLANE, 290, -490);
+
+	App->enemies->AddEnemy(ENEMY_TYPE::GREENPLANE, 110, -720);
+	App->enemies->AddEnemy(ENEMY_TYPE::GREENPLANE, 140, -690);
+	App->enemies->AddEnemy(ENEMY_TYPE::GREENPLANE, 170, -660);
+	App->enemies->AddEnemy(ENEMY_TYPE::GREENPLANE, 200, -630);
+	App->enemies->AddEnemy(ENEMY_TYPE::GREENPLANE, 250, -720);
+	App->enemies->AddEnemy(ENEMY_TYPE::GREENPLANE, 280, -690);
+	App->enemies->AddEnemy(ENEMY_TYPE::GREENPLANE, 320, -660);
+	App->enemies->AddEnemy(ENEMY_TYPE::GREENPLANE, 350, -630);
+
+	App->enemies->AddEnemy(ENEMY_TYPE::GREENPLANE, 350, -780);
+	App->enemies->AddEnemy(ENEMY_TYPE::GREENPLANE, 300, -800);
+	App->enemies->AddEnemy(ENEMY_TYPE::GREENPLANE, 250, -820);
+	App->enemies->AddEnemy(ENEMY_TYPE::GREENPLANE, 200, -840);
+	App->enemies->AddEnemy(ENEMY_TYPE::GREENPLANE, 50, -780);
+	App->enemies->AddEnemy(ENEMY_TYPE::GREENPLANE, 100, -800);
+	App->enemies->AddEnemy(ENEMY_TYPE::GREENPLANE, 150, -820);
+
+	App->enemies->AddEnemy(ENEMY_TYPE::GREENPLANE, 300, -1200);
+	App->enemies->AddEnemy(ENEMY_TYPE::GREENPLANE, 320, -1220);
+	App->enemies->AddEnemy(ENEMY_TYPE::GREENPLANE, 340, -1240);
+	App->enemies->AddEnemy(ENEMY_TYPE::GREENPLANE, 100, -1200);
+	App->enemies->AddEnemy(ENEMY_TYPE::GREENPLANE, 80, -1220);
+	App->enemies->AddEnemy(ENEMY_TYPE::GREENPLANE, 60, -1240);
+	App->enemies->AddEnemy(ENEMY_TYPE::GREENPLANE, 300, -1200);
+	App->enemies->AddEnemy(ENEMY_TYPE::GREENPLANE, 320, -1220);
+	App->enemies->AddEnemy(ENEMY_TYPE::GREENPLANE, 340, -1240);
+	App->enemies->AddEnemy(ENEMY_TYPE::GREENPLANE, 100, -1200);
+	App->enemies->AddEnemy(ENEMY_TYPE::GREENPLANE, 80, -1220);
+	App->enemies->AddEnemy(ENEMY_TYPE::GREENPLANE, 60, -1240);
+
+	App->enemies->AddEnemy(ENEMY_TYPE::REDLOOPPLANE, 75, -500);
+	App->enemies->AddEnemy(ENEMY_TYPE::REDLOOPPLANE, 300, -500);
+	App->enemies->AddEnemy(ENEMY_TYPE::REDLOOPPLANE, 125, -550);
+	App->enemies->AddEnemy(ENEMY_TYPE::REDLOOPPLANE, 250, -550);
+	App->enemies->AddEnemy(ENEMY_TYPE::REDLOOPPLANE, 160, -600);
+	App->enemies->AddEnemy(ENEMY_TYPE::REDLOOPPLANE, 210, -600);
+
+	App->enemies->AddEnemy(ENEMY_TYPE::REDLOOPPLANE, 130, -1050);
+	App->enemies->AddEnemy(ENEMY_TYPE::REDLOOPPLANE, 150, -1070);
+	App->enemies->AddEnemy(ENEMY_TYPE::REDLOOPPLANE, 170, -1090);
+	App->enemies->AddEnemy(ENEMY_TYPE::REDLOOPPLANE, 230, -1050);
+	App->enemies->AddEnemy(ENEMY_TYPE::REDLOOPPLANE, 250, -1070);
+	App->enemies->AddEnemy(ENEMY_TYPE::REDLOOPPLANE, 270, -1090);
+
+	App->enemies->AddEnemy(ENEMY_TYPE::REDLOOPPLANE, 145, -1730);
+	App->enemies->AddEnemy(ENEMY_TYPE::REDLOOPPLANE, 84, -1750);
+	App->enemies->AddEnemy(ENEMY_TYPE::REDLOOPPLANE, 84, -1780);
+	App->enemies->AddEnemy(ENEMY_TYPE::REDLOOPPLANE, 65, -1850);
+	App->enemies->AddEnemy(ENEMY_TYPE::REDLOOPPLANE, 308, -1850);
+	App->enemies->AddEnemy(ENEMY_TYPE::REDLOOPPLANE, 268, -1900);
+	App->enemies->AddEnemy(ENEMY_TYPE::REDLOOPPLANE, 116, -1900);
+	App->enemies->AddEnemy(ENEMY_TYPE::REDLOOPPLANE, 300, -1900);
+
+	App->enemies->AddEnemy(ENEMY_TYPE::REDLOOPPLANE, 75, -3500);
+	App->enemies->AddEnemy(ENEMY_TYPE::REDLOOPPLANE, 300, -3500);
+	App->enemies->AddEnemy(ENEMY_TYPE::REDLOOPPLANE, 125, -3550);
+	App->enemies->AddEnemy(ENEMY_TYPE::REDLOOPPLANE, 250, -3550);
+	App->enemies->AddEnemy(ENEMY_TYPE::REDLOOPPLANE, 160, -3600);
+	App->enemies->AddEnemy(ENEMY_TYPE::REDLOOPPLANE, 210, -3600);
+
 	App->enemies->AddEnemy(ENEMY_TYPE::GREENBOMBER, 175, -1000);
 	App->enemies->AddEnemy(ENEMY_TYPE::GREENBOMBER, 175, -2000);
 
 	App->enemies->AddEnemy(ENEMY_TYPE::SHIP, 175, -2300);
+	App->enemies->AddEnemy(ENEMY_TYPE::SHIP, 110, -2700);
 	App->enemies->AddEnemy(ENEMY_TYPE::SHIP, 75, -3000);
 	App->enemies->AddEnemy(ENEMY_TYPE::SHIP, 300, -3000);
+	App->enemies->AddEnemy(ENEMY_TYPE::SHIP, 135, -3400);
 	App->enemies->AddEnemy(ENEMY_TYPE::SHIP, 275, -3700);
 	App->enemies->AddEnemy(ENEMY_TYPE::SHIP, 75, -3900);
 	
 
 	App->enemies->AddEnemy(ENEMY_TYPE::BOSS, 150, -4450);
-	App->enemies->AddEnemy(ENEMY_TYPE::SHIP, 150, -100);
 
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
