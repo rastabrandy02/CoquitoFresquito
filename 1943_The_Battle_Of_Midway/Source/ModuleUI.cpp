@@ -39,6 +39,10 @@ bool ModuleUI::Start()
 	healtBar7 = App->textures->Load("Assets/Lifebars/life_bar_7.png");
 	healtBar8 = App->textures->Load("Assets/Lifebars/life_bar_8.png");
 	healtBar9 = App->textures->Load("Assets/Lifebars/life_bar_9.png");
+
+	scoreBar = App->textures->Load("Assets/scoreBar.png");
+	insertCoin = App->textures->Load("Assets/insertCoin.png");
+
 	timersAuto = 240;
 	
 
@@ -82,7 +86,8 @@ update_status ModuleUI::PostUpdate()
 	counter++;
 	if ((counter / 60) % 2 == 0)
 	{
-		App->fonts->BlitText(250, 458, textFont,"insert coin");
+		//App->fonts->BlitText(250, 458, textFont,"insert coin");
+		App->render->Blit(insertCoin, 0, 0, NULL, 0.0f, false);
 	}
 	if (autopw)
 	{
@@ -109,13 +114,16 @@ update_status ModuleUI::PostUpdate()
 	sprintf_s(scoreText, "%7d", score);
 
 	sprintf_s(hiScoreText, "%7d", hiScore);
-	App->fonts->BlitText(25, 30, scoreFont, scoreText);
-	App->fonts->BlitText(10, 9, textFont, "1player");
-	App->fonts->BlitText(300, 9, textFont, "2player");
-	App->fonts->BlitText(360, 30, scoreFont, "0");
-	App->fonts->BlitText(150, 9, textFontHiScore, "hiscore");
-	App->fonts->BlitText(165, 30, scoreFontHiScore, hiScoreText);
+	App->fonts->BlitText(45, 30, scoreFont, scoreText);
+	App->fonts->BlitText(200, 30, scoreFontHiScore, hiScoreText);
+	App->fonts->BlitText(380, 30, scoreFont, "0");
+	/*App->fonts->BlitText(10, 9, textFont, "1player");
+	App->fonts->BlitText(300, 9, textFont, "2player");*/
+	/*App->fonts->BlitText(150, 9, textFontHiScore, "hiscore");*/
 	//App->fonts->BlitText(300, 10, testFont, fpsText);
+
+	App->render->Blit(scoreBar, 0, 0, NULL, 0.0f, false);
+
 	if (App->player->intro)
 	{
 		
@@ -145,6 +153,8 @@ bool ModuleUI::CleanUp()
 	App->textures->Unload(healtBar7);
 	App->textures->Unload(healtBar8);
 	App->textures->Unload(healtBar9);
+	App->textures->Unload(scoreBar);
+	App->textures->Unload(insertCoin);
 
 	App->fonts->UnLoad(scoreFont);
 	App->fonts->UnLoad(textFont);

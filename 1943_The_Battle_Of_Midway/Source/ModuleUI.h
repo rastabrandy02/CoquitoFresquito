@@ -65,6 +65,9 @@ private:
 	SDL_Texture* healtBar7 = nullptr;
 	SDL_Texture* healtBar8 = nullptr;
 	SDL_Texture* healtBar9 = nullptr;
+
+	SDL_Texture* scoreBar = nullptr;
+	SDL_Texture* insertCoin = nullptr;
 };
 
 
