@@ -99,13 +99,13 @@ void Enemy_Green_Bomber::Update()
 		}
 		if (timer >= fase[2] && timer < fase[3])
 		{
-			if(timer == fase[2]) App->particles->AddParticle(App->particles->enemyShot, position.x + 50, position.y + 75, Collider::ENEMY_SHOT);
+			if(timer == fase[2]) App->particles->AddParticle(App->particles->enemyShot, position.x + 50, position.y + 75, Collider::ENEMY_SHOT, true);
 			downAnim.Reset();
 			currentAnim = &stayAnim;
 		}
 		if (timer >= fase[3] && timer < fase[4])
 		{
-			if(timer == fase[3]) App->particles->AddParticle(App->particles->enemyShot, position.x + 50, position.y + 75, Collider::ENEMY_SHOT);
+			if(timer == fase[3]) App->particles->AddParticle(App->particles->enemyShot, position.x + 50, position.y + 75, Collider::ENEMY_SHOT, true);
 			stayAnim.Reset();
 			currentAnim = &upAnim;
 			invincible = false;
@@ -113,7 +113,7 @@ void Enemy_Green_Bomber::Update()
 		}
 		if (timer == fase[4])
 		{
-			App->particles->AddParticle(App->particles->enemyShot, position.x + 50, position.y + 75, Collider::ENEMY_SHOT);
+			App->particles->AddParticle(App->particles->enemyShot, position.x + 50, position.y + 75, Collider::ENEMY_SHOT, true);
 			
 		}
 		if (timer >= fase[4] && timer < fase[5])

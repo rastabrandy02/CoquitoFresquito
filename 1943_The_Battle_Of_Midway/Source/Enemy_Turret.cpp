@@ -32,6 +32,7 @@ Enemy_Turret::Enemy_Turret(int x, int y) : Enemy(x, y)
 	collider = App->collisions->AddCollider({ 0,0, 30, 32 }, Collider::Type::ENEMY, (Module*)App->enemies);
 	health = 3;
 	degrees = 0;
+	counter = rand() % 100;
 
 }
 
@@ -88,6 +89,7 @@ void Enemy_Turret::Update()
 	{
 		App->particles->AddParticle(App->particles->enemyExplosion, position.x, position.y, Collider::Type::NONE);
 	}
+	
 	counter++;
 	if (counter >= 650)
 	{
