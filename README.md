@@ -7,13 +7,18 @@ Videogame Development - Project 1 - 1943: The Battle Of Midway
 - Player movement
 - Player shot
 - Auto (player can shot without releasing the spacebar)
+- Three way shots
+- Healing item
+- Enemy AI
 ## Controls
 - WASD-> Move       
 - SPACEBAR-> Shoot  
 ### Debuggin controls
 - F1 -> Show Colliders  
 - F2 -> God Mode  
-- F3 -> Direct Win  
+- F3 -> Direct Win
+- F4 -> Gamepad Controls
+- F5 -> Go to lvl 2
 - Keyboard arrows -> Move debuggin camera
 
 ## Credits
