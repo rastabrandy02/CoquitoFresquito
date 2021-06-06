@@ -34,9 +34,9 @@ Application::Application()
 	modules[6] = sceneLevel_1 = new SceneLevel1(false);
 	modules[7] = sceneLevel_2 = new SceneLevel2(false);
 	modules[8] = sceneEnd = new SceneEnd(false);
-	modules[9] = player = new ModulePlayer(false);
-	modules[10] = particles = new ModuleParticles(true);
-	modules[11] = enemies = new ModuleEnemies(false);
+	modules[9] = enemies = new ModuleEnemies(false);
+	modules[10] = player = new ModulePlayer(false);
+	modules[11] = particles = new ModuleParticles(true);
 
 	modules[12] = collisions = new ModuleCollisions(true);
 

@@ -198,9 +198,9 @@ bool SceneLevel1::Start()
 	App->render->camera.y = 0;
 
 	App->player->Enable();
+	App->particles->Enable();
 	App->enemies->Enable();
 	App->UI->Enable();
-	App->particles->Enable();
 
 	
 	introTimer = 0;
@@ -266,6 +266,7 @@ bool SceneLevel1::CleanUp()
 	App->particles->Disable();
 	App->textures->Unload(bgTexture);
 	App->textures->Unload(cloudTexture);
+	App->textures->Unload(ship);
 
 	return true;
 }

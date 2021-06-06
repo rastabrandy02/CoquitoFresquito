@@ -141,9 +141,9 @@ bool SceneLevel2::Start()
 	App->render->camera.y = 0;
 
 	App->player->Enable();
+	App->particles->Enable();
 	App->enemies->Enable();
 	App->UI->Enable();
-	App->particles->Enable();
 
 
 

@@ -109,8 +109,8 @@ update_status SceneEnd::PostUpdate()
 			sprintf_s(text, "%i", (100 - App->render->percentage));
 			App->fonts->BlitText(100, 200, textFont, "mission");
 			App->fonts->BlitText(95, 230, textFont, "failed");
-			App->fonts->BlitText(95, 260, textFont, text);
 			App->fonts->BlitText(120, 260, textFont, "compleated");
+			App->fonts->BlitText(95, 260, textFont, text);
 		}
 	}
 	else
@@ -126,5 +126,6 @@ bool SceneEnd::CleanUp()
 	
 	App->textures->Unload(winTexture);
 	App->textures->Unload(planeTex);
+	App->fonts->UnLoad(textFont);
 	return true;
 }
