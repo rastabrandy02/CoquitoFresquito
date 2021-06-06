@@ -61,4 +61,4 @@
 ## GitHub Repository
 Check the CoquitoFresquito repository [here](https://github.com/rastabrandy02/CoquitoFresquito)
 
-Here you can download the last release! [here](https://github.com/rastabrandy02/CoquitoFresquito/releases)
+You can download the last release [here](https://github.com/rastabrandy02/CoquitoFresquito/releases)!
