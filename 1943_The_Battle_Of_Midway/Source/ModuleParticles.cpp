@@ -246,8 +246,8 @@ void ModuleParticles::AddParticle(const Particle& particle, int x, int y, Collid
 				else if ((App->player->position.x - x) > 0)p->speed.x = 1.0f;
 				else p->speed.x = 0.0f;
 
-				if (((unsigned)App->player->position.y - (unsigned)y) < 0) p->speed.y = -2.0f;
-				else if (((unsigned)App->player->position.y - (unsigned)y) > 0) p->speed.y = 2.0f;
+				if (((App->player->position.y^2) - (y^2)) < 0) p->speed.y = -2.0f;
+				else if (((App->player->position.y ^ 2) - (y ^ 2)) > 0) p->speed.y = 2.0f;
 				else p->speed.y = 0.0f;
 
 			}
