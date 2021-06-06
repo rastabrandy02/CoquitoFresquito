@@ -31,7 +31,7 @@ bool SceneLevel1::Start()
 	LOG("Loading background assets");
 	timer = 0;
 	bool ret = true;
-	
+	App->UI->score = 0;
 
 
 	cloudTexture = App->textures->Load("Assets/CloudsMap.png");

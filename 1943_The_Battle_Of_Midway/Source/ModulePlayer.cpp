@@ -88,7 +88,7 @@ bool ModulePlayer::Start()
 	playerDeadParticle = 0;
 	texture = App->textures->Load("Assets/superAce.png");
 	
-	App->UI->score = 0;
+	//App->UI->score = 0;
 	
 	deathPlayerFx = App->audio->LoadFx("Assets/FX/death_player.wav");
 	basicShotFx = App->audio->LoadFx("Assets/FX/basic_shot.wav");
