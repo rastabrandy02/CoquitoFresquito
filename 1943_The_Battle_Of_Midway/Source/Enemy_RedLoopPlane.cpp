@@ -85,13 +85,13 @@ void Enemy_RedLoopPlane::Update()
 	if (attacktimer > 650)
 	{
 		attacktimer = 0;
-		App->particles->AddParticle(App->particles->enemyShot, position.x + 5, position.y - 5, Collider::ENEMY_SHOT);
+		App->particles->AddParticle(App->particles->enemyShot, position.x + 5, position.y - 5, Collider::ENEMY_SHOT, true);
 	}
 	
 	/*path.Update();
 	position = spawnPos + path.GetRelativePosition();
 	currentAnim = path.GetCurrentAnimation();*/
-
+	
 
 	// Call to the base class. It must be called at the end
 	// It will update the collider depending on  the position

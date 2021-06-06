@@ -5,6 +5,7 @@
 #include "ModulePlayer.h"
 #include "ModuleRender.h"
 #include <math.h>
+#include <stdio.h>
 
 #define PI 3.14159265
 
@@ -33,6 +34,7 @@ Enemy_Turret_Boss::Enemy_Turret_Boss(int x, int y) : Enemy(x, y)
 	collider = App->collisions->AddCollider({ 0,0, 30, 32 }, Collider::Type::ENEMY, (Module*)App->enemies);
 	health = 3;
 	degrees = 0;
+	counter = rand() % 100;
 
 }
 
@@ -89,6 +91,12 @@ void Enemy_Turret_Boss::Update()
 	{
 		App->particles->AddParticle(App->particles->enemyExplosion, position.x, position.y, Collider::Type::NONE);
 		App->render->percentage -= 9;
+	}
+	counter++;
+	if (counter >= 650)
+	{
+		counter = 0;
+		App->particles->AddParticle(App->particles->enemyShot, position.x, position.y, Collider::Type::ENEMY_SHOT, 0, true);
 	}
 	Enemy::Update();
 }

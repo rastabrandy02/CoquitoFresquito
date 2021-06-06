@@ -6,6 +6,8 @@
 #include "ModuleAudio.h"
 #include "ModuleRender.h"
 #include "ModuleEnemies.h"
+#include "ModuleParticles.h"
+#include "ModulePlayer.h"
 #include <stdlib.h>
 
 Enemy::Enemy(int x, int y) : position(x, y)
@@ -31,6 +33,8 @@ void Enemy::Update()
 
 	if (collider != nullptr)
 		collider->SetPos(position.x, position.y);
+	
+	
 }
 
 void Enemy::Draw()

@@ -50,7 +50,7 @@ public:
 	int health;
 	bool invincible = false;
 	bool powerUp = true;
-	
+	iPoint direction = { 0, 0 };
 
 protected:
 	// A ptr to the current animation

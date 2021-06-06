@@ -50,6 +50,7 @@ bool SceneLevel2::Start()
 	
 
 	App->enemies->AddEnemy(ENEMY_TYPE::BOSS, 150, -4450);
+	App->enemies->AddEnemy(ENEMY_TYPE::SHIP, 150, -100);
 
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
