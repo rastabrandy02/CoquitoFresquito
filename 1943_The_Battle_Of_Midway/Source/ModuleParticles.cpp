@@ -219,7 +219,7 @@ update_status ModuleParticles::PostUpdate()
 	return update_status::UPDATE_CONTINUE;
 }
 
-void ModuleParticles::AddParticle(const Particle& particle, int x, int y, Collider::Type colliderType, uint delay, iPoint direction)
+void ModuleParticles::AddParticle(const Particle& particle, int x, int y, Collider::Type colliderType, uint delay, bool track)
 {
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{
@@ -239,8 +239,18 @@ void ModuleParticles::AddParticle(const Particle& particle, int x, int y, Collid
 			particles[i] = p;
 			p->spawnPos.x = x;
 			p->spawnPos.y = y;
-			p->speed = direction;
+			
+			if (track)
+			{
+				if ((App->player->position.x - x) < 0) p->speed.x = -1.0f;
+				else if ((App->player->position.x - x) > 0)p->speed.x = 1.0f;
+				else p->speed.x = 0.0f;
 
+				if (((unsigned)App->player->position.y - (unsigned)y) < 0) p->speed.y = -2.0f;
+				else if (((unsigned)App->player->position.y - (unsigned)y) > 0) p->speed.y = 2.0f;
+				else p->speed.y = 0.0f;
+
+			}
 			break;
 		}
 	}

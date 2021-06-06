@@ -95,7 +95,7 @@ void Enemy_Turret_Boss::Update()
 	if (counter >= 650)
 	{
 		counter = 0;
-		App->particles->AddParticle(App->particles->enemyShot, position.x, position.y, Collider::Type::ENEMY_SHOT, 0, direction);
+		App->particles->AddParticle(App->particles->enemyShot, position.x, position.y, Collider::Type::ENEMY_SHOT, 0, true);
 	}
 	Enemy::Update();
 }
