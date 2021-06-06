@@ -10,6 +10,11 @@
 - Player movement
 - Player shot
 - Auto (player can shot without releasing the spacebar)
+- 3 Way (player also shoots two angled shots)
+- POW (player heals one Health Point)
+- 2 Levels 
+- 1 Boss
+- 4 Enemy types
 
 
 ## Controls
